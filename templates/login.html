@@ -1,0 +1,32 @@
+
+{% load static %}
+{% block title %} Login{% endblock title %}
+
+{% block main_content %} 
+
+<div class="container">
+    <div class="row justify-content-around mt-5">
+        <div class="col-sm-6">
+            <h3 class="text-white text-center">Now Log In here</h3>
+        </div>
+    </div>
+    <div class="row ustify-content-around">
+        <div class="col-sm-6">
+        <form action="/login" method="post">
+        {%csrf_token%}
+        <label for="">User Name</label>
+        <input type="text" name="username" id="username" placeholder="enter your username" Required><br>
+        <label for="">Password  </label>
+        <input type="password" name="password" id="password" placeholder="enter your password" Required><br>
+        <button type="submit"> Log In Here</button>
+        </form>
+        </div>
+    </div>
+</div><br>
+<button type="submit"><a href="/signup">If not a member SignUp here</a></button>
+{% if messages %}
+{% for i in messages %}
+{{i}}
+{% endfor %}
+{% endif %}
+{% endblock main_content %}

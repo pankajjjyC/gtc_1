@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block1</title>
+</head>
+<body>
+<div style="position:relative;left: 400px;">
+<img src="{% static 'phool_.jpg' %}" alt=""> <br> <br>
+<h1>Welcome to Block ' 1 '</h1>
+
+    <form action="/chart2" method="post">
+    {%csrf_token%}
+    <label for="" style="font-style:italic ;font-weight: bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;background-color: rgb(166, 240, 240); color: rgb(126, 37, 37); font-size: large;">Upload a csv file here to view it's HEATMAP</label><br><br>
+    <input type="file" name="csv" id="csv" placeholder="Submit your file here" ><br><br>
+    <button type="submit"> Submit</button>
+    </form> <br>
+
+</div>
+
+{{xx}} <br>
+
+
+
+
+</body>
+</html>
