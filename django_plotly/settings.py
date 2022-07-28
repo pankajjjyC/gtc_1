@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-sy88^q+h@51er2t+ypcw7r!6w1+u!2ztep^h0q1hzg**c*j677
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,7 +29,11 @@ INSTALLED_APPS = [
     'core',
     'ds_two',
     'ds_three',
+    'ds_one',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK ='bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +77,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -110,12 +115,24 @@ USE_TZ = True
 #STATICFILES_DIRS = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
 
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = 'media'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = 'media'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#EMAIL_BACKEND = 'django.core.mail.backend.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_HOST_USER='pankajrajoria05@gmail.com'
+EMAIL_HOST_PASSWORD ='jjjy317232@C' 
+EMAIL_PORT = 587
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL = False

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .horizontal {
+            width: 100%;
+            height: 100px;
+            background-color: #bbb;
+        }
+
+        .vertical {
+            width: 100px;
+            height: 250px;
+            background-color: #bbb;
+        } */
+
+        #container {
+            margin: auto auto;
+            width: 950px;
+            height: 600px;
+            background-color:white;
+            position: relative;
+            top:50px;
+        }
+    </style>
+    </style>
+</head>
+
+<body style="background-color:rgb(215, 212, 212)">
+    <!-- outer div -->
+
+    <div id="container" > <!-- main -->
+
+
+         <!-- div1 -->
+         <div style="width: 400px;height: 600px; background-color:rgb(72, 72, 72); position:relative;left:0px;top: 0px;">
+            <div style="position: relative;top: 80px; left: 100px;">
+                <img src="{% static 'logo.png' %}" alt="architecture" >
+            </div> 
+            <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:white;position: relative;top: 100px; font-size: 14px; left:-40px;">
+                Global  Technology Connections is a digital 
+                engineering comapany that develops cutting
+                edge modeling, simulation, machine 
+                learning, and data science solutions.
+            </pre>
+            <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:white;position: relative;top: 110px; font-size: 14px; left:-40px;">
+                Our core areas of expertise include 
+                autonomous systems, seismic-AL , model- 
+                based systems engineering , and prognostics 
+                and health management of engineering 
+                assests.
+            </pre>
+            <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:white;position: relative;top: 110px; font-size: 14px; left:-40px;">
+                Find the applications we have developed
+                here -
+            </pre>
+            <a href="" style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:rgb(69, 49, 246);position: relative;top: 63px; font-size: 16px; left:95px;font-weight: bolder;"> GTC Applications</a>
+            <!-- <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:white;position: relative;top: -7px; font-size: 14px; left:-40px;">
+                Fill in a form to request access to our 
+                application -
+            </pre>
+            <a href="" style="font-family: Verdana, Geneva, Tahoma, sans-serif;color:rgb(69, 49, 246);position: relative;top: -55px;font-size: 16px; left:135px;font-weight: bolder;"> GTC Application Access Form</a> -->
+
+        </div>
+        <!-- div1 -->
+
+
+        <!-- div2 -->
+        <div class="container" style="position: relative; left: 470px; top:-500px; ">
+            <div class="row justify-content-around mt-5">
+                <div class="col-sm-6">
+                    <h3 class="text-white text-center" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px; position: relative;left:80px;">Login to Dashboard</h3>
+                </div>
+            </div><br>
+            <div class="row ustify-content-around">
+                <div class="col-sm-6">
+                <form action="/login" method="post">
+                {%csrf_token%}
+                <label for="" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Email*</label><br>
+                <input type="text" name="username" id="username" placeholder="yourname@company.com" Required style="height:30px;font-size:14pt; width:400px;"><br><br>
+                <label for="" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Password*  </label><br>
+                <input type="password" name="password" id="password" placeholder="Password" Required style="height:30px;font-size:14pt; width:400px;"><br><br>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="1">
+                <label for="vehicle1" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 14px;"> Keep me Signed in</label>
+                <a href="" style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 14px;position: relative;left: 120px;">Forgot Password?</a>
+                <br> <br>
+                <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:70px; position: relative; left:160px"> Login </button> <br><br>
+                <label for="" style="background-color:white;color:black; height:70px;font-size:12pt; width:350px; font-family: Verdana, Geneva, Tahoma, sans-serif;position: relative; left:70px"> Login to access GTC application </label><br>
+                <label for="" style="background-color:white;color:black; height:70px;font-size:12pt; width:350px; font-family: Verdana, Geneva, Tahoma, sans-serif;position: relative; left:87px">  that you are subscribed to.</label>
+
+
+                <!-- <a href=""><button type="submit" style="background-color:rgb(215, 212, 212);font-weight: bold;color:black; border: solid black 0.1mm; cursor: pointer; height:70px;font-size:14pt; width:350px;"> Login to access GTC application that you are subscribed to.</button></a> -->
+                
+                </form>
+                </div>
+            </div>
+        </div>
+        <!-- div2 -->v
+       
+        
+    </div><!-- main -->
+
+    
+    <!-- outer div -->
+
+</body>
+
+</html>
+
+
+{% if messages %}
+{% for i in messages %}
+{{i}}
+{% endfor %}
+{% endif %}

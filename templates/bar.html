@@ -1,0 +1,19 @@
+{% block content %}
+    
+    
+     <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      <li class="nav-item">
+      <a href="/secure">List of Blocks</a>
+      </li> <br>
+      <div style="position: relative; left: 500px;">
+        <input type="button" value="Do you want to upload anather file " onclick="history.back()">
+      </div>
+    
+<br>
+{{ chart_bar|safe }} 
+
+
+
+{% endblock content %}

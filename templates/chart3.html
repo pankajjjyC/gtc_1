@@ -1,51 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <head>
-        <style>
-    
-    body{
-        background-color: rgb(103, 207, 214);
-    }
-    .full{
-        height: 100px;
-        width: 500px;
-        align-items: center;
-        text-align: center;
-        position: relative;
-        left: 400px;
-        border-width: 4px;
-        border-style: double;
-        border-color: black;
-    }
-    
-    </style>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="full">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      {% block content %}
-      <form action="/ds_two" method="post">
-      {%csrf_token%}
-      <label for="">Upload Csv File</label><br>
-      <input type="file" name="csv" id="csv" placeholder="Submit your file here">
-      <button type="submit"> Submit</button>
-      </form> <br>   
-      <a class="nav-link" href="{% url 'logout' %}">Logout</a>  <br> 
-      <a href="/secure">List of Blocks</a>
-      
-  <br><br><br><br
-  {{ chart_bar|safe }} 
-  
-  
-  
-  {% endblock content %}
-  
-  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>app3</title>
+  </head>
+  <body>
+ 
+
+<div class="container mt-5">
+    <form  action="{% url 'chart1' %}" method="POST" enctype="multipart/form-data">
+
+        
+        <div class="form-group">
+            <label for="{{form.files_data.id_for_label}}">File</label>
+            {{form.files_data}}         
+          </div>
+          {% csrf_token %}
+        
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
 </div>
-</body>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

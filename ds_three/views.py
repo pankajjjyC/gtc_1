@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , HttpResponse
 import plotly.express as px
 from ds_three.models import Csvforbar
 from pandas import read_csv
@@ -15,49 +15,47 @@ import numpy as np
 import pandas as pd
 import csv
 import numpy
+from .formsss import MyfileUploadForm__
 
 # Create your views here.
-def chart2(r):#chart2 , block3 , ds_three 
+def chart2(request):#chart2 , block3 , ds_three 
 
-    if r.method=='POST':
-        csv=r.POST['csv']
-        use=Csvforbar(csv=csv)
-        use.save()   
+    if request.method == 'POST':
+        form = MyfileUploadForm__(request.POST, request.FILES)
+        #print(form.as_p)        
+        if form.is_valid():            
+            the_files = form.cleaned_data['files_data__']
+            t = Csvforbar.objects.latest('id')
+            t.csv = the_files  # change field
+            t.save()
+            #Csv(csv=the_files).save()            
+            return redirect('line')
+        else:
+            return HttpResponse('error')
+    else:        
+        context = {
+            'form':MyfileUploadForm__()
+        }    
+       
+        return render(request, 'chart4.html', context)
 
-    queryset = Csvforbar.objects.all()
-    context4=None
-    qq=None
-    qq1=None
-    qq2=None
-    kk=None
-    df22=None
-    dataxy=None
-    context4=None
-    z=None
-    k=None
 
 
-    if queryset.exists():
-        mydata22=[i.csv for i in queryset]
-        qq=Csvforbar.objects.order_by('id').reverse()[0]
-        qq1=str(qq)
-        qq2=qq1[-2]
-        kk = int(qq2)
-        df22 = read_csv(mydata22[-1])
-        z=df22['x']
-        k=df22['y']
-    else:
-        context4='you do have uploaded csv files yet' 
+def line(r):
+    ttt = Csvforbar.objects.first()
+    csvv=ttt.csv
+    df22 = read_csv(csvv)
+    z=df22['x']
+    k=df22['y'] 
 
-   
-    
     fig3 = px.line(
-        x=z,
-        y=k,
-        title="X-Y Values",
-        labels={'x': 'X values', 'y': 'Y values'}
+    x=z,
+    y=k,
+    title="X-Y Values",
+    labels={'x': 'X values', 'y': 'Y values'}
     )
 
-    chart3 = fig3.to_html()
-    context4 = {'chart_line': chart3}
-    return render(r, 'chart4.html', context4)
+    
+    chart4 = fig3.to_html()
+    context4 = {'chart_line': chart4}
+    return render(r, 'line.html',context4)

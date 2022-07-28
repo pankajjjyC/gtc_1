@@ -24,6 +24,12 @@ class Csvforheat(models.Model):
     csv=models.FileField() 
 
 
+class Csvfor_bar(models.Model):
+    csv=models.FileField() 
+
+class Csvfor_heat(models.Model):
+    csv=models.FileField() 
+
     
     
 
@@ -40,5 +46,16 @@ class App_per_jesse(models.Model):
     app_8=models.BooleanField(default=False)     
     class Meta:
         ordering=['id']
+
+
+
+class text(models.Model):
+    text=models.CharField(max_length=60) 
+
+class user_details(models.Model):    
+    user_name = models.CharField(max_length=60,null=False, blank=True)
+    email=models.CharField(max_length=60)
+    reason = models.TextField(max_length=500)
+    block_no=models.IntegerField() 
 
 

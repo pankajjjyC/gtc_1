@@ -1,0 +1,373 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>HeatMap</title>
+    <style>
+
+.title{
+    font-family: sans-serif;
+    color: #dc2d5e;
+    text-align: center;
+}
+.tabContainer{
+    width: 100%;
+    height: 350px;
+}
+.tabContainer .buttonContainer{
+    height: 15%;
+
+}
+.tabContainer .buttonContainer button{
+    /* width: 25%; */
+    height: 100%;
+    width: 210px;
+    height: 30px;
+    float: left;
+    border-style: ridge;
+    outline:none;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 20px;
+    font-family: sans-serif;
+    font-size: 18px;
+    background-color: white;
+    
+}
+
+
+
+.tabContainer .buttonContainer button:hover{
+    background-color: #0df94c;
+}
+.tabContainer .tabPanel{
+    height: 85%;
+    background-color:white;
+    
+    text-align: center;
+    padding-top: 30px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 22px;
+    display: none;
+}
+
+
+
+.mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    /* max-width: 600px; */
+    margin: 50px auto;
+    padding: 25px;
+    position: relative;
+    top: -100px;
+}
+.mytabs input[type="radio"] {
+    display: none;
+    
+
+}
+.mytabs label {
+    background: #e2e2e2;
+    font-weight: bold;
+}
+
+.mytabs .tab {
+    width: 100%;
+    padding: 50px;
+    background: #fff;
+    order: 1;
+    display: none;
+    border-style: ridge;
+}
+.mytabs .tab h2 {
+    font-size: 3em;
+}
+
+.mytabs input[type='radio']:checked + label + .tab {
+    display: block;
+    
+}
+
+.mytabs input[type="radio"]:checked + label {
+    background: #fff;
+    border-style: solid;
+    border-color: rgb(14, 8, 6);
+    border-width: 2px;
+    }
+
+
+
+
+
+    .wrapper{
+  max-width: 700px;
+  width: 100%;
+  margin: 200px auto;
+  padding: 25px 30px 30px 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.wrapper header{
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+.wrapper nav{
+  position: relative;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.wrapper nav label{
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  color: #17a2b8;
+  font-size: 17px;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+.wrapper nav label:hover{
+  background: rgba(23,162,184,0.3);
+}
+#home:checked ~ nav label.home,
+#blog:checked ~ nav label.blog,
+#code:checked ~ nav label.code,
+#help:checked ~ nav label.help,
+  #about:checked ~ nav label.about{
+  color: #fff;
+}
+nav label i{
+  padding-right: 7px;
+}
+nav .slider{
+  position: absolute;
+  height: 100%;
+  width: 20%;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 5px;
+  background: #17a2b8;
+  transition: all 0.3s ease;
+}
+input[type="radio"]{
+  display: none;
+}
+#blog:checked ~ nav .slider{
+  left: 20%;
+}
+#code:checked ~ nav .slider{
+  left: 40%;
+}
+#help:checked ~ nav .slider{
+  left: 60%;
+}
+#about:checked ~ nav .slider{
+  left: 80%;
+}
+section .content{
+  display: none;
+  background: #fff;
+}
+#home:checked ~ section .content-1,
+#blog:checked ~ section .content-2,
+#code:checked ~ section .content-3,
+#help:checked ~ section .content-4,
+#about:checked ~ section .content-5{
+  display: block;
+}
+section .content .title{
+  font-size: 21px;
+  font-weight: 500;
+  margin: 30px 0 10px 0;
+}
+section .content p{
+text-align: justify;
+}
+        
+    </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+
+<body>
+
+    <div class="container mt-2">
+        <div id="title_block" style="background-color: grey; height: 120px;">
+        <h3 class="mb-3" style="position: relative; left: 500px; color:white">ARADISS</h3>
+        <h3 class="mb-3" style="position: relative; left: 50px; color:white">Adaptive Real-Time Anomaly Detection & Identification for Autonomous Systems</h3>
+    </div>    <br>    
+        
+        <div class="tabContainer" style=" height: 600px;">
+            <div class="buttonContainer">
+                <button onclick="showPanel(0)" style="position: relative;left: 50px;">Tab 1</button>
+                <button onclick="showPanel(1)" style="position: relative;left: 100px;">Tab 2</button>
+                <button onclick="showPanel(2)" style="position: relative;left: 150px;">Tab 3</button>
+                <button onclick="showPanel(3)" style="position: relative;left: 200px;">Tab 4</button>
+            </div>
+            <div class="tabPanel" st>
+
+                <table>
+                    <tr>
+                      <td>
+
+                        <div>
+                            <img src="{% static 'Picture1.jpg' %}" alt="architecture" style=" width: 500px; height: 300px;" >
+                        </div>
+
+                      </td>
+                      <td>
+
+                        <div id="pre" style="width: 400px;position: left 1000px; font-size: 12px;">
+                            <p >
+                                Using this tool, you will be able to develop a fault management solution 
+                                tuned to your platform and data. Specifically, you can
+                                <p >a.  Abstract a physical system</p>
+                                <p>    a.  Identify similarities between Operational Variables (OV)</p>
+                                <p>    b.  Select ground truth OV</p>
+                                <p>    c.  Select OVs to be diagnosed</p>
+                                <p> b.  Develop Anomaly Detection Models</p>
+                                <p>    a.  Train and evaluate ML norm models</p>
+                                <p>    b.  Specify fault types to be evaluated</p>
+                                <p>    c.  Configure anomaly detection parameters</p>
+                                <p>    d.  Evaluate anomaly detection performance</p>
+                                <p>    e.  Select OVs for anomaly verification</p>
+                                <p> c.  Develop Root Cause Identification Models</p>
+                                <p>d.  Export Models and Results</p> 
+            
+                            
+                            </div>
+
+                      </td>
+                    </tr>
+                    
+                </table>
+
+                
+
+                
+
+
+
+
+            </div>
+            <div class="tabPanel"> <!-- second tab -->
+
+
+
+                <div class="wrapper">
+                    <header>Pure CSS Tabs</header>
+                    <input type="radio" name="slider" checked id="home">
+                    <input type="radio" name="slider" id="blog">
+                    <input type="radio" name="slider" id="code">
+                    <input type="radio" name="slider" id="help">
+                    <input type="radio" name="slider" id="about">
+                    <nav>
+                      <label for="home" class="home"><i class="fas fa-home"></i>Home</label>
+                      <label for="blog" class="blog"><i class="fas fa-blog"></i>Blog</label>
+                      <label for="code" class="code"><i class="fas fa-code"></i>Code</label>
+                      <label for="help" class="help"><i class="far fa-envelope"></i>Help</label>
+                      <label for="about" class="about"><i class="far fa-user"></i>About</label>
+                      <div class="slider"></div>
+                    </nav>
+                    <section>
+                      <div class="content content-1">
+                        <div class="title">This is a Home content</div>
+
+                        <div class="container mt-5">
+                            <form  action="{% url 'chart' %}" method="POST" enctype="multipart/form-data">
+                        
+                                
+                                <div class="form-group">
+                                    <label for="{{form.files_data_.id_for_label}}">File</label>
+                                    {{form.files_data_}}         
+                                  </div>
+                                  {% csrf_token %}
+                                
+                                
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                        
+                        </div>
+
+
+                      </div>
+                      <div class="content content-2">
+                        <div class="title">This is a Blog content</div>
+
+                        {{df_table_data|safe}}
+
+
+                      </div>
+                      <div class="content content-3">
+                        <div class="title">This is a Code content</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, debitis nesciunt! Consectetur officiis, libero nobis dolorem pariatur quisquam temporibus. Labore quaerat neque facere itaque laudantium odit veniam consectetur numquam delectus aspernatur, perferendis repellat illo sequi excepturi quos ipsam aliquid est consequuntur.</p>
+                      </div>
+                      <div class="content content-4">
+                        <div class="title">This is a Help content</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim reprehenderit null itaq, odio repellat asperiores vel voluptatem magnam praesentium, eveniet iure ab facere officiis. Quod sequi vel, rem quam provident soluta nihil, eos. Illo oditu omnis cumque praesentium voluptate maxime voluptatibus facilis nulla ipsam quidem mollitia! Veniam, fuga, possimus. Commodi, fugiat aut ut quorioms stu necessitatibus, cumque laborum rem provident tenetur.</p>
+                      </div>
+                      <div class="content content-5">
+                        <div class="title">This is a About content</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur officia sequi aliquam. Voluptatem distinctio nemo culpa veritatis nostrum fugit rem adipisci ea ipsam, non veniam ut aspernatur aperiam assumenda quis esse soluta vitae, placeat quasi. Iste dolorum asperiores hic impedit nesciunt atqu, officia magnam commodi iusto aliquid eaque, libero.</p>
+                      </div>
+                    </section>
+                  </div>
+
+
+                
+
+                
+                 
+
+
+            </div>
+            <div class="tabPanel"></div>
+            <div class="tabPanel"></div>
+        </div>
+<script>
+
+var tabButtons=document.querySelectorAll(".tabContainer .buttonContainer button");
+var tabPanels=document.querySelectorAll(".tabContainer  .tabPanel");
+
+function showPanel(panelIndex,colorCode) {
+    tabButtons.forEach(function(node){
+        node.style.backgroundColor="";
+        node.style.color="";
+    });
+    tabButtons[panelIndex].style.backgroundColor=colorCode;
+    tabButtons[panelIndex].style.color="black";
+    tabPanels.forEach(function(node){
+        node.style.display="none";
+    });
+    tabPanels[panelIndex].style.display="block";
+    tabPanels[panelIndex].style.backgroundColor=colorCode;
+}
+;
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>

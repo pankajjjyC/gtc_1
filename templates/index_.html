@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="chart" method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="fr" id=""><br>
+    <input type="number" name="id" id="" value='5' hidden><br>
+    <input type="submit" value="Submit">
+    </form>
+   {% for i in key1 %}
+   <img src="{{i.file_name.url}}" alt="">
+   {% endfor %}
+   <br>
+   {% for i in key2 %}
+   <img src="{{i.image_name.url}}" alt="">
+   {% endfor %}
+</body>
+</html>

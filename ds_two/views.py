@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , HttpResponse
 import plotly.express as px
 from ds_two.models import Csv 
 from pandas import read_csv
@@ -15,43 +15,52 @@ import numpy as np
 import pandas as pd
 import csv
 import numpy
+from .forms import MyfileUploadForm
+
 
 # Create your views here.
-def chart1(r):#indextwo
-    context4=None
-    csv=None
-    df22=None
-    z=None
-    k=None
-    fig3=None
-    obj=None
-    chart3=None
-    queryset = Csv.objects.all()
+def chart1(request):#indextwo
     
-    if queryset:
-        if r.method=='POST':
-            csv=r.POST['csv']
-            obj = Csv.objects.latest('id')
-            Csv.objects.filter(pk=obj).update(csv=csv)
 
-        mydata22=[i.csv for i in queryset]
-        
-        df22 = read_csv(mydata22[-1])
-        z=df22['x']
-        k=df22['y']
-
-        fig3 = px.bar(
-        x=z,
-        y=k,
-        title="X-Y Values",
-        labels={'x': 'X values', 'y': 'Y values'}
-        )
-
-        chart3 = fig3.to_html()
-        context4 = {'chart_bar': chart3}
-    else:
-        chart3 = "you haven't uploaded any files yet"
-        context4={'chart_bar': chart3}
+    if request.method == 'POST':
+        form = MyfileUploadForm(request.POST, request.FILES)
+        #print(form.as_p)        
+        if form.is_valid():            
+            the_files = form.cleaned_data['files_data']
+            t = Csv.objects.latest('id')
+            t.csv = the_files  # change field
+            t.save()
+            #Csv(csv=the_files).save()            
+            return redirect('bar')
+        else:
+            return HttpResponse('error')
+    else:        
+        context = {
+            'form':MyfileUploadForm()
+        }    
+       
+        return render(request, 'chart3.html', context)
               
     
-    return render(r, 'chart3.html', context4)
+    
+
+def bar(r):
+    tt = Csv.objects.first()
+    csvv=tt.csv
+    df22 = read_csv(csvv)
+    z=df22['x']
+    k=df22['y']   
+
+
+    fig3 = px.bar(
+    x=z,
+    y=k,
+    title="X-Y Values",
+    labels={'x': 'X values', 'y': 'Y values'}
+    )
+
+    chart3 = fig3.to_html()
+    context4 = {'chart_bar': chart3}
+    return render(r, 'bar.html', context4)
+
+
