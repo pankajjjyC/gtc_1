@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+{%  load plotly_dash %}
+<html lang="en">
+
+<head>
+    
+
+    <style>
+
+        /* Style the logout */
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-315px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+        .action-button:hover
+        {
+            color:rgb(87, 248, 87);
+            
+        }
+        /* Style the logout */
+
+
+
+
+        /* Style the home */
+       .animatee
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .actionn-buttonn
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-370px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .redd
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .actionn-buttonn:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+        .actionn-buttonn:hover
+        {
+            color:rgb(87, 248, 87)
+            
+        }
+        /* Style the home */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tabs</title>
+    <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
+
+</head>
+
+<body class="rendered_html" style="background-color: white;">
+{% if user.is_authenticated %}
+
+     
+    <div class="container mt-2" style="position: relative; top:-120px;left:-110px">
+        <div style="position: relative; left: -510px;top:120px">
+            <img src="{% static 'logo.png' %}" alt="architecture" >
+        </div>
+        <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2400px;position:relative;left:150px;">
+            <br>
+        <h3 class="mb-3" style="position: relative; left: 450px; color:white; font-size: 35px;top:-45px; font-family: Verdana, Geneva, Tahoma, sans-serif;">ISHM for WRS</h3>
+        <h3 class="mb-3" style="position: relative; left: 220px; color:white; font-size: 27px;top:-72px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Water Recycling System & Health Management</h3>
+    </div>
+
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2630px;position:relative;left:-2650px;top:-120px;"></div>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2480px;position:relative;left:2250px;top:-240px;"></div>  
+
+    
+    
+
+    <a href="{% url 'logout' %}" class="action-button shadow animate red">Logout</a> <br>
+    <a href="{% url 'secure' %}" class="actionn-buttonn shadoww animatee redd">Home</a>
+    
+
+
+
+<div style="width: 1550px; position: relative;left: -80px; top: -280px;">
+    {% plotly_app name='dash_app_wrs' ratio=0.5%}
+</div>
+
+{% endif %}
+    
+
+</body>
+
+</html>

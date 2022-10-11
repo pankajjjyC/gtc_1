@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+{% load static %}
+{%  load plotly_dash %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        html * {            
+            font-family: Nunito, sans-serif;
+          }
+        
+
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1380px; top:-220px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color:white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color:rgb(72, 72, 72);
+            
+            text-shadow: 0px -2px white;
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            border-bottom: 1px solid;
+        }
+
+
+
+
+        
+        #containerr {
+            margin: auto auto;
+            width: 1600px;
+            height: 700px;
+            background-color:white;
+            position: relative;
+            top:-8px;
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+        /* verticle tab style */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        }
+        body{
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        }
+        ::selection{
+        background: #6d50e2;
+        color: #fff;
+        }
+        .container{
+        max-width: 1450px;
+        max-height: 650px;
+
+        width: 100%;
+        height: 100%;
+        padding: 40px 50px  40px  40px;
+        background: #fff;
+        margin: 0 20px;
+        border-radius: 12px;
+        
+        position: relative;
+        top: -100px;
+        left:10px;
+
+
+        }
+        
+        .content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
+        .content .list{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        height: 900px;
+        margin-right: 50px;
+        position: relative;
+        background-color:rgb(179, 236, 179);
+        position: relative;
+        left: -70px;
+        top: -100px;
+
+        }
+        .content .list label{
+        height: 60px;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 60px;
+        cursor: pointer;
+        padding-left: 25px;
+        transition: all 0.5s ease;
+        color: #333;
+        z-index: 12;
+        }
+        #home:checked ~ .list label.home,
+        #blog:checked ~ .list label.blog,
+        #help:checked ~ .list label.help{
+        color: #fff;
+        }
+        .content .list label:hover{
+        color: #6d50e2;
+        }
+        .content .slider{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 60px;
+        width: 100%;
+        border-radius: 12px;
+        background: #6d50e2;
+        transition: all 0.4s ease;
+        }
+        #home:checked ~ .list .slider{
+        top: 0;
+        }
+        #blog:checked ~ .list .slider{
+        top: 60px;
+        }
+        #help:checked ~ .list .slider{
+        top: 120px;
+        }
+        
+        .content .text-content{
+        width: 80%;
+        height: 100%;
+        }
+        .content .text{
+        display: none;
+        }
+        .content .text .title{
+        font-size: 25px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        }
+        /* .content .text p{
+        text-align: justify;
+        } */
+        /* .content .text-content .home{
+        display: block; 
+        } */
+        #home:checked ~ .text-content .home,
+        #blog:checked ~ .text-content .blog,
+        #help:checked ~ .text-content .help{
+        display: block;
+        }
+        #blog:checked ~ .text-content .home,
+        #help:checked ~ .text-content .home,
+        #code:checked ~ .text-content .home,
+        #about:checked ~ .text-content .home{
+        display: none;
+        }
+        .content input{
+        display: none;
+        }
+        
+        /* verticle tab style.....ends */
+        
+    </style>
+    </style>
+</head>
+
+<body style="background-color:white">
+    {% if user.is_authenticated %}
+
+    
+   
+
+    <div id="containerr"> <!-- main -->
+
+        <div class="header block">
+
+            <div style="position: relative; left: 0px;top:-20px">
+                <img src="{% static 'logo.png' %}" alt="architecture" >
+            </div>
+            
+                <div id="title_block" style="background-color: rgb(72, 72, 72); height: 115px;width: 1420px;position: relative; top:-139px;left: 180px;">
+                    <br>
+                    <h3 class="mb-3" style="position: relative; left: 390px; color:white; font-size: 30px;top:0px;font-family: Verdana, Geneva, Tahoma, sans-serif">Seismic AI</h3> 
+                <h3 class="mb-3" style="position: relative; left: 200px; color:white; font-size: 30px;top:-5px;font-family: Verdana, Geneva, Tahoma, sans-serif">Global Technology Connection, Inc.</h3>
+                <!-- <h3 class="mb-3" style="position: relative; left: 300px; color:white; font-size: 30px;top:-62px;font-family:sans-serif">Click on a tool to use or request access</h3> -->
+                
+            
+
+        </div>
+        
+        <a href="{% url 'logout' %}" class="action-button shadow animate red">Logout</a>
+
+        <div id="verticle tabs">
+        <!-- verticle tabs -->
+        <div class="container">
+            
+            <div class="content">
+              <input type="radio" name="slider" checked id="home">
+              <input type="radio" name="slider" id="blog">
+              <input type="radio" name="slider" id="help">
+              
+              <div class="list">
+                <label for="home" class="home">
+                <i class="fas fa-home"></i>
+                <span class="title">Raw Data</span>
+              </label>
+              <label for="blog" class="blog">
+                <span class="icon"><i class="fas fa-blog"></i></span>
+                <span class="title">Preprocessing</span>
+              </label>
+              <label for="help" class="help">
+                <span class="icon"><i class="far fa-envelope"></i></span>
+                <span class="title">AI/ML</span>
+              </label>
+              
+              <div class="slider"></div>
+            </div>
+              <div class="text-content">
+                <div class="home text">
+                  <div>
+                  {% plotly_app name='dash_app_copy' ratio=0.8%}
+                  </div>
+                </div>
+                <div class="blog text">
+                  <div class="title">Preprocessing</div>
+                  <p>Preprocessing content</p>
+                </div>
+                <div class="help text">
+                  <div class="title">AI/ML</div>
+                  <p>AI/ML content</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        
+
+        <!-- verticle tabs main ebds here -->
+        </div>
+
+
+        
+
+
+
+
+        
+        
+    </div><!-- main -->
+
+
+
+
+
+    
+
+    
+    
+    {% endif %}
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

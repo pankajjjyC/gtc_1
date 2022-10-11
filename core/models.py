@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
@@ -11,30 +12,24 @@ import os
 from django.db import models
 
 # Create your models here.
-class CO2(models.Model):
-    date = models.DateField()
-    average = models.FloatField()
 
-    class Meta:
-        ordering = ('date',)
-
-
-
-class Csvforheat(models.Model):
+class Csv_for_heat(models.Model):#used    
+    id = models.IntegerField(primary_key=True)
     csv=models.FileField() 
 
 
-class Csvfor_bar(models.Model):
+
+class Csv_score_downld(models.Model):#used
     csv=models.FileField() 
 
-class Csvfor_heat(models.Model):
-    csv=models.FileField() 
 
+class Identification_model(models.Model):#used
+    csv=models.FileField() 
     
-    
+   
 
 
-class App_per_jesse(models.Model):
+class Permissions(models.Model):
     user_name=models.OneToOneField(User,on_delete=models.CASCADE)
     app_1=models.BooleanField(default=False)
     app_2=models.BooleanField(default=False)
@@ -50,12 +45,19 @@ class App_per_jesse(models.Model):
 
 
 class text(models.Model):
-    text=models.CharField(max_length=60) 
+    text=models.CharField(max_length=60)#this is dropdown selected on heatmap3.html saved to database
+    battery_voltage=models.CharField(max_length=60,null=True,default=NULL)
+    battery_current=models.CharField(max_length=60,null=True,default=NULL)
+    no_of_operational=models.CharField(max_length=60,null=True,default=NULL)
+    cut_off_thresold=models.CharField(max_length=60,null=True,default=NULL)
+    remove_first_col=models.CharField(max_length=60,null=True,default=NULL)
+    
+
 
 class user_details(models.Model):    
-    user_name = models.CharField(max_length=60,null=False, blank=True)
+    name = models.CharField(max_length=60,null=False, blank=True)
     email=models.CharField(max_length=60)
     reason = models.TextField(max_length=500)
-    block_no=models.IntegerField() 
+    block_no=models.CharField(max_length=500)
 
 

@@ -7,18 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <style>
-        /* .horizontal {
-            width: 100%;
-            height: 100px;
-            background-color: #bbb;
+        html * {            
+            font-family: Nunito, sans-serif;
+          }
+        
+
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
         }
 
-        .vertical {
-            width: 100px;
-            height: 250px;
-            background-color: #bbb;
-        } */
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1380px; top:-270px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color:white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color:rgb(72, 72, 72);
+            
+            text-shadow: 0px -2px white;
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            border-bottom: 1px solid;
+        }
 
         #container {
             margin: auto auto;
@@ -33,7 +63,8 @@
     </style>
 </head>
 
-<body style="background-color:rgb(215, 212, 212)">
+<body style="background-color:white">
+    {% if user.is_authenticated %}
 
     
    
@@ -42,36 +73,39 @@
 
         <div class="header block">
 
-            <div style="position: relative; left: 0px;top:-10px">
+            <div style="position: relative; left: -10px;top:-10px">
                 <img src="{% static 'logo.png' %}" alt="architecture" >
             </div>
-            <div class="container mt-2" style="position: relative; top:-110px;left:180px">
+            <div class="container mt-2" style="position: relative; top:-110px;left:170px">
                 <div id="title_block" style="background-color: rgb(72, 72, 72); height: 116px;width: 1420px;position: relative; top:-20px;">
                     <br>
-                <h3 class="mb-3" style="position: relative; left: 380px; color:white; font-size: 35px;top:-35px;font-family: Verdana, Geneva, Tahoma, sans-serif">GTC Developed Tools</h3>
-                <h3 class="mb-3" style="position: relative; left: 300px; color:white; font-size: 30px;top:-62px;font-family:sans-serif">Click on a tool to use or request access</h3>
+                <h3 class="mb-3" style="position: relative; left: 300px; color:white; font-size: 45px;top:-30px;font-family: Verdana, Geneva, Tahoma, sans-serif">GTC APPLICATIONS</h3>
+                <!-- <h3 class="mb-3" style="position: relative; left: 300px; color:white; font-size: 30px;top:-62px;font-family:sans-serif">Click on a tool to use or request access</h3> -->
             </div> 
 
         </div>
 
-        {% if user.is_authenticated %}
+        
 
         <h3 style=" color: black; font-size: larger;font-family: 'Times New Roman', Times, serif;font-weight: bolder;position: relative;left: 50px; top:-140px;"> Hello Mr. {{user.username}} </h3>    
     
-        <button style="position: relative; left: 1350px; top:-170px; "> <a class="nav-link" href="{% url 'logout' %}">Logout</a></button>
+        <!-- <button style="position: relative; left: 1350px; top:-170px; "> <a class="nav-link" href="{% url 'logout' %}">Logout</a></button> -->
+        
+        <a href="{% url 'logout' %}" class="action-button shadow animate red">Logout</a>
+
 
         <div id="1" style="border:1px solid black;height:260px;width:300px;position: relative;left:230px;top:-190px"><!-- 1st block for accessing  ARADISS app which holds heatmaps and barchart etc -->
 
-            <label style="position:relative;left:110px;font-weight: bold;font-size: 19px;">ARADISS</label><br>
-            <label style="position:relative;left:75px;font-size: 18px;">Fault Management in</label><br>
-            <label style="position:relative;left:72px;font-size: 18px;">Autonomous Systems</label><br>
+            <label style="position:relative;left:105px;font-weight: bold;font-size: 19px;">ARADISS</label><br>
+            <label style="position:relative;left:65px;font-size: 18px;">Fault Management in</label><br>
+            <label style="position:relative;left:62px;font-size: 18px;">Autonomous Systems</label><br>
             <img src="{% static 'Picture1.jpg' %}" alt="architecture" style="height:160px;width:240px;position:relative;left:30px;" ><br>
 
-            {% if user.username == 'indi' and  app1 %}
+            {% if user.id == current_user_index and  app1 %}
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/ds_one" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
+            <a href="/signup_ara" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
             {% endif %}
 
             
@@ -81,80 +115,103 @@
 
         <div id="2" style="border:1px solid black;height:260px;width:300px;position: relative;left:560px;top:-453px;"><!-- 2 -->
 
-            <label style="position:relative;left:60px;font-weight: bold;font-size: 19px;">Seismic Discriminator</label><br>
-            <label style="position:relative;left:25px;font-size: 18px;">Seismic events discriminator using </label><br>
+            <label style="position:relative;left:55px;font-weight: bold;font-size: 19px;">Seismic Discriminator</label><br>
+            <label style="position:relative;left:15px;font-size: 18px;">Seismic events discriminator using </label><br>
             <label style="position:relative;left:85px;font-size: 18px;">AI/ML techniques</label><br>
             <img src="{% static 'app2.png' %}" alt="architecture" style="height:160px;width:320px;position:relative;left:-20px;" ><br>
 
-            {% if user.username == 'indi' and  app2 %}
+            <!-- {% if user.id == current_user_index and  app2 %} -->
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
-            <a href="/chart" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
-            {% else %}
-            <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
-            {% endif %}
+            <a href="/ds_twoindex2" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            <!-- {% else %}
+            
+            <a href="/signup_dis" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
+            {% endif %} -->
 
         </div><!-- 2 -->
 
         <div id="3" style="border:1px solid black;height:260px;width:300px;position: relative;left:890px;top:-715px;"><!-- 3 -->
 
             <label style="position:relative;left:80px;font-weight: bold;font-size: 19px;">Seismic Locator</label><br>
-            <label style="position:relative;left:27px;font-size: 18px;">Seismic events association and</label><br>
+            <label style="position:relative;left:22px;font-size: 18px;">Seismic events association and</label><br>
             <label style="position:relative;left:25px;font-size: 18px;">locator using AI/ML techniques</label><br>
             <img src="{% static 'app3.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
 
-            {% if user.username == 'indi' and  app3 %}
+            {% if user.id == current_user_index and  app3 %}
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
-            <a href="/chart" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            <a href="/ds_threefuntion_line" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
+            <!-- <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <a href="/signup_loc" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
             {% endif %}
 
         </div><!-- 3 -->
 
         <div id="4" style="border:1px solid black;height:260px;width:300px;position: relative;left:230px;top:-685px"><!-- 4 -->
 
-            <label style="position:relative;left:110px;font-weight: bold;font-size: 19px;">TRACAIR</label><br>
-            <label style="position:relative;left:37px;font-size: 18px;"v>Aircraft trajectory analysis to</label><br>
-            <label style="position:relative;left:67px;font-size: 18px;">predict safety risks</label><br>
-            <img src="{% static 'app4.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+            <label style="position:relative;left:86px;font-weight: bold;font-size: 19px;">ISHM for WRS</label><br>
+            <label style="position:relative;left:52px;font-size: 18px;">Water Recycling System</label><br>
+            <label style="position:relative;left:67px;font-size: 18px;">Health Management</label><br>
+            <img src="{% static 'wrs.jpg' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;top: 5px;" ><br>
 
-            {% if user.username == 'indi' and  app4 %}
+            {% if user.id == current_user_index and  app4 %}
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
+            <!-- <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <a href="/signup_trac" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
             {% endif %}
 
         </div><!-- 4 -->
 
         <div id="5" style="border:1px solid black;height:260px;width:300px;position: relative;left:560px;top:-949px;"><!-- 5 -->
 
-            <!-- <label style="position:relative;left:26px;font-weight: bold;">CaskADES</label><br> -->
-            <!-- <label style="position:relative;left:2px;font-size: 14px;">Steel cannister long term stress</label><br>
-            <label style="position:relative;left:30px;">corrosion cracking analysis</label><br> -->
-            <img src="{% static 'app5_.png' %}" alt="architecture" style="height:240px;width:240px;position:relative;left:25px;" ><br>
+            <label style="position:relative;left:96px;font-weight: bold;font-size: 19px;">CaskADES</label><br>
+            <label style="position:relative;left:27px;font-size: 18px;">Steel cannister long term stress</label><br>
+            <label style="position:relative;left:40px;font-size: 18px;">corrosion cracking analysis</label><br>
+            <img src="{% static 'app5_.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;top: 5px;" ><br>
 
-            {% if user.username == 'indi' and  app5 %}
+            {% if user.id == current_user_index and  app5 %}
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <a href="/signup_cas" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>            
             {% endif %}
 
         </div><!-- 5 -->
 
         <div id="6" style="border:1px solid black;height:260px;width:300px;position: relative;left:890px;top:-1212px;"><!-- 6 -->
 
-            <!-- <label style="position:relative;left:26px;font-weight: bold;">TRAIT</label><br> -->
-            <!-- <label style="position:relative;left:2px;font-size: 14px;">Attrition prediction and training</label><br>
-            <label style="position:relative;left:30px;">recommender for pilot training</label><br> -->
-            <img src="{% static 'app6_.png' %}" alt="architecture" style="height:240px;width:240px;position:relative;left:25px;" ><br>
+            <label style="position:relative;left:116px;font-weight: bold;font-size: 19px;">TRAIT</label><br>
+            <label style="position:relative;left:27px;font-size: 18px;">Attrition prediction and training</label><br>
+            <label style="position:relative;left:30px;font-size: 18px;">recommender for pilot training</label><br>
+            <img src="{% static 'app6_.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
 
-            {% if user.username == 'indi' and  app6 %}
+            {% if user.id == current_user_index and  app6 %}
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label>
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <a href="/signup_trat" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a> 
+            {% endif %}
+
+        </div><!-- 6 -->
+
+
+        <div id="7" style="border:1px solid black;height:260px;width:300px;position: relative;left:230px;top:-1182px;"><!-- 7 -->
+
+            <label style="position:relative;left:106px;font-weight: bold;font-size: 19px;">TRACAIR</label><br>
+            <label style="position:relative;left:37px;font-size: 18px;">Aircraft trajectory analysis to</label><br>
+            <label style="position:relative;left:70px;font-size: 18px;">predict safety risks</label><br>
+            <img src="{% static 'app4.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+
+            {% if user.id == current_user_index and  app7 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            {% else %}
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <a href="/signup_trat" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a> 
             {% endif %}
 
         </div><!-- 6 -->
@@ -170,13 +227,28 @@
 
 
 
+    
+
+    
+    
     {% endif %}
-
-    
-    
-
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

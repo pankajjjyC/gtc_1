@@ -1,80 +1,62 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-/* Style the body */
-body {
-  font-family: Arial;
-  margin: 0;
-}
+    
 
-/* Header/Logo Title */
-.header {
-  padding: 10px;
-  text-align: center;
-  background: rgb(72, 72, 72);
-  color: white;
-  font-size: 25px;
-  height:110px;
-}
+    <style>
 
-
-/* page style */
-
-
-
-#container {
-            margin: auto;
-            width: 1550px;
-            height: 600px;
-            background-color:white;
-            position: relative;
-            top:2px;
-            height:calc(100% - 20px);
-        }
-        #header {
-            width: 110%;
-            min-width: 1100px;
-            height:116px;
-            background-color:rgb(71, 71, 71);
-            position: relative;
-            top:-100px;
-            left:180px;
-            } 
-        .b{
-            
-            display: inline-block;         
-
-        }
-        #parent_div_background{
-
-            height: 60px;
-            background:rgb(217, 215, 215);
-            width:400%;
-            position: relative;
-            top:5px;
-            left:-2300px;
-
-            
-
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
         }
 
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-400px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
 
         
 
-
-
+        .red
+        {
+            background-color:rgb(72, 72, 72);
+            
+            text-shadow: 0px -2px white;
+        }
 
         
 
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            border-bottom: 1px solid;
+        }
 
 
-         
-            [data-tab-content] {
+
+
+
+
+
+
+
+
+
+
+
+
+        [data-tab-content] {
             display: none;
         }
 
@@ -94,10 +76,9 @@ body {
             margin: 0;
             padding: 0;
             
-            
             position: relative;
-            top: 40px;
-            left:2150px;
+            top: 38px;
+            left:100px;
         }
 
         .tab {
@@ -129,66 +110,14 @@ body {
             position: relative;
             top: 250px;
         }
-
-        #btn{
-            background-color:white;
-            font-weight: bold;
+        #upload_again{
+            background-color:grey;
             color:black;
-            border: 1px solid black;  
-            cursor: pointer; 
-            height:45px;
-            font-size:16pt; 
-            width:120px; 
-            position:relative; 
-            left:60px;
-            top:-60px;
-            border-radius: 12px;
-        }
-
-        #btn:hover{
-            background-color: rgb(87, 248, 87);
-            color: white;
-        }
-
-        #btn1{
-            background-color:white;
-            font-weight: bold;
-            color:black;
-            border: 1px solid black;  
-            cursor: pointer; 
-            height:45px;
-            font-size:16pt; 
-            width:180px; 
-            position:relative; 
-            left:10px;
-            top:-60px;
-            border-radius: 12px;
-        }
-
-        #btn1:hover{
-            background-color: rgb(87, 248, 87);
-            color: white;
-        }
-
-        #sub_but{
-            position: relative;
-            left:450px; 
-            top:140px;
-            background-color:white;
-            font-weight: bold;
-            color:black;
-            border: 1px solid black;
-            cursor: pointer;
-            height:35px;
-            font-size:14pt;
-            width:100px;
-            position:relative;
-            border-radius: 10px;
-        }
-
-        #sub_but:hover{
-            background-color: rgb(87, 248, 87);
-            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font:20px;
 
         }
 
@@ -203,16 +132,14 @@ body {
 
 
 
-
-
-
-
-            
+        
     .tabs {
         display: flex;
         flex-wrap: wrap;
         max-width: 800px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        position: relative;
+        top: 38px;
         
         
       }
@@ -230,10 +157,11 @@ body {
       .tabs__content {
         order: 1;
         width: 100%;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid grey;
         line-height: 1.5;
         font-size: 0.9em;
         display: none;
+        
         
       }
       
@@ -248,29 +176,74 @@ body {
       .tabs__radio:checked + .tabs__label + .tabs__content {
         display: initial;
       }
+      
+      #cars{
+        width:150px;
+        height: 25px;
+        position: relative;
+        left: 30px;
+        top: -30px;
+        font-size: 15px;
+      }
+
+      #cars option{
+        width:150px;   
+        }
 
 
-      .custom-file-input {
-        color: transparent;/* This is to take away the browser text for file uploading*/
-        /* Carry on with the style you want */
-        
-        background-image: url({% static 'Picture2.jpg' %});
-        
-        position: absolute;
-        width: 724px;
-        height: 138px;
-        cursor: pointer;
-        top:10px;
-        left:150px;
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     /* detectionstyle */
+     .lab {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 400px;
+      font-family: sans-serif;
     }
 
-    input.custom-file-input {
-        opacity: 0;
-        position: absolute;/*set position to be exactly over your input*/
-        left: 0;
-        top: 0;
+    .lab__label {
+      padding: 10px 16px;
+      cursor: pointer;
     }
+
+    .lab__radio {
+      display: none;
+    }
+
+    .lab__content {
+      order: 1;
+      width: 100%;
+      border-bottom: 3px solid #dddddd;
+      line-height: 1.5;
+      font-size: 0.9em;
+      display: none;
+    }
+
+    .lab__radio:checked + .lab__label {
+      font-weight: bold;
+      color: #009578;
+      border-bottom: 2px solid #009578;
+    }
+
+    .lab__radio:checked + .lab__label + .lab__content {
+      display: initial;
+    }
+
+
+          
+      /* detectionstyle */
       
 
 
@@ -286,50 +259,62 @@ body {
 
 
 
-</style>
+
+
+    </style>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tabs</title>
+    <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
+
 </head>
-<body>
 
-<div class="header">
-    <div style="position: relative; left: -630px;top:-10px">
-        <img src="{% static 'logo.png' %}" alt="architecture" >
+<body class="rendered_html" style="background-color: white;">
+{% if user.is_authenticated %}
+
+     
+    <div class="container mt-2" style="position: relative; top:-120px;left:-110px">
+        <div style="position: relative; left: -510px;top:120px">
+            <img src="{% static 'logo.png' %}" alt="architecture" >
+        </div>
+        <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2400px;position:relative;left:150px;">
+            <br>
+        <h3 class="mb-3" style="position: relative; left: 500px; color:white; font-size: 35px;top:-45px; font-family: Verdana, Geneva, Tahoma, sans-serif;">ARADISS</h3>
+        <h3 class="mb-3" style="position: relative; left: 20px; color:white; font-size: 27px;top:-72px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Adaptive Real-Time Anomaly Detection & Identification for Autonomous Systems</h3>
     </div>
-  <h1 style="position: relative; top:-160px;left:50px;">ARADISS</h1>
-  <h3 style="position: relative; top:-190px;left:50px;">Adaptive Real-Time Anomaly Detection & Identification for Autonomous Systems</h3>
-</div>
 
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2630px;position:relative;left:-2650px;top:-120px;"></div>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2480px;position:relative;left:2250px;top:-240px;"></div>  
 
-
-
-<!--style="background-color: rgb(217, 215, 215); width: 1650px; height:50px; position: relative; top:10px;left:-50px;"-->
-<div id="container" > <!-- main -->
-    <div  id="parent_div_background" >
-    <ul class="tabs">
-        <li data-tab-target="#home" class="active tab" style="position: relative; left: 320px; top:-35px; width: 220px;">WelCome</li>
-        <li data-tab-target="#pricing" class="tab" style="position: relative; left: 390px;top:-35px; width: 220px;">Abstraction</li>
-        <li data-tab-target="#about" class="tab" style="position: relative; left: 457px; top:-35px;width: 220px;">Detection</li>
-        <li data-tab-target="#this" class="tab" style="position: relative; left: 1050px; top:-76px;width: 220px;">Identification</li>
+    
+    <div style="height: 60px;background:rgb(217, 215, 215);width:600%;position: relative;top:-230px;left:-2500px;">
+    <ul class="tabs" style="list-style: none;">
+        <li data-tab-target="#home" class="tab" style="position: relative; left: 2360px; top:-31px; width: 220px;font-size: 15px;">Welcome</li>
+        <li data-tab-target="#pricing" class="active tab" style="position: relative; left: 2440px;top:-31px; width: 220px;font-size: 15px;">Abstraction</li>
+        <li data-tab-target="#about" class="tab" style="position: relative; left: 2520px; top:-31px; width: 220px;font-size: 15px;">Detection</li>
+        <li data-tab-target="#this" class="tab" style="position: relative; left: 3120px; top:-75px;width: 220px;font-size: 15px;">Identification</li>
     </ul>
     </div>
 
+    <a href="{% url 'logout' %}" class="action-button shadow animate red">Logout</a>
+    
+
     <div class="tab-content">
-        <div id="home" data-tab-content class="active" style="position: relative; top: -150px;left:200px;">
+        <div id="home" data-tab-content style="position: relative; top: -200px;">
             <!-- parent tab 1-->
+            <label for="" style="font-size: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 150px; top:-10px;" >Welcome</label>
 
-            <div>
-                <label for="" style="font-size: 40px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; position: relative;left: 140px; top:-70px;" >Welcome</label>
-
-                    <div>
-                        <img src="{% static 'Picture1.jpg' %}" alt="architecture" style=" width: 500px; height: 350px;position: relative;left: -50px; top:-65px;" > <br>
-                    </div>
-                    <button id="btn1"> <a class="nav-link" href="{% url 'watchdemo' %}" style="text-decoration: none;color: black;">Watch Demo</a></button>
-                    <button data-tab-target="#pricing" type="button" id="btn" onclick='$("#pricing").trigger("click");'> Start </button>
+            <div style="position: relative;left:-350px;top:10px;">
+                <img src="{% static 'Picture1.jpg' %}" alt="architecture" style=" width: 500px; height: 300px;" >
             </div>
 
-            
-
-            <div id="pre" style="position:relative; left: 400px; top: -510px;">
-                <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;font-size: 17px;">
+            <div id="pre" style="position:relative; left: 450px; top: -340px;">
+                <pre style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;">
                     
                         Using this tool, you will be able to develop a fault management solution 
                         tuned to your platform and data. Specifically, you can
@@ -354,6 +339,8 @@ body {
                 
             </div>
 
+            
+
                   
             <!-- parent tab 1-->
         </div>
@@ -361,30 +348,32 @@ body {
             
             <!-- nested tabs -->
 
-            <div id="nested_tab" style="position: relative;top:-370px;left: -140px;">
+            <div id="nested_tab" style="position: relative;top:-530px;left: -140px;">
 
 
                 <div class="tabs">
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" >
-                    <label for="tab1" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:-10px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Upload</label>
+                    <label for="tab1" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:-10px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Upload</label>
                     <div class="tabs__content">
                       <!-- CONTENT for Tab #1 -->
                       <div style="position: relative; top: 250px;">
-                      <button onclick="history.back()" style="width: 450px;height:50px;font-size: 20px;">Do You want to upload Anather File</button>
+                      <!-- <button onclick="history.back()" style="width: 450px;height:50px;font-size: 20px;">Do You want to upload Another File</button> -->
+                      <a href="/ds_onechart_dsone" target="_blank" id="upload_again">Do You want to upload Another File</a>
                       </div>
                     </div>
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab2" checked>
-                    <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Check</label>
+                    <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Check</label>
                     <div class="tabs__content">
                         <!-- div  sub 1 -->
                         <div style="position: relative; left:70px;top: 80px;align-items: flex-start;">
-                            <form action="">
-                            <input type="radio" id="h" name="fav_language" value="HTML" style="position: relative; left:0px">
+                            <form form action="{% url 'sample2' %}" method="POST" name="myform">
+                                {% csrf_token %}
+                            <input type="radio" id="h" name="remove_fir_col" onchange="javascript:this.form.submit()" style="position: relative; left:0px">
                             <label for="h"  style="font-size: 14px; position: relative; left:10px">Remove first column</label> <br><br>
                             <label for="hh"  style="font-size: 14px;position: relative; left:px">Identify column names for</label> <br><br>
                             
                                 <label for="cars" style="font-size: 14px;">Battery Voltage:</label>
-                                <select name="cars" id="cars"  style=" position: relative;left:20px">
+                                <select name="bat_vol" id="bat_vol" onchange="javascript:this.form.submit()" style=" position: relative;left:20px">
 
                                     {% for festive in column_header %}
                                     <option value=''>{{ festive}}</option>                            
@@ -393,13 +382,15 @@ body {
                                 </select> 
                                 <br><br>
                                 <label for="carss" style="font-size: 14px;">Battery Current:</label>
-                                <select name="cars" id="cars"  style=" position: relative;left:20px">
+                                <select name="bat_cur" id="bat_cur" onchange="javascript:this.form.submit()" style=" position: relative;left:20px">
 
                                     {% for festive in column_header %}
                                     <option value=''>{{ festive}}</option>                            
                                     {% endfor %} 
                                     
                                 </select>
+
+                                <input type="number" name="id" value='14' hidden>
 
 
 
@@ -413,57 +404,53 @@ body {
                       <!-- CONTENT for Tab #2 -->
                       {{dfr|safe}}
                         </div>
-                        <!-- <table style="font-size: 15px;">
-                            <tr>
-                            {% for col in dfr.columns %}
-                                <td>
-                                {{col}}
-                                </td>
-                            {% endfor %}
-                            </tr>
-                            {% for index, row in dfr.iterrows %}
-                                <tr>
-                                {% for cell in row %}
-                                    <td>
-                                    {{cell}}
-                                    </td>
-                                {% endfor %}
-                                </tr>
-                            {% endfor %}
-                        </table> -->
+                       
 
                     </div>
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab3">
-                    <label for="tab3" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:90px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Similarity Map</label>
+                    <label for="tab3" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:90px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Similarity Map</label>
                     <div class="tabs__content">
                       <!-- CONTENT for Tab #3 -->
-                      <div style="border-style: 4px solid black; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:50px;">{{chart555|safe}}</div>
+                      <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 100px;top: 50px;font-weight: bolder;">Correlation Map</label>
+                      <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:50px;">{{chart555|safe}}</div>
                        <div style="position:relative;top:-200px;left: 590px; max-width: 230px;">
                             <form action="{% url 'sample2' %}" method="POST" name="myform">                         
                             
                                 {% csrf_token %}
                             <select name="text" id="cars" onchange="javascript:this.form.submit()">
-                                <option selected disabled="true">select parameter</option>
+                                <option selected disabled="true" >select parameter</option>
+
                                 {% for festive in column_header %}
-                                <option>{{ festive }}</option>                            
+                                {% if festive == 'AccY (g)' %}
+                                <option selected="selected">{{ festive }}</option> 
+                                {% else %}
+                                <option>{{ festive }}</option>                                 
+                                {% endif %}                                                           
                                 {% endfor %}
+
                             </select>
                             <input type="number" name="id" value='14' hidden> <br> <br>
                             <!-- <input type="submit" value="Insert"/> -->                        
                                                  
                             <div style="width: 300px;width:fit-content;height:fit-content;">
-                            <label for="fname" style="font-size: 14px;position: relative;left:30px;top:20px;" >No. of operational </label><br>
-                            <label for="fname" style="font-size: 14px;position: relative;left:30px;top:-26px;width: 150px;" >variables to monitor</label>
-                            <input type="text" id="fname" name="fname" maxlength="4" size="14" style="position: relative;top:-2px;left:30px;"><br><br>
-                            <label for="lname" style="font-size: 14px; position: relative;left:30px">Cut off threshold</label>
-                            <input type="text" id="lname" name="lname" maxlength="4" size="14" style="position: relative;top:-2px;left:30px;">
+                            <label for="fname" style="font-size: 14px;position: relative;left:40px;top:-10px;" >No. of operational </label><br>
+                            <label for="fname" style="font-size: 14px;position: relative;left:35px;top:-56px;width: 150px;" >variables to monitor</label>
+                            <input type="text" id="fname" name="no_of_operational" onchange="javascript:this.form.submit()" maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;"><br><br>
+                            <label for="lname" style="font-size: 14px; position: relative;left:40px;top:-30px">Cut off threshold</label>
+                            <input type="text" id="lname" name="cut_off_thresold" onchange="javascript:this.form.submit()" maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;">
                             
                            
                             </div>
                            </form>
                        </div>
-                       <div style="border-style: 4px solid black; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-540px;right:-720px">{{chart66|safe}} </div>
+                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -640px;font-weight: bolder;">Correlation Strength with </label> 
+                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -610px;font-weight: bolder;">AccY (g)</label>
                        
+                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-600px;right:-720px">{{chart66|safe}} </div>
+
+                       <div id="cover_div_for_bar_index_x" style="background-color:white; width: 100px;height: 20px; position: relative; top: -515px; left:1100px;"></div>
+                       <div id="cover_div_for_bar_index_y" style="position: relative; top: -460px; left:490px; "><label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 240px;top: -360px;font-weight: bolder;transform: rotate(-90deg);">Correlation Strength</label></div>
+                       <div id="cover_div_for_bar_index_variable_tag" style="background-color:white; width: 100px;height: 80px; position: relative; top: -995px; left:1405px;"></div>
                       
                     </div>
                   </div>
@@ -475,82 +462,67 @@ body {
             
 
         </div>
+        <div id="about" data-tab-content>
+            <!-- nested tabs in detection-->
+            <div id="main_nested_tab" style="position: relative;left: 200px;top: -400px;">
+            <div class="lab">
+              <input type="radio" class="lab__radio" name="labs-example" id="lab1" checked>
+              <label for="lab1" class="lab__label">Tab #1</label>
+              <div class="lab__content">
+                CONTENT for Tab #1
+              </div>
+              <input type="radio" class="lab__radio" name="labs-example" id="lab2">
+              <label for="lab2" class="lab__label">Tab #2</label>
+              <div class="lab__content">
+                CONTENT for Tab #2
+              </div>
 
-        <div id="about" data-tab-content style="position:relative;left:200px;">
-            <h1>About</h1>
-            <p>Let me tell you about me</p>
+              <input type="radio" class="lab__radio" name="labs-example" id="lab3">
+              <label for="lab3" class="lab__label">Tab #3</label>
+              <div class="lab__content">
+                CONTENT for Tab #3
+              </div>
+
+              <input type="radio" class="lab__radio" name="labs-example" id="lab4">
+              <label for="lab4" class="lab__label">Tab #4</label>
+              <div class="lab__content">
+                CONTENT for Tab #4
+              </div>
+            </div>
+            </div>
+            
+                
+            <!-- nested tabs in detection ...ends...... -->
         </div>
-        <div id="this" data-tab-content style="position:relative;left:200px;">
+        <div id="this" data-tab-content>
             <h1>About</h1>
             <p>Let me tell you about me</p>
         </div>
     </div>
 
-    
+    <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
 
+{% endif %}
+    <script>
+        const tabs = document.querySelectorAll('[data-tab-target]')
+        const tabContents = document.querySelectorAll('[data-tab-content]')
 
-    
-</div><!-- main -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    const tabs = document.querySelectorAll('[data-tab-target]')
-    const tabContents = document.querySelectorAll('[data-tab-content]')
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = document.querySelector(tab.dataset.tabTarget)
-            tabContents.forEach(tabContent => {
-                tabContent.classList.remove('active')
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.tabTarget)
+                tabContents.forEach(tabContent => {
+                    tabContent.classList.remove('active')
+                }) 
+                tabs.forEach(tab => {
+                    tab.classList.remove('active')
+                })
+                tab.classList.add('active')
+                target.classList.add('active')
+                
             })
-            tabs.forEach(tab => {
-                tab.classList.remove('active')
-            })
-            tab.classList.add('active')
-            target.classList.add('active')
         })
-    })
-</script>  
-
+    </script>    
 
 </body>
+
 </html>
-
-
-
-

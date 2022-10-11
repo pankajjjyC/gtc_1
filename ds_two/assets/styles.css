@@ -1,0 +1,128 @@
+body{
+	/*background-color: #e3f7ffff;*/
+	padding: 0;
+	margin: 0;
+}
+
+h3{
+	font-size: 16pt;
+}
+
+.main_div {
+	font-family:"Roboto";
+}
+
+
+.title_block {
+	text-align: center;
+	background-color: #484848;
+	color: white;
+    padding: 20px;
+}
+
+.title_text {
+	display: block;
+	float: left;
+}
+
+.logo {
+	display: block;
+	float: left;
+}
+
+.tab_content {
+	padding: 0px 20px;
+	width: 1000px;
+}
+
+.phase_div_main{
+	display: block;
+	float: left;
+}
+
+
+.phase_div_left{
+	width: 500px;
+}
+
+.phase_div_right{
+	width: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+.parameter_dropdown {
+    width: 175px;
+}
+
+.parameter_input {
+    width: 175px;
+}
+
+
+.column_left{
+	display: block;
+	float: left;
+	width:350px;
+	height: 250px;
+}
+
+
+.column_right{
+	display: block;
+	float: left;
+	width:350px;
+	height: 250px;
+}
+
+
+.button{
+	margin: 10px;
+	padding: 10px;
+	display: block;
+	font-weight: bold;
+	background-color: #61A3DC;
+	color: white;
+}
+
+
+.map_div{
+	display: block;
+	float: left;
+	width:400px;
+	margin: 20px 0;
+	padding: 0px;
+	border: 2px solid #61A3DC;
+	border-radius: 0px;
+}
+
+
+.fig_ambient_temp_humidity{
+	width:800px;
+	margin: 10px;
+	display: block;
+	float: left;
+}
+
+.thermal_analysis_tab_content_bottom{
+	/*background-color: green;*/
+	width:800px;
+	margin: 0px;
+	display: block;
+	float: left;
+}
+
+
+.img_weld_selected{
+	display: block;
+	float: left;
+	margin: 0px;
+}
+

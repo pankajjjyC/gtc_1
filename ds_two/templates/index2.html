@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+{%  load plotly_dash %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container mt-2" style="position: relative; top:-120px;left:-110px">
+    <div style="position: relative; left: -310px;top:20px">
+        <img src="{% static 'logo.png' %}" alt="architecture" >
+    </div>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2400px;position:relative;left:150px;">
+        <br>
+    <h3 class="mb-3" style="position: relative; left: 500px; color:white; font-size: 35px;top:-45px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Seismic AI</h3>
+    <h3 class="mb-3" style="position: relative; left: 330px; color:white; font-size: 27px;top:-72px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Global Technology Connection, Inc.</h3>
+    {% plotly_app name='dash_app_new' ratio=0.8%}
+</div>
+</body>
+</html>

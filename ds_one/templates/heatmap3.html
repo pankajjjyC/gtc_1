@@ -6,6 +6,130 @@
     
 
     <style>
+
+        /* Style the logout */
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1330px; top:-400px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color:white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color: rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+        .action-button:hover
+        {
+            color:rgb(87, 248, 87);
+            
+        }
+        /* Style the logout */
+
+
+        /* Style the home */
+       .animatee
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .actionn-buttonn
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1330px; top:-395px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .redd
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .actionn-buttonn:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+
+        .actionn-buttonn:hover
+        {
+            color:rgb(87, 248, 87)
+            
+        }
+        /* Style the home */
+
+
+
+
+
+
+
+        #upload_again{
+            background-color:grey;
+            color:black;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font:20px;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [data-tab-content] {
             display: none;
         }
@@ -36,7 +160,7 @@
             padding: 10px;
             color:black;
             background-color: white;
-            border: 1px solid black;
+            border: 1px solid grey;
             width: 120px;
             text-align: center;
             font-weight: bold;
@@ -116,8 +240,114 @@
       .tabs__radio:checked + .tabs__label + .tabs__content {
         display: initial;
       }
+
+      #cars{
+        width:150px;
+        height: 25px;
+        position: relative;
+        left: 0px;
+        top: -30px;
+        font-size: 15px;
+      }
+
+      #cars option{
+        width:150px;   
+        }
       
 
+
+
+
+
+
+
+
+
+
+
+
+
+        /* detectionstyle */
+        .lab {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 400px;
+      font-family: sans-serif;
+      font-weight: bold;
+
+    }
+
+    .lab__label {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .lab__radio {
+      display: none;
+    }
+
+    .lab__content {
+      order: 1;
+      width: 100%;
+      border-bottom: 3px solid #dddddd;
+      line-height: 1.5;
+      font-size: 0.9em;
+      display: none;
+    }
+
+    .lab__radio:checked + .lab__label {
+      font-weight: bold;
+      color: white;
+      background-color:rgb(117, 245, 117);
+      border-bottom: 2px solid #009578;
+    }
+
+    .lab__radio:checked + .lab__label + .lab__content {
+      display: initial;
+    }
+
+
+          
+      /* detectionstyle */
+
+
+      /* next and Download csv button style*/
+
+      /**/
+      #btn_next{
+        position:relative;top: -700px; left: 300px;
+        width: 150px;
+        height: 38px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bolder;
+
+
+      }
+      #btn_next:hover{
+        background-color: rgb(117, 245, 117);
+      }
+      /**/  
+        
+      /*next and Download csv button stylev ....ends here.....*/
+
+      /**/
+      #btn_dwn_csv{
+        position:relative;top: -738px; left: 90px;
+        width: 150px;
+        height: 38px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bolder;
+
+
+      }
+      #btn_dwn_csv:hover{
+        background-color: rgb(117, 245, 117);
+      }
+      /**/ 
 
 
 
@@ -147,6 +377,7 @@
 </head>
 
 <body class="rendered_html" style="background-color: white;">
+{% if user.is_authenticated %}
 
      
     <div class="container mt-2" style="position: relative; top:-120px;left:-110px">
@@ -165,12 +396,15 @@
     
     <div style="height: 60px;background:rgb(217, 215, 215);width:600%;position: relative;top:-230px;left:-2500px;">
     <ul class="tabs" style="list-style: none;">
-        <li data-tab-target="#home" class="tab" style="position: relative; left: 2360px; top:-31px; width: 220px;font-size: 15px;">WelCome</li>
+        <li data-tab-target="#home" class="tab" style="position: relative; left: 2360px; top:-31px; width: 220px;font-size: 15px;">Welcome</li>
         <li data-tab-target="#pricing" class="active tab" style="position: relative; left: 2440px;top:-31px; width: 220px;font-size: 15px;">Abstraction</li>
         <li data-tab-target="#about" class="tab" style="position: relative; left: 2520px; top:-31px; width: 220px;font-size: 15px;">Detection</li>
-        <li data-tab-target="#this" class="tab" style="position: relative; left: 3120px; top:-75px;width: 220px;font-size: 15px;">Identification</li>
+        <li data-tab-target="#this" class="tab" style="position: relative; left: 3120px; top:-75px;width: 220px;font-size: 15px;"><a href="{% url 'charts' %}" style="color:black;text-decoration: none;" >Identification</a></li>
     </ul>
     </div>
+
+    <a href="{% url 'secure' %}" class="action-button shadow animate red">Home</a> <br>
+    <a href="{% url 'logout' %}" class="actionn-buttonn shadoww animatee redd">Logout</a>
 
     <div class="tab-content">
         <div id="home" data-tab-content style="position: relative; top: -200px;">
@@ -216,20 +450,21 @@
             
             <!-- nested tabs -->
 
-            <div id="nested_tab" style="position: relative;top:-505px;left: -140px;">
+            <div id="nested_tab" style="position: relative;top:-528px;left: -140px;">
 
 
                 <div class="tabs">
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" >
-                    <label for="tab1" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:-10px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Upload</label>
+                    <label for="tab1" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:-10px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Upload</label>
                     <div class="tabs__content">
                       <!-- CONTENT for Tab #1 -->
                       <div style="position: relative; top: 250px;">
-                      <button onclick="history.back()" style="width: 450px;height:50px;font-size: 20px;">Do You want to upload Anather File</button>
+                      <!-- <button onclick="history.back()" style="width: 450px;height:50px;font-size: 20px;">Do You want to upload Anather File</button> -->
+                      <a href="/ds_onechart_dsone" target="_blank" id="upload_again">Do You want to upload Another File</a>
                       </div>
                     </div>
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
-                    <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Check</label>
+                    <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;"><a href="{% url 'chart2' %}" style="color:black;text-decoration: none;">Data Check</a></label>
                     <div class="tabs__content">
                         <!-- div  sub 1 -->
                         <div style="position: relative; left:70px;top: 80px;align-items: flex-start;">
@@ -239,7 +474,7 @@
                             <label for="hh"  style="font-size: 14px;position: relative; left:px">Identify column names for</label> <br><br>
                             
                                 <label for="cars" style="font-size: 14px;">Battery Voltage:</label>
-                                <select name="cars" id="cars"  style=" position: relative;left:20px">
+                                <select name="cars" id="batt_option"  style=" position: relative;left:20px">
 
                                     {% for festive in column_header %}
                                     <option value=''>{{ festive}}</option>                            
@@ -248,7 +483,7 @@
                                 </select> 
                                 <br><br>
                                 <label for="carss" style="font-size: 14px;">Battery Current:</label>
-                                <select name="cars" id="cars"  style=" position: relative;left:20px">
+                                <select name="cars" id="batt_option_two"  style=" position: relative;left:20px">
 
                                     {% for festive in column_header %}
                                     <option value=''>{{ festive}}</option>                            
@@ -272,38 +507,59 @@
 
                     </div>
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab3" checked>
-                    <label for="tab3" class="tabs__label" style="font-size: 15px;border: 1px solid black; position: relative; top: 0px; left:90px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Similarity Map</label>
+                    <label for="tab3" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:90px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Similarity Map</label>
                     <div class="tabs__content">
                       <!-- CONTENT for Tab #3 -->
+                      <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 100px;top: 50px;font-weight: bolder;">Correlation Map</label>
                       <div style="border-style: 4px solid black; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:50px;">{{chart555|safe}}</div>
                        <div style="position:relative;top:-200px;left: 590px; max-width: 230px;">
                             <form action="{% url 'sample2' %}" method="POST" name="myform">                         
                             
                                 {% csrf_token %}
+                            <label for="fname" style="font-size: 14px;position: relative;left:5px;top:-46px;width: 150px;" >Select Ground Truth</label>      
                             <select name="text" id="cars" onchange="javascript:this.form.submit()">
                                 <option selected disabled="true">select parameter</option>
                                 {% for festive in column_header %}
                                 <option>{{ festive }}</option>                            
                                 {% endfor %}
                             </select>
-                            <input type="number" name="id" value='14' hidden> <br> <br>
+                            <input type="number" name="id" value='15' hidden> <br> <br>
                             <!-- <input type="submit" value="Insert"/> -->                        
                                                  
                             <div style="width: 300px;width:fit-content;height:fit-content;">
-                            <label for="fname" style="font-size: 14px;position: relative;left:30px;top:20px;" >No. of operational </label><br>
-                            <label for="fname" style="font-size: 14px;position: relative;left:30px;top:-26px;width: 150px;" >variables to monitor</label>
-                            <input type="text" id="fname" name="fname" maxlength="4" size="14" style="position: relative;top:-2px;left:30px;"><br><br>
-                            <label for="lname" style="font-size: 14px; position: relative;left:30px">Cut off threshold</label>
-                            <input type="text" id="lname" name="lname" maxlength="4" size="14" style="position: relative;top:-2px;left:30px;">
+                            <label for="fname" style="font-size: 14px;position: relative;left:10px;top:-10px;" >No. of operational </label><br>
+                            <label for="fname" style="font-size: 14px;position: relative;left:5px;top:-56px;width: 150px;" >variables to monitor</label>
+                            <input type="text" id="fname" name="fname" maxlength="4" size="14" style="position: relative;top:-32px;left:0px;width:150px;"><br><br>
+                            <label for="lname" style="font-size: 14px; position: relative;left:10px;top:-30px">Cut off threshold</label>
+                            <input type="text" id="lname" name="lname" maxlength="4" size="14" style="position: relative;top:-32px;left:0px;width:150px;">
                             
                            
                             </div>
                            </form>
                        </div>
-                       <div style="border-style: 4px solid black; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-505px;right:-720px">{{chart66|safe}} </div>
+                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -580px;font-weight: bolder;">Correlation Strength with </label>
+                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -550px;font-weight: bolder;">{{label_shown}}</label>
+                       
+                       
+                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-560px;right:-720px">{{chart66|safe}} </div>
 
-                       <div id="cover_div_for_bar_index_x" style="background-color:white; width: 100px;height: 20px; position: relative; top: -480px; left:1050px; "></div>
-                       <div id="cover_div_for_bar_index_y" style="background-color:white; width: 20px;height: 100px; position: relative; top: -780px; left:843px; "></div>
+
+
+                       <div id="cover_div_for_bar_index_x" style="background-color:white; width: 100px;height: 20px; position: relative; top: -535px; left:1050px;"></div>
+                       <div id="cover_div_for_bar_index_y" style="position: relative; top: -460px; left:490px; "><label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 220px;top: -380px;font-weight: bolder;transform: rotate(-90deg);">Correlation Strength</label></div>
+                       <div id="cover_div_for_bar_index_variable_tag" style="background-color:white; width: 100px;height: 80px; position: relative; top: -985px; left:1324px;"></div>
+                       
+                       <div id= "btn_next"  >
+                        <a href="{% url 'iden' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                             
+                       </div>
+                       <div id= "btn_dwn_csv">
+                        <a href="{% url 'venue' %}" style="color:black;text-decoration: none; position:relative;top: -5px; font-size: 15px;" >Download current Csv</a>
+                        </div>
+                        <label for="" style="position:relative; top: -720px;"> To download Heatmap figure as png file </label> <br>
+                        <label style="position:relative; top: -725px;">Take your mouse anywhere on figure and click on icon </label>
+                        <div style="position: relative; left: 330px;top:-780px; width:50px;height: 50px; background-size: 100% 100%; ">
+                         <img src="{% static 'camera-icon.png' %}" alt="architecture" height="50px" width="50px" style="border-radius: 15px;">
+                        </div>
                        
                       
                     </div>
@@ -317,8 +573,50 @@
 
         </div>
         <div id="about" data-tab-content>
-            <h1>About</h1>
-            <p>Let me tell you about me</p>
+            <!-- nested tabs in detection-->
+            <div id="main_nested_tab" style="position: relative;left: 500px;">
+                <div class="lab">
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab1"  checked>
+                  <label for="lab1" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -514px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Training</label>
+                  <div class="lab__content">
+                    
+                    {% for i in em_list_fig_twolines %}
+                                <div style="position: relative; left: -300px; top: -500px;">
+                                    {{ i|safe }}
+                                </div>
+                                <br>
+                        {% endfor %}
+                    
+                  </div>
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab2">
+                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -499px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Testing</label>
+                  <div class="lab__content">
+                    <label for="">coming soon</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab3">
+                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -125px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Real-Time</label>
+                  <div class="lab__content">
+                    {% for i in em_list %}
+                            <div style="position: relative; left: -400px; top: -500px;">
+                                {{ i|safe }}
+                            </div>
+                            <br>
+                    {% endfor %}		
+
+                    <label for="">the end</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab4">
+                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -110px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Insights</label>
+                  <div class="lab__content">
+                    <label for="">coming soon</label>
+                  </div>
+                </div>
+                </div>
+                
+                    
+                <!-- nested tabs in detection ...ends...... -->
         </div>
         <div id="this" data-tab-content>
             <h1>About</h1>
@@ -326,7 +624,9 @@
         </div>
     </div>
 
+    <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
 
+{% endif %}
     <script>
         const tabs = document.querySelectorAll('[data-tab-target]')
         const tabContents = document.querySelectorAll('[data-tab-content]')

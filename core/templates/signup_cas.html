@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+</head>
+<body style="background-color: white;text-align: center;">
+
+  <div style=" width: 6400px; height: 118px; background-color:white;text-align: center;">
+
+    <div style="position:relative;left:-2700px;top:15px">
+      <img src="{% static 'logo.png' %}" alt="architecture" >
+    </div>
+
+    <h1 style="position:relative;left:-2400px;top:-100px;font-size: 60px; color:black; font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">CaskADES</h1>
+
+  </div>
+
+ 
+
+
+  <div>
+    <h3 style="position: relative;left:0px;top:50px"> Watch carefully this Video Instructions</h3>
+    <iframe  style="position: relative; left:0px; top:60px;" width="700" height="315" src="https://www.youtube.com/embed/CwW-Ta0aM3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>v
+  </div>
+  
+  <div id="Paris" class="tabcontent">  
+    <div style="object-fit: cover;">      
+      <iframe src="{% static 'sa1.jpg' %}" width="700" height="840" style="position: relative; left:0px;top:100px;padding-left: 35px;"></iframe>
+    </div>
+  </div>
+  
+  <div id="Tokyo" class="tabcontent">
+    
+    <!-- form -->
+    <div class="container" style="position: relative;top: 150px;">
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+    <h1 style="font-size: 30px;">Access Request Form</h1>
+    <form method="POST" id="usrform" >
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" name="subject" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" name="Last_Name" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Requesting Access For</label>
+          <!-- <input type="email" name="email" class="form-control" required> -->
+
+          <select id="apps" name="block" class="form-control" required>
+            <option value="ARADISS">ARADISS</option>
+            <option value="Seismic_Discriminator">Seismic Discriminator</option>
+            <option value="Seismic_Locator">Seismic Locator</option>
+            <option value="TRACAIR">TRACAIR</option>
+            <option value="CaskADES" selected="selected">CaskADES</option>
+            <option value="TRAIT">TRAIT</option>
+          </select>
+
+        </div>
+
+      
+               
+      <button type="submit" class="btn btn-primary" style="position: relative;top: 170px;left:140px;">Submit</button>
+    </form>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1" style="position: relative;top: -30px;">Reason</label>
+      <!-- <input type="text" name="message" class="form-control" required> -->
+      <textarea rows="4" cols="50" name="message" class="form-control" form="usrform"  style="position: relative;top: -30px;" required>
+        Enter text here...</textarea>
+    </div>
+
+      </div>
+      <div class="col-md-4"></div>
+  </div>
+  </div>
+   <!-- form ends-->
+    
+
+  </div>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- <form action="{% url 'sample3' %}" method="get" name="myform">                         
+                            
+{% csrf_token %}
+
+
+
+<input type="number" name="id" value='14' hidden> <br> <br>
+<input type="submit" value="submit">
+
+
+
+
+</form> -->

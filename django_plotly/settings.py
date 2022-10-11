@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'ds_two',
     'ds_three',
     'ds_one',
-    'crispy_forms'
+    'django_plotly_dash'
 ]
 
 CRISPY_TEMPLATE_PACK ='bootstrap4'
@@ -46,6 +46,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_plotly.urls'
+
+
 
 TEMPLATES = [
     {
@@ -95,7 +97,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+ASGI_APPLICATION='django_plotly.routing.application'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -128,11 +131,19 @@ MEDIA_ROOT = 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#EMAIL_BACKEND = 'django.core.mail.backend.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER='pankajrajoria05@gmail.com'
-EMAIL_HOST_PASSWORD ='jjjy317232@C' 
+# EMAIL_BACKEND = 'django.core.mail.backend.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST= 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS=True
+# EMAIL_USE_SSL = False
+
+
+
+# SMTP CONFIGURATIONS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'pankajrajoria05@gmail.com'
+EMAIL_HOST_PASSWORD = 'ilpijwtwgrztryqf'
+EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_USE_TLS=True
-EMAIL_USE_SSL = False
