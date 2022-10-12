@@ -492,7 +492,7 @@ def chart_step2(request):
     #####
     # code for radio button yes no in data check
     list_radio = ["no", "yes"]
-    temp4=text.objects.filter(id=14).values('remove_first_col')
+    temp4=text.objects.filter(id=1).values('remove_first_col')
     answers_list_4 = list(temp4)
     finaloption_4=answers_list_4[0]
     selected_value_dropdown4=finaloption_4.get("remove_first_col") 
@@ -699,7 +699,7 @@ def chart_step3(request):
     #####
     # code for radio button yes no in data check
     list_radio = ["no", "yes"]
-    temp4=text.objects.filter(id=14).values('remove_first_col')
+    temp4=text.objects.filter(id=1).values('remove_first_col')
     answers_list_4 = list(temp4)
     finaloption_4=answers_list_4[0]
     selected_value_dropdown4=finaloption_4.get("remove_first_col") 
@@ -1966,166 +1966,160 @@ def watchdemo(r):
     return render (r,'watchdemo.html')
 
 def sample2(request):
-    if request.method == 'POST':
-        if request.POST.get('text'):
-            savevalue=text()
-            savevalue.text=request.POST.get('text')
-            savevalue.no_of_operational=request.POST.get('no_of_operational')
-            savevalue.cut_off_thresold=request.POST.get('cut_off_thresold')
-            # savevalue.battery_voltage=request.POST.get('bat_vol')
-            # savevalue.battery_current=request.POST.get('bat_cur')
-            # savevalue.remove_first_col=request.POST.get('remove_fir_col')
-
-            savevalue.id=request.POST.get('id')
-            savevalue.save()
-
-            # def chart() resources copied from above function-starts
-
-            # code for selecting csv from models
-            csv_obj_csvheat=Csv_for_heat.objects.first()
-            df_table_data=csv_obj_csvheat.csv
-            
-            # code for selecting csv from models ends here --------
-
-            # code for making csv data to tabular form data 
-            csv_uploaded = df_table_data   # This should point to the csv file you upload 
-            df = ad.abstraction.data.load_dataset(csv_uploaded)            
-            data_tabular_form=pd.DataFrame(df)
-            tabular_form_context=data_tabular_form.to_html()
-            # code for making csv data to tabular form data  end here --------
-
-
-            # heat map code                  
-            steps = 2000
-            scores = ad.abstraction.correlations.dtw_correlations(df, csv_uploaded, steps) 
-            scores = (scores - 1) *(-1) 
-
-            column_header=list(scores.columns.values)        
-            
-            heat_fig = px.imshow(scores,x=column_header)
-            heat_fig_context = heat_fig.to_html()
-            # heat map code   ends here---------
-
-            # dropdown code 
-            csv_obj_csvbar=Csv_for_heat.objects.first()
-            csv_bar_file=csv_obj_csvbar.csv 
-            csv_bar_file_two_readcsv = read_csv(csv_bar_file)
-
-            obj_text_model=text.objects.first()# dropdown code
-            text_file_selected_dropdown=obj_text_model.text
-            
-            text_file_selected_dropdown_convrt_string=str(text_file_selected_dropdown)# dropdown code ends
-
-            #code for dropdown parameter saved in the model named text, to be retrived as a label above bar chart
-            obj_para=text.objects.first()
-            label_shown=obj_para.text 
-            
-            #code for dropdown parameter saved in the model named text, to be retrived as a label above bar chart...ends here
-
-            # bar chart code 
-            data_frame_bar=pd.DataFrame(csv_bar_file_two_readcsv)
-            data_frame_col_one=list(data_frame_bar.columns.values)#list of first column , not used presently
-            
-            fig_bar = px.bar(            
-            data_frame = scores[text_file_selected_dropdown_convrt_string],         
-           
-            opacity = 0.9,
-            orientation = "v",
-            barmode = 'group',
-            title='',
-            )
-            fig_bar.update_yaxes(visible=False)
-            fig_bar.update_layout(showlegend=False)
-
-            fig_bar_context = fig_bar.to_html()
-            # bar chart code ends here---------
-
-            # def chart() resources copied from avove function-ends....
-
-            #code for several line charts
-            data_frame_col_names=list(df.columns.values)
-            len_of_uploadedcsv_col=len(data_frame_col_names)
-
-            em_list=[]    
-            figures={}
-            fig='fig'
-            ele_context=None
-
-            for num in range(1,len_of_uploadedcsv_col):
-                converted_num = str(num)
-                fig=fig+converted_num
-                em_list.append(fig)
-
-            for j in range(1,len(em_list)):#len(em_list)
-                em_list[j]=px.line(data_frame_bar,x=data_frame_col_names[0], y=data_frame_col_names[j],height=500,width=1200,).to_html()
-
-
-
-
-            #code for several line charts end here.....
-
-            # code for many line charts, with two lines
-            csv_obj_csvbar=Csv_for_heat.objects.first()
-            csv_bar_file=csv_obj_csvbar.csv  
-            csv_bar_file_two_readcsv = read_csv(csv_bar_file)
-            data_frame_bar=pd.DataFrame(csv_bar_file_two_readcsv)
-
-            csv_obj_csvheat=Csv_for_heat.objects.first()
-            df_table_data=csv_obj_csvheat.csv    
-            
-            csv_uploaded = df_table_data    
-            
-            df = ad.abstraction.data.load_dataset(csv_uploaded) 
-            data_frame_col_names=list(df.columns.values)
-            len_of_uploadedcsv_col=len(data_frame_col_names)
-
-            em_list_fig_twolines=[]    
-            figures={}
-            fig='fig'
-            ele_context=None
-
-            for num in range(1,len_of_uploadedcsv_col):
-                converted_num = str(num)
-                fig=fig+converted_num
-                em_list_fig_twolines.append(fig)
-
-            for j in range(1,len(em_list_fig_twolines)):#len(em_list)   
-                
-                pdlineone= list(data_frame_bar[data_frame_col_names[0]])
-                pdToList = list(data_frame_bar[data_frame_col_names[j]])        
-                pdToList2 = []
-
-                for i in pdToList:
-                    pdToList2.append(i+(i*0.1))
-
-                trace0=go.Scatter(
-                    x=pdlineone,
-                    y=pdToList,
-                    mode='lines',            
-                )
-
-                trace1=go.Scatter(
-                    x=pdlineone,
-                    y=pdToList2,
-                    mode='lines',            
-                )
-
-                data=[trace0,trace1]
-                layout=go.Layout(title='Average Home Goals by Year')
-
-                #fig=go.Figure(data=data,layout=layout)
-                em_list_fig_twolines[j]=fig=go.Figure(data=data,layout=layout).to_html()    
-
-            #context_main={'key':em_list_fig_twolines}  
-            # code for many line charts, with two lines ends here..........................
-            
-            
-            return render(request,'heatmap3.html',{'dfr': tabular_form_context, "chart555": heat_fig_context,'chart66':fig_bar_context,'column_header':column_header,'label_shown':label_shown,'em_list':em_list,'em_list_fig_twolines':em_list_fig_twolines})
+    if request.method == 'POST': 
+        text1=request.POST.get('text')
+        no_of_operational=request.POST.get('no_of_operational')
+        cut_off_thresold=request.POST.get('cut_off_thresold')        
+        id=request.POST.get('id')        
+        text.objects.filter(id=1).update(text=text1,no_of_operational=no_of_operational,cut_off_thresold=cut_off_thresold,id=id)
+    
         
-        else:
-            return render(request,'heatmap3.html')
+        # def chart() resources copied from above function-starts
+
+        # code for selecting csv from models
+        csv_obj_csvheat=Csv_for_heat.objects.first()
+        df_table_data=csv_obj_csvheat.csv
+        
+        # code for selecting csv from models ends here --------
+
+        # code for making csv data to tabular form data 
+        csv_uploaded = df_table_data   # This should point to the csv file you upload 
+        df = ad.abstraction.data.load_dataset(csv_uploaded)            
+        data_tabular_form=pd.DataFrame(df)
+        tabular_form_context=data_tabular_form.to_html()
+        # code for making csv data to tabular form data  end here --------
+
+
+        # heat map code                  
+        steps = 2000
+        scores = ad.abstraction.correlations.dtw_correlations(df, csv_uploaded, steps) 
+        scores = (scores - 1) *(-1) 
+
+        column_header=list(scores.columns.values)        
+        
+        heat_fig = px.imshow(scores,x=column_header)
+        heat_fig_context = heat_fig.to_html()
+        # heat map code   ends here---------
+
+        # dropdown code 
+        csv_obj_csvbar=Csv_for_heat.objects.first()
+        csv_bar_file=csv_obj_csvbar.csv 
+        csv_bar_file_two_readcsv = read_csv(csv_bar_file)
+
+        obj_text_model=text.objects.first()# dropdown code
+        text_file_selected_dropdown=obj_text_model.text
+        
+        text_file_selected_dropdown_convrt_string=str(text_file_selected_dropdown)# dropdown code ends
+
+        #code for dropdown parameter saved in the model named text, to be retrived as a label above bar chart
+        obj_para=text.objects.first()
+        label_shown=obj_para.text 
+        
+        #code for dropdown parameter saved in the model named text, to be retrived as a label above bar chart...ends here
+
+        # bar chart code 
+        data_frame_bar=pd.DataFrame(csv_bar_file_two_readcsv)
+        data_frame_col_one=list(data_frame_bar.columns.values)#list of first column , not used presently
+        
+        fig_bar = px.bar(            
+        data_frame = scores[text_file_selected_dropdown_convrt_string],         
+        
+        opacity = 0.9,
+        orientation = "v",
+        barmode = 'group',
+        title='',
+        )
+        fig_bar.update_yaxes(visible=False)
+        fig_bar.update_layout(showlegend=False)
+
+        fig_bar_context = fig_bar.to_html()
+        # bar chart code ends here---------
+
+        # def chart() resources copied from avove function-ends....
+
+        #code for several line charts
+        data_frame_col_names=list(df.columns.values)
+        len_of_uploadedcsv_col=len(data_frame_col_names)
+
+        em_list=[]    
+        figures={}
+        fig='fig'
+        ele_context=None
+
+        for num in range(1,len_of_uploadedcsv_col):
+            converted_num = str(num)
+            fig=fig+converted_num
+            em_list.append(fig)
+
+        for j in range(1,len(em_list)):#len(em_list)
+            em_list[j]=px.line(data_frame_bar,x=data_frame_col_names[0], y=data_frame_col_names[j],height=500,width=1200,).to_html()
+
+
+
+
+        #code for several line charts end here.....
+
+        # code for many line charts, with two lines
+        csv_obj_csvbar=Csv_for_heat.objects.first()
+        csv_bar_file=csv_obj_csvbar.csv  
+        csv_bar_file_two_readcsv = read_csv(csv_bar_file)
+        data_frame_bar=pd.DataFrame(csv_bar_file_two_readcsv)
+
+        csv_obj_csvheat=Csv_for_heat.objects.first()
+        df_table_data=csv_obj_csvheat.csv    
+        
+        csv_uploaded = df_table_data    
+        
+        df = ad.abstraction.data.load_dataset(csv_uploaded) 
+        data_frame_col_names=list(df.columns.values)
+        len_of_uploadedcsv_col=len(data_frame_col_names)
+
+        em_list_fig_twolines=[]    
+        figures={}
+        fig='fig'
+        ele_context=None
+
+        for num in range(1,len_of_uploadedcsv_col):
+            converted_num = str(num)
+            fig=fig+converted_num
+            em_list_fig_twolines.append(fig)
+
+        for j in range(1,len(em_list_fig_twolines)):#len(em_list)   
+            
+            pdlineone= list(data_frame_bar[data_frame_col_names[0]])
+            pdToList = list(data_frame_bar[data_frame_col_names[j]])        
+            pdToList2 = []
+
+            for i in pdToList:
+                pdToList2.append(i+(i*0.1))
+
+            trace0=go.Scatter(
+                x=pdlineone,
+                y=pdToList,
+                mode='lines',            
+            )
+
+            trace1=go.Scatter(
+                x=pdlineone,
+                y=pdToList2,
+                mode='lines',            
+            )
+
+            data=[trace0,trace1]
+            layout=go.Layout(title='Average Home Goals by Year')
+
+            #fig=go.Figure(data=data,layout=layout)
+            em_list_fig_twolines[j]=fig=go.Figure(data=data,layout=layout).to_html()    
+
+        #context_main={'key':em_list_fig_twolines}  
+        # code for many line charts, with two lines ends here..........................
+        
+        
+        return render(request,'heatmap3.html',{'dfr': tabular_form_context, "chart555": heat_fig_context,'chart66':fig_bar_context,'column_header':column_header,'label_shown':label_shown,'em_list':em_list,'em_list_fig_twolines':em_list_fig_twolines})
+    
     else:
-            return render(request,'heatmap3.html')
+        return render(request,'heatmap3.html')
+    
 
 
 
