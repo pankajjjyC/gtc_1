@@ -107,9 +107,16 @@ def chart(request):#ds_one home url function view
         # code for radio button yes no in data check
         list_radio = ["no", "yes"]
         temp4=text.objects.filter(id=1).values('remove_first_col')
-        answers_list_4 = list(temp4)
-        finaloption_4=answers_list_4[0]
-        selected_value_dropdown4=finaloption_4.get("remove_first_col") 
+
+        if temp4:
+            answers_list_4 = list(temp4)
+            finaloption_4=answers_list_4[0]
+            selected_value_dropdown4=finaloption_4.get("remove_first_col") 
+   
+        else:
+            selected_value_dropdown4='yes'
+
+        
         # code for radio button yes no in data check......
 
         #code for several line charts
@@ -1051,8 +1058,14 @@ def samplesave(request):
         battery_current=request.POST.get('bat_cur')
         battery_voltage=request.POST.get('bat_vol')        
         remove_first_col=request.POST.get('remove_first_col')
-        id=request.POST.get('id')        
-        text.objects.filter(id=1).update(battery_current=battery_current,battery_voltage=battery_voltage,remove_first_col=remove_first_col,id=id)
+        id=request.POST.get('id')  
+        query= text.objects.filter(id=1)
+        if query:
+            text.objects.filter(id=1).update(battery_current=battery_current,battery_voltage=battery_voltage,remove_first_col=remove_first_col,id=id)
+        else:
+            b = text(battery_current=battery_current,battery_voltage=battery_voltage,remove_first_col=remove_first_col,id=id)
+            b.save()
+
 
         # def chart() resources copied from above function-starts
 
