@@ -106,7 +106,7 @@ def chart(request):#ds_one home url function view
 
         # code for radio button yes no in data check
         list_radio = ["no", "yes"]
-        temp4=text.objects.filter(id=14).values('remove_first_col')
+        temp4=text.objects.filter(id=1).values('remove_first_col')
         answers_list_4 = list(temp4)
         finaloption_4=answers_list_4[0]
         selected_value_dropdown4=finaloption_4.get("remove_first_col") 
@@ -1052,7 +1052,7 @@ def samplesave(request):
         battery_voltage=request.POST.get('bat_vol')        
         remove_first_col=request.POST.get('remove_first_col')
         id=request.POST.get('id')        
-        text.objects.filter(id=14).update(battery_current=battery_current,battery_voltage=battery_voltage,remove_first_col=remove_first_col,id=id)
+        text.objects.filter(id=1).update(battery_current=battery_current,battery_voltage=battery_voltage,remove_first_col=remove_first_col,id=id)
 
         # def chart() resources copied from above function-starts
 
@@ -1089,18 +1089,18 @@ def samplesave(request):
                     
         #selected dropdown code 
         # dropdown one
-        temp2=text.objects.filter(id=14).values('battery_current')
+        temp2=text.objects.filter(id=1).values('battery_current')
         answers_list = list(temp2)
         finaloption=answers_list[0]
         selected_value_dropdown_cur=finaloption.get("battery_current")
 
-        temp3=text.objects.filter(id=14).values('battery_voltage')
+        temp3=text.objects.filter(id=1).values('battery_voltage')
         answers_list_3 = list(temp3)
         finaloption_3=answers_list_3[0]
         selected_value_dropdown_vol=finaloption_3.get("battery_voltage")
 
         list_radio = ["no", "yes"]
-        temp4=text.objects.filter(id=14).values('remove_first_col')
+        temp4=text.objects.filter(id=1).values('remove_first_col')
         answers_list_4 = list(temp4)
         finaloption_4=answers_list_4[0]
         selected_value_dropdown_colmn=finaloption_4.get("remove_first_col") 

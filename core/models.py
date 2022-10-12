@@ -45,6 +45,7 @@ class Permissions(models.Model):
 
 
 class text(models.Model):
+    id = models.IntegerField(primary_key=True)
     text=models.CharField(max_length=60)#this is dropdown selected on heatmap3.html saved to database
     battery_voltage=models.CharField(max_length=60,null=True,default=NULL)
     battery_current=models.CharField(max_length=60,null=True,default=NULL)
