@@ -1268,11 +1268,17 @@ def samplesave(request):
 
 
 
-        # code to save csv scores in Csv_score model -------------
-        info = pd.DataFrame(scores) 
-        x=info.to_csv(encoding='utf-8', index=False)
+        # code to save csv scores in Csv_score model -------------        
         
-        Csv_score_downld.objects.filter(id=1).update(csv=x,id=1)
+        x=scores.to_csv(encoding='utf-8', index=False)
+
+        temp_query=Csv_score_downld.objects.filter(id=1)
+
+        if temp_query:
+            Csv_score_downld.objects.filter(id=1).update(csv=x,id=1)
+        else:
+            c = Csv_score_downld(csv=x,id=1)
+            c.save()
         
         notes=Csv_score_downld.objects.all()
 
@@ -1661,8 +1667,14 @@ def chart1(request):#ds_one home url function view
     # code to save csv scores in Csv_score model -------------
     # info = pd.DataFrame(scores) 
     x=scores.to_csv(encoding='utf-8', index=False)
-    
-    Csv_score_downld.objects.filter(id=1).update(csv=x,id=1)
+
+    temp_query=Csv_score_downld.objects.filter(id=1)
+
+    if temp_query:
+        Csv_score_downld.objects.filter(id=1).update(csv=x,id=1)
+    else:
+        c = Csv_score_downld(csv=x,id=1)
+        c.save()
     
     notes=Csv_score_downld.objects.all()
 
@@ -1678,23 +1690,23 @@ def chart1(request):#ds_one home url function view
     data_frame_bar=pd.DataFrame(csv_bar_file_two_readcsv)
 
     data_frame_col_names=list(df.columns.values)
-
+    # dropdown_selected_bat_cur_convrt_string=None
     #custom bar chart saved from bat_cur dropdown code
-    obj_text_model=text.objects.first()
-    dropdown_selected_bat_cur=obj_text_model.battery_current    
-    dropdown_selected_bat_cur_convrt_string=str(dropdown_selected_bat_cur)
+    # obj_text_model=text.objects.first()
+    # if obj_text_model:
+    #     dropdown_selected_bat_cur=obj_text_model.battery_current    
+    #     dropdown_selected_bat_cur_convrt_string=str(dropdown_selected_bat_cur)
 
-    if dropdown_selected_bat_cur_convrt_string == '0':
-        dropdown_selected_bat_cur_convrt_string = data_frame_col_names[0]
-    elif dropdown_selected_bat_cur_convrt_string == 'None':
-        dropdown_selected_bat_cur_convrt_string = data_frame_col_names[0]
-
-     
+    # if dropdown_selected_bat_cur_convrt_string == None:
+    #     dropdown_selected_bat_cur_convrt_string = data_frame_col_names[1]
+    
+    dropdown_selected_bat_cur_convrt_string = data_frame_col_names[1]
+      
     
     fig_bar = px.bar(            
     data_frame = scores[dropdown_selected_bat_cur_convrt_string],         
     
-    opacity = 0.9,
+    # opacity = 0.9,
     orientation = "v",
     barmode = 'group',
     title='',
@@ -1978,13 +1990,18 @@ def iden(request):#ds_one home url function view
 def watchdemo(r):
     return render (r,'watchdemo.html')
 
-def sample2(request):
-    if request.method == 'POST': 
+def sample2(request):    
+    if request.method == 'POST':     
         text1=request.POST.get('text')
         no_of_operational=request.POST.get('no_of_operational')
         cut_off_thresold=request.POST.get('cut_off_thresold')        
-        id=request.POST.get('id')        
-        text.objects.filter(id=1).update(text=text1,no_of_operational=no_of_operational,cut_off_thresold=cut_off_thresold,id=id)
+        id=request.POST.get('id')  
+        query= text.objects.filter(id=1)
+        if query:
+            text.objects.filter(id=1).update(text=text1,no_of_operational=no_of_operational,cut_off_thresold=cut_off_thresold,id=id)
+        else:
+            b = text(text=text1,no_of_operational=no_of_operational,cut_off_thresold=cut_off_thresold,id=id)
+            b.save()
     
         
         # def chart() resources copied from above function-starts
@@ -2020,8 +2037,7 @@ def sample2(request):
         csv_bar_file_two_readcsv = read_csv(csv_bar_file)
 
         obj_text_model=text.objects.first()# dropdown code
-        text_file_selected_dropdown=obj_text_model.text
-        
+        text_file_selected_dropdown=obj_text_model.text        
         text_file_selected_dropdown_convrt_string=str(text_file_selected_dropdown)# dropdown code ends
 
         #code for dropdown parameter saved in the model named text, to be retrived as a label above bar chart

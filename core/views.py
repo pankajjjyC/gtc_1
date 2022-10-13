@@ -118,7 +118,7 @@ def secure(r):
 
 def logout(r):
     auth.logout(r)
-    x=text.objects.filter(id=15)
+    x=text.objects.filter(id=1)
     x.update(text=NULL,battery_voltage=NULL,battery_current=NULL,no_of_operational=NULL,cut_off_thresold=NULL,remove_first_col=False) 
     return redirect('login')
 
