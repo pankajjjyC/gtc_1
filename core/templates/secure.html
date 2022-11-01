@@ -58,13 +58,36 @@
             position: relative;
             top:-8px;
         }
+
+        /* button signup style*/
+
+            #button_signup{
+                background: none;
+                border: none;
+                padding: 0;
+                /*optional*/
+                font-family: arial, sans-serif;
+                /*input has OS specific font-family*/
+                color:black;
+                text-decoration: none;
+                font-size: 21px;
+                font-weight: bolder;
+                
+                cursor: pointer;
+                position: relative;
+                top:-15px;
+                left:88px;
+                }
+
+        /*button_signup style ends.....*/
         
     </style>
     </style>
 </head>
 
 <body style="background-color:white">
-    {% if user.is_authenticated %}
+{% if user.is_authenticated %}
+    
 
     
    
@@ -105,7 +128,10 @@
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/ds_one" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <a href="/signup_ara" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt" value='1' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt() " />
+            </form>
             {% endif %}
 
             
@@ -113,6 +139,7 @@
 
         </div><!-- 1st block ends here -->
 
+        <!-- 2 -->
         <div id="2" style="border:1px solid black;height:260px;width:300px;position: relative;left:560px;top:-453px;"><!-- 2 -->
 
             <label style="position:relative;left:55px;font-weight: bold;font-size: 19px;">Seismic Discriminator</label><br>
@@ -120,13 +147,16 @@
             <label style="position:relative;left:85px;font-size: 18px;">AI/ML techniques</label><br>
             <img src="{% static 'app2.png' %}" alt="architecture" style="height:160px;width:320px;position:relative;left:-20px;" ><br>
 
-            <!-- {% if user.id == current_user_index and  app2 %} -->
-            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            {% if user.id == current_user_index and  app2 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access1</a> -->
             <a href="/ds_twoindex2" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
-            <!-- {% else %}
+            {% else %}
             
-            <a href="/signup_dis" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
-            {% endif %} -->
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt2" value='2' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt2() " />
+            </form>
+            {% endif %}
 
         </div><!-- 2 -->
 
@@ -141,8 +171,11 @@
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/ds_threefuntion_line" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <!-- <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
-            <a href="/signup_loc" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
+            
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt3" value='3' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt3() " />
+            </form>
             {% endif %}
 
         </div><!-- 3 -->
@@ -158,8 +191,11 @@
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <!-- <label style="position:relative;left:85px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
-            <a href="/signup_trac" style="position:relative;left:100px;top:2px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>
+            
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt4" value='4' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt4() " />
+            </form>
             {% endif %}
 
         </div><!-- 4 -->
@@ -176,7 +212,10 @@
             <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
             <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
-            <a href="/signup_cas" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a>            
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt5" value='5' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt5() " />
+            </form>            
             {% endif %}
 
         </div><!-- 5 -->
@@ -192,8 +231,11 @@
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
-            <a href="/signup_trat" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a> 
+            
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt6" value='6' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt6() " />
+            </form>
             {% endif %}
 
         </div><!-- 6 -->
@@ -210,11 +252,94 @@
             <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
             <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
             {% else %}
-            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
-            <a href="/signup_trat" style="position:relative;left:100px;top:4px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Learn More</a> 
+            
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt7" value='7' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt7() " />
+            </form> 
             {% endif %}
 
-        </div><!-- 6 -->
+        </div><!-- 7 -->
+
+        <div id="8" style="border:1px solid black;height:260px;width:300px;position: relative;left:560px;top:-1442px;"><!-- 8 -->
+
+            <label style="position:relative;left:10px;font-weight: bold;font-size: 17px;">Facility Management Through MBX</label><br>
+            <label style="position:relative;left:9px;font-size: 15px;">Improved facility operations through model</label><br>
+            <label style="position:relative;left:70px;font-size: 15px;">based enterprise tools</label><br>
+            <img src="{% static 'Facility Management.jpg' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+
+            {% if user.id == current_user_index and  app7 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            {% else %}
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt8" value='8' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt8() " />
+            </form>
+            {% endif %}
+
+        </div><!-- 8 -->
+
+        <div id="9" style="border:1px solid black;height:260px;width:300px;position: relative;left:890px;top:-1704px;"><!-- 9 -->
+
+            <label style="position:relative;left:36px;font-weight: bold;font-size: 19px;">Radiation Threat Locater</label><br>
+            <label style="position:relative;left:10px;font-size: 18px;">Identification and locating radiation</label><br>
+            <label style="position:relative;left:30px;font-size: 18px;">threats in urban environments</label><br>
+            <img src="{% static 'Radiation Threat Locater.png' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+
+            {% if user.id == current_user_index and  app7 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            {% else %}
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt9" value='9' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt9() " />
+            </form> 
+            {% endif %}
+
+        </div><!-- 9 -->
+
+        <div id="10" style="border:1px solid black;height:260px;width:300px;position: relative;left:230px;top:-1682px;"><!-- 10 -->
+
+            <label style="position:relative;left:14px;font-weight: bold;font-size: 19px;">Automotive Intrusion Detector</label><br>
+            <label style="position:relative;left:7px;font-size: 15px;">Detection and identification of cybersecurity</label><br>
+            <label style="position:relative;left:70px;font-size: 15px;">threats in automobiles</label><br>
+            <img src="{% static 'Auto Intrusion Detector.jpg' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+
+            {% if user.id == current_user_index and  app7 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            {% else %}
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt10" value='10' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt10() " />
+            </form>
+            {% endif %}
+
+        </div><!-- 10 -->
+
+        <div id="11" style="border:1px solid black;height:260px;width:300px;position: relative;left:560px;top:-1944px;"><!-- 11 -->
+
+            <label style="position:relative;left:51px;font-weight: bold;font-size: 19px;">AI Informed Fracking</label><br>
+            <label style="position:relative;left:22px;font-size: 18px;">AI informed fracking operations</label><br>
+            <label style="position:relative;left:40px;font-size: 18px;">to reduce operational risks</label><br>
+            <img src="{% static 'smart frac.PNG' %}" alt="architecture" style="height:160px;width:280px;position:relative;left:10px;" ><br>
+
+            {% if user.id == current_user_index and  app7 %}
+            <!-- <a href="/chart" style="position:relative;left:50px;font-weight: bold;">Click to Access</a> -->
+            <a href="/chart" style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Click to Access</a>
+            {% else %}
+            <!-- <label style="position:relative;left:85px;top:-14px;font-weight: bold; color: black; text-decoration: none;font-size: 20px;">Request Access</label> -->
+            <form action="{% url 'signup_trac' %}">
+            <input type="number" name="id" id="txt11" value='11' hidden><br>
+            <input type="submit" value="Learn More" id="button_signup" onclick="getTxt11() " />
+            </form>
+            {% endif %}
+
+        </div><!-- 11 -->
 
 
 
@@ -227,11 +352,70 @@
 
 
 
-    
 
+
+{% endif %}
+<script>
+
+        function getTxt(){
+            var txtValue = document.getElementById('txt').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt2(){
+            var txtValue = document.getElementById('txt2').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt3(){
+            var txtValue = document.getElementById('txt3').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt4(){
+            var txtValue = document.getElementById('txt4').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt5(){
+            var txtValue = document.getElementById('txt5').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt6(){
+            var txtValue = document.getElementById('txt6').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt7(){
+            var txtValue = document.getElementById('txt7').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt8(){
+            var txtValue = document.getElementById('txt8').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt9(){
+            var txtValue = document.getElementById('txt9').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt10(){
+            var txtValue = document.getElementById('txt10').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+        function getTxt11(){
+            var txtValue = document.getElementById('txt11').value;
+            localStorage.setItem("passValue",txtValue);
+
+        }
+</script>
     
     
-    {% endif %}
+    
 </body>
 
 </html>

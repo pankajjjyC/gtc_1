@@ -10,8 +10,13 @@ import os
 
 # Create your models here.
 from django.db import models
+from sqlalchemy import null, true
 
 # Create your models here.
+
+
+
+
 
 class Csv_for_heat(models.Model):#used    
     id = models.IntegerField(primary_key=True)
@@ -25,8 +30,6 @@ class Csv_score_downld(models.Model):#used
 
 class Identification_model(models.Model):#used
     csv=models.FileField() 
-    
-   
 
 
 class Permissions(models.Model):

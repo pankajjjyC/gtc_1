@@ -1,106 +1,510 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup</title>
-  <link
+    
+
+    <style>
+
+        /* Style the logout */
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-315px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+        .action-button:hover
+        {
+            color:rgb(87, 248, 87);
+            
+        }
+        /* Style the logout */
+
+
+
+
+        /* Style the home */
+       .animatee
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .actionn-buttonn
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-370px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .redd
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .actionn-buttonn:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+        .actionn-buttonn:hover
+        {
+            color:rgb(87, 248, 87)
+            
+        }
+        /* Style the home */
+
+        #but-sub-form{position: relative;
+          top: 235px;
+          left:50px;
+           width: 150px;
+            background-color: white; 
+            color: black;  
+            border: black 2px solid;
+             padding: 0.1em; 
+             border-radius: 1em;
+             font-size: clamp(15px, 1.25vw, 22px)}
+
+        #but-sub-form:hover{background-color: rgb(131, 239, 131);}
+
+
+        
+
+        
+
+
+
+    </style>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tabs</title>
+    <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
+
+    <!-- <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
-    />
+    /> -->
+    
+
 </head>
-<body style="background-color: white;text-align: center;">
 
-  <div style=" width: 6400px; height: 118px; background-color:white;text-align: center;">
+<body class="rendered_html" style="background-color: white;">
 
-    <div style="position:relative;left:-2700px;top:15px">
-      <img src="{% static 'logo.png' %}" alt="architecture" >
+
+     
+    <div class="container mt-2" style="position: relative; top:-130px;left:-110px">
+        <div style="position: relative; left: -503px;top:120px">
+            <img src="{% static 'logo.png' %}" alt="architecture" >
+        </div>
+        <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2400px;position:relative;left:150px;">
+            <br>
+            <div>
+              <label for="" id="h1" style="position: relative;left: 400px; top: 10px; color:white; font-size: 48px; font-weight: bold; display: none;">ARADISS</label>
+              <label for="" id="h2" style="position: relative;left: 300px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">Seismic Discriminator</label>
+              <label for="" id="h3" style="position: relative;left: 330px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">Seismic Locator</label>
+              <label for="" id="h4" style="position: relative;left: 380px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">ISHM for WRS</label>
+              <label for="" id="h5" style="position: relative;left: 400px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">CaskADES</label>
+              <label for="" id="h6" style="position: relative;left: 420px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">TRAIT</label>
+              <label for="" id="h7" style="position: relative;left: 400px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">TRACAIR</label>
+              <label for="" id="h8" style="position: relative;left: 150px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">Facility Management Through MBX</label>
+              <label for="" id="h9" style="position: relative;left: 150px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">Radio-Active Threats Locater</label>
+              <label for="" id="h10" style="position: relative;left: 150px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">Automotive Intrusion Detector</label>
+              <label for="" id="h11" style="position: relative;left: 250px; top: 10px; color:white; font-size: 48px; font-weight: bold;display: none;">AI Informed Fracking</label>
+             
+              
+          </div>
+        
     </div>
 
-    <h1 style="position:relative;left:-2400px;top:-100px;font-size: 60px; color:black; font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: bold;">TRACAIR</h1>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2630px;position:relative;left:-2650px;top:-120px;"></div>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2480px;position:relative;left:2250px;top:-240px;"></div> 
 
-  </div>
+    
 
+    <iframe  id="v1" width="958" height="515" style="position:relative;left: 2px; top: -190px; display: none; border: 2px solid black;padding-left: 2px; padding-bottom: 2px;"
+            src="https://www.youtube.com/embed/U93ATsAhdvw" frameborder="0" allowfullscreen>
+            
+        </iframe>
+           
+        
+   
+        <img id="image"  src="{% static 'ARADISS_Brochure.jpg' %}" style='position:relative; top: -100px; left: 0px; height:1242px; width: 960px; display: none;'>
+        <img id="image2" src="{% static 'RaNDL_Brochure_page-0001.jpg' %}" style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img  id="image3" src="{% static 'RaNDL_Brochure_page-0001.jpg' %}"  style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img id="image4" src="{% static '2021 07 07 ISHM ACM FLYER_page-0001.jpg' %}"   style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img id="image5" src="{% static 'Advanced Analysis of Nuclear Waste_page-0001.jpg'  %}"   style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'>         
+        <img id="image6" src="{% static 'TRAIT_Brochure_page-0001.jpg' %}"  style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img id="image7" src="{% static '2021 07 01 TRACAIR Brochure_page-0001.jpg' %}"   style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img id="image8" src="{% static 'EA-MBSE_Quad_page-0001.jpg' %}"  style='position:relative; top: -200px; left: 0px; height:960px; width: 960px; display: none;'> 
+        <img id="image9" src="{% static 'DetectorFusion_Brochure_page-0001.jpg' %}"  style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+        <img id="image10" src="{% static 'GTC ECU Cybersecurity Flyer_page-0001.jpg' %}" style='position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'>
+        <img id="image11" src="{% static 'SmartFrac_Brochure_page-0001.jpg' %}" style=' position:relative; top: -200px; left: 0px; height:1242px; width: 960px; display: none;'> 
+   
+        
+  
+        <div id="pdf1"style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'ARADISS_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf2" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'RaNDL_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf3" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'RaNDL_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf4" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static '2021 07 07 ISHM ACM FLYER.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf5" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'Advanced Analysis of Nuclear Waste.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf6" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'TRAIT_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf7" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static '2021 07 01 TRACAIR Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf8" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'EA-MBSE_Quad.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf9" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'DetectorFusion_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf10" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'GTC ECU Cybersecurity Flyer.pdf' %}" download>Download Flyer</a>
+        </div>
+        <div id="pdf11" style="position:relative; top: -130px; left: 400px;display: none;">        
+          <p style="font-size: 20px;"><a href="{% static 'SmartFrac_Brochure.pdf' %}" download>Download Flyer</a>
+        </div>
+        
+    <!-- <div style="width: 350px; height: 520px; border:1px solid black;background-color: antiquewhite; position: relative; top: -1180px;left: 1050px;"> -->
+
+    </div> 
+    
+    <div id="f1" style="position:fixed; top: 12px; left: 800px;width: 400px; ">
+
+                  <div  class="tabcontent" >
+                  
+                    <!-- form -->
+                    <div class="container" style="position: relative;top: 150px;">
+                      <div class="row">
+                          <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                    <h1 style=" position:relative;top: -10px; font-size: 18px; color: black; ">Request Access to Application </h1>
+                    <form method="POST" id="usrform" >
+                      {% csrf_token %}
+                
+                      <div class="form-group">
+                        <label for="exampleInputEmail1" style="color: black;font-size: 15px; font-weight: 600;">First Name</label>
+                        <input type="text" name="subject" class="form-control-text-dark" required style="position: relative; top: 35px; border-radius: 7px; left: -82px; height: 30px; width: 250px; color: black; ">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1" style="position: relative; top: 30px;color: black;font-size: 15px; font-weight: 600;">Last Name</label>
+                        <input type="text" name="Last_Name" class="form-control-text-dark" style="position: relative; top: 67px; border-radius: 7px; left: -80px; height: 30px; width: 250px; color: black; ">
+                      </div>
+                
+                      <div class="form-group">
+                          <label for="exampleInputEmail1" style="position: relative; top: 65px;color: black;font-size: 15px; font-weight: 600;">Email</label>
+                          <input type="email" name="email" class="form-control-text-dark" required style="position: relative; top: 102px; border-radius: 7px; left: -45px; height: 30px; width: 250px; color: black; ">
+                        </div>
+                
+                        <div class="form-group" >
+                          <label for="exampleInputEmail1" style="position: relative; top: 100px;color: black;font-size: 15px; font-weight: 600;">Requesting Access For</label>
+                          
+                
+                          <select id="apps" name="block" class="form-control-text-dark"  style="position: relative; top: 105px; border-style: solid; border-width: 2px 2px; left: -1px; border-radius: 7px; height: 30px; width: 250px; border-color: black" required>
+                            <option value="" selected="selected" disabled style="color: black; "><span id="wrap" style="font-weight: bold">Select</span></option>
+                            <option value="ARADISS" style="color: black; ">ARADISS</option>
+                            <option value="Seismic_Discriminator" style="color: black; ">Seismic Discriminator</option>
+                            <option value="Seismic_Locator" style="color: black; ">Seismic Locator</option>
+                            <option value="ISHM_for_WRS" style="color: black; ">ISHM for WRS</option>
+                            <option value="TRACAIR" style="color: black; ">TRACAIR</option>
+                            <option value="CaskADES" style="color: black; ">CaskADES</option>
+                            <option value="TRAIT" style="color: black; ">TRAIT</option>
+                            <option value="Facility_Management_Through_MBX" style="color: black; ">Facility Management Through MBX</option>
+                            <option value="Radiation_Threat_Locater" style="color: black; ">Radiation Threat Locater</option>
+                            <option value="Automotive_Intrusion_Detector" style="color: black; ">Automotive Intrusion Detector</option>
+                            <option value="AI_Informed_Fracking" style="color: black; ">AI Informed Fracking</option>
+                          </select>
+                
+                        </div>              
+                      
+                              
+                      
+                      <button type="submit" id="but-sub-form">Submit</button>
+                    </form>
+                
+                    <div class="form-group">
+                      <label for="exampleInputEmail1" style="position: relative; top: 0px;color: black;font-size: 15px; font-weight: 600;">Reason</label>
+                      
+                      <textarea rows="4" cols="50" name="message" class="form-control-text-dark" form="usrform"  style="position: relative; top: 100px; left: -58px; border-style: solid; border-width: 2px 2px;  border-radius: 7px; height: 30px; width: 250px; height: 85px; border-color: black" required></textarea>
+                    </div>
+                
+                      </div>
+                      <div class="col-md-4"></div>
+                  
+                  
+                  <!-- form ends-->
+                    
+                
+                  </div> 
+
+    </div>
+
+
+    
+
+  <!-- <div style=" position: relative;top: 1200px;display: none;">
+    <label for="" style="font-size: 44px;">yes</label>
+  </div> -->
+
+
+
+
+
+
+
+
+
+        
+   
+
+
+
+    
+	
+
+
+
+
+
+  <script>
+
+    const value = window.location.search;
+
+    const urlParams = new URLSearchParams(value);
+
+    const param1 = urlParams.get('id');  
+
+///////////1
+    if (param1 == 1)
+    {
+        document.getElementById("image").style.display="inline"; 
+    };
+    if (param1 == 1)
+    {        
+      document.getElementById("v1").style.display="inline";
+    };
+    if (param1 == 1)
+    {
+      document.getElementById("h1").style.display="inline";
+    };
+    if (param1 == 1)
+    {
+      document.getElementById("pdf1").style.display="inline";
+    };
  
 
-
-  <div>
-    <h3 style="position: relative;left:0px;top:50px"> Watch carefully this Video Instructions</h3>
-    <iframe  style="position: relative; left:0px; top:60px;" width="700" height="315" src="https://www.youtube.com/embed/CwW-Ta0aM3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>v
-  </div>
-  
-  <div id="Paris" class="tabcontent">  
-    <div style="object-fit: cover;">      
-      <iframe src="{% static 'sa1.jpg' %}" width="700" height="840" style="position: relative; left:0px;top:100px;padding-left: 35px;"></iframe>
-    </div>
-  </div>
-  
-  <div id="Tokyo" class="tabcontent">
     
-    <!-- form -->
-    <div class="container" style="position: relative;top: 150px;">
-      <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-    <h1 style="font-size: 30px;">Access Request Form</h1>
-    <form method="POST" id="usrform" >
-      {% csrf_token %}
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">First Name</label>
-        <input type="text" name="subject" class="form-control" required>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Last Name</label>
-        <input type="text" name="Last_Name" class="form-control">
-      </div>
-
-      <div class="form-group">
-          <label for="exampleInputEmail1">Email</label>
-          <input type="email" name="email" class="form-control" required>
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputEmail1">Requesting Access For</label>
-          <!-- <input type="email" name="email" class="form-control" required> -->
-
-          <select id="apps" name="block" class="form-control" required>
-            <option value="ARADISS">ARADISS</option>
-            <option value="Seismic_Discriminator">Seismic Discriminator</option>
-            <option value="Seismic_Locator">Seismic Locator</option>
-            <option value="TRACAIR" selected="selected">TRACAIR</option>
-            <option value="CaskADES">CaskADES</option>
-            <option value="TRAIT">TRAIT</option>
-          </select>
-
-        </div>
-
-      
-               
-      <button type="submit" class="btn btn-primary" style="position: relative;top: 170px;left:140px;">Submit</button>
-    </form>
-
-    <div class="form-group">
-      <label for="exampleInputEmail1" style="position: relative;top: -30px;">Reason</label>
-      <!-- <input type="text" name="message" class="form-control" required> -->
-      <textarea rows="4" cols="50" name="message" class="form-control" form="usrform"  style="position: relative;top: -30px;" required>
-        Enter text here...</textarea>
-    </div>
-
-      </div>
-      <div class="col-md-4"></div>
-  </div>
-  </div>
-   <!-- form ends-->
+/////////////2
+    if (param1 == 2)
+    {
+        document.getElementById("image2").style.display="inline"; 
+    };    
+    if (param1 == 2)
+    {
+      document.getElementById("h2").style.display="inline";
+    };
+    if (param1 == 2)
+    {
+      document.getElementById("pdf2").style.display="inline";
+    };
+   
+    
+////////////3
+    if (param1 == 3)
+    {
+        document.getElementById("image3").style.display="inline"; 
+    };    
+    if (param1 == 3)
+    {
+      document.getElementById("h3").style.display="inline";
+    };
+    if (param1 == 3)
+    {
+      document.getElementById("pdf3").style.display="inline";
+    };
+    
+/////////////4
+    if (param1 == 4)
+    {
+        document.getElementById("image4").style.display="inline"; 
+    };    
+    if (param1 == 4)
+    {
+      document.getElementById("h4").style.display="inline";
+    };
+    if (param1 == 4)
+    {
+      document.getElementById("pdf4").style.display="inline";
+    };
+   
+//////////////5
+    if (param1 == 5)
+    {
+        document.getElementById("image5").style.display="inline"; 
+    };    
+    if (param1 == 5)
+    {
+      document.getElementById("h5").style.display="inline";
+    };
+    if (param1 == 5)
+    {
+      document.getElementById("pdf5").style.display="inline";
+    };
+    
+/////////////6
+    if (param1 == 6)
+    {
+        document.getElementById("image6").style.display="inline"; 
+    };    
+    if (param1 == 6)
+    {
+      document.getElementById("h6").style.display="inline";
+    };
+    if (param1 == 6)
+    {
+      document.getElementById("pdf6").style.display="inline";
+    };
+    
+////////////7
+    if (param1 == 7)
+    {
+        document.getElementById("image7").style.display="inline"; 
+    };    
+    if (param1 == 7)
+    {
+      document.getElementById("h7").style.display="inline";
+    };
+    if (param1 == 7)
+    {
+      document.getElementById("pdf7").style.display="inline";
+    };
+   
+////////////8
+    if (param1 == 8)
+    {
+        document.getElementById("image8").style.display="inline"; 
+    };    
+    if (param1 == 8)
+    {
+      document.getElementById("h8").style.display="inline";
+    };
+    if (param1 == 8)
+    {
+      document.getElementById("pdf8").style.display="inline";
+    };
+   
+////////////9
+    if (param1 == 9)
+    {
+        document.getElementById("image9").style.display="inline"; 
+    };    
+    if (param1 == 9)
+    {
+      document.getElementById("h9").style.display="inline";
+    };
+    if (param1 == 9)
+    {
+      document.getElementById("pdf9").style.display="inline";
+    };
+    
+/////////////10
+    if (param1 == 10)
+    {
+        document.getElementById("image10").style.display="inline"; 
+    };    
+    if (param1 == 10)
+    {
+      document.getElementById("h10").style.display="inline";
+    };
+    if (param1 == 10)
+    {
+      document.getElementById("pdf10").style.display="inline";
+    };
+    
+/////////////11
+    if (param1 == 11)
+    {
+        document.getElementById("image11").style.display="inline"; 
+    };    
+    if (param1 == 11)
+    {
+      document.getElementById("h11").style.display="inline";
+    };
+    if (param1 == 11)
+    {
+      document.getElementById("pdf11").style.display="inline";
+    };
+    
+//////////////////
     
 
-  </div>
-  
+
+
+</script>    
+    
+
 </body>
+
 </html>
 
 
@@ -109,16 +513,54 @@
 
 
 
-<!-- <form action="{% url 'sample3' %}" method="get" name="myform">                         
-                            
-{% csrf_token %}
-
-
-
-<input type="number" name="id" value='14' hidden> <br> <br>
-<input type="submit" value="submit">
 
 
 
 
-</form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

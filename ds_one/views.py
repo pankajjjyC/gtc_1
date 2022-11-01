@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 from operator import is_not, le
+from django.http import JsonResponse
 from django.shortcuts import render , HttpResponse
 import plotly.express as px
 from core.models import  Csv_for_heat , Csv_for_heat , text , Identification_model , Csv_score_downld
@@ -32,6 +33,9 @@ import plotly.figure_factory as ff
 
 from io import StringIO
 from django.core.files.base import ContentFile
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import View
+
 
 
 
@@ -217,11 +221,37 @@ def chart(request):#ds_one home url function view
         #context_main={'key':em_list_fig_twolines}  
         # code for many line charts, with two lines ends here..........................
 
+        ###############################################################################
+        ########################barchart for ML Performanve tab bar chart##############
+        csv_obj_csvheat=Csv_for_heat.objects.first()
+        df_table_data=csv_obj_csvheat.csv  
+        csv_uploaded = df_table_data   
+        df = ad.abstraction.data.load_dataset(csv_uploaded)   
+        steps = 2000
+        scores = ad.abstraction.correlations.dtw_correlations(df, csv_uploaded, steps) 
+        scores = (scores - 1) *(-1)
+        
+    
+            
+        fig_bar1 = px.bar(            
+            data_frame = scores, 
+            width=1250,   
+            height=500 ,    
+            
+            opacity = 1,
+            orientation = "v",
+            barmode = 'group',
+            title='',
+            )    
+        fig_bar_context_b = fig_bar1.to_html()
+        ##########################barchart for ML Performanve tab bar chart......ends#####
+        ##################################################################################
+
         context_main={'dfr': tabular_form_context, "chart555": heat_fig_context,'chart66':fig_bar_context,
         'column_header':column_header,'column_header2':column_header2,'data_frame_col_one':data_frame_col_names,
         'data_frame_col_one':data_frame_col_names,'em_list':em_list,'em_list_fig_twolines':em_list_fig_twolines,
         'list_radio':list_radio,'selected_value_dropdown4':selected_value_dropdown4,
-        'em_list_1_10':em_list_1_10,'step':step , 'link':link
+        'em_list_1_10':em_list_1_10,'step':step , 'link':link , 'fly':fig_bar_context_b,
         
         } 
        
@@ -339,6 +369,7 @@ def charts(request):
         fig_bar.update_yaxes(visible=False)
         fig_bar.update_xaxes(visible=False)
         fig_bar_context = fig_bar.to_html()
+        
 
         #code for bar chart ends here-----------------
 
@@ -419,7 +450,7 @@ def charts(request):
         context_main={'dfr': tabular_form_context, "chart555": heat_fig_context,'heat_fig_context_Iden':heat_fig_context_Iden,'chart66':fig_bar_context,'fig_bar_context_iden':fig_bar_context_iden,
         'column_header':column_header,'column_header2':column_header2,'data_frame_col_one':data_frame_col_names,
         'data_frame_col_one':data_frame_col_names,'em_list':em_list,'em_list_fig_twolines':em_list_fig_twolines,
-        'list_radio':list_radio,'selected_value_dropdown4':selected_value_dropdown4
+        'list_radio':list_radio,'selected_value_dropdown4':selected_value_dropdown4,
         
         } 
        
@@ -2272,46 +2303,6 @@ def sample3(request):
             return render(request,'heatmap3.html')
 
 
-
-def chart_dsone(r):
-    return render(r, 'chart_dsone.html' )
-
-
-
-def trial(request):
-	def scatter():
-		x1 = [1,2,3,4]
-		y1 = [38, 35, 25, 45]
-
-		trace = go.Scatter(
-			x = x1,
-			y = y1
-		)
-		layout = dict(
-			title = 'Simple Graph',
-			xaxis = dict(range=[min(x1),max(x1)]),
-			yaxis = dict(range=[min(y1),max(y1)])
-		)
-		fig = go.Figure(data=[trace], layout=layout)
-		plot_div = plot(fig, output_type='div', include_plotlyjs=False)
-		return plot_div
-
-	context = {
-		'plot': scatter()
-	}
-	return render(request, 'dash_try.html', context)
-
-
-
-def try1(r):
-    csv_obj_csvheat=Csv_for_heat.objects.first()
-    df_table_data=csv_obj_csvheat.csv   
-    df = pd.read_csv(df_table_data)
-    list=[]
-    for col in df.columns: 
-        list.append(col) 
-         
-    return render(r, 'try.html',{'data_top':list})
 
 
 

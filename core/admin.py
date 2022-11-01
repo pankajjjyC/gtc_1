@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from .models import Permissions ,text, user_details, Identification_model , Csv_score_downld , Csv_for_heat
+from .models import Permissions ,text, user_details, Identification_model , Csv_score_downld , Csv_for_heat 
 # Register your models here.
 
 
@@ -18,7 +18,6 @@ class Identification_modelAdmin(admin.ModelAdmin):
 @admin.register(Csv_score_downld)
 class Csv_score_downld_Admin(admin.ModelAdmin):
    list_display=['id','csv']
-
 
 
 @admin.register(Permissions)

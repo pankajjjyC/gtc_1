@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from zlib import DEF_BUF_SIZE
 from django.shortcuts import render , HttpResponse
 import plotly.express as px
-from core.models import   text , user_details
+from core.models import   text , user_details 
 from pandas import read_csv
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -21,13 +21,8 @@ import numpy
 from django.core.mail import send_mail
 from django.conf import settings
 
+host_email='pankajrajoria05@gmail.com'
 
-
-
-
-
-def home(r):      
-    return render(r,'home.html',{})
 
 
 def login(r):
@@ -42,28 +37,7 @@ def login(r):
             messages.info(r,'wrong credentials')
             return redirect('login')   
     return render(r,'login.html',{})
-
-def signup_ara(request):
-    if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-        block=request.POST['block']
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  [email], fail_silently=False)
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
-
-        user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
-        user_detail.save()
-        return render(request, 'email_sent.html', {'email': email})
-
-    return render (request,'signup_ara.html',{})
-
-
-    
+   
 
 def secure(r):
 
@@ -100,20 +74,8 @@ def secure(r):
             
             return render (r,'secure.html',{'current_user_index':current_user_index,'app1':app1,'app2':app2,'app3':app3,'app4':app4,'app5':app5,'app6':app6,'app7':app7,'app8':app8,'apj':app_per_j,'user_id':user_id,'current_usr_list_filter':current_usr_list_filter,'current_index':current_index,'user_id':user_id}) 
 
-
-
-
-
     except Exception:
         return render(r,'secure.html')
-
-
-
-
-
-
-    
-    
 
 
 def logout(r):
@@ -121,10 +83,6 @@ def logout(r):
     x=text.objects.filter(id=1)
     x.update(text=NULL,battery_voltage=NULL,battery_current=NULL,no_of_operational=NULL,cut_off_thresold=NULL,remove_first_col=False) 
     return redirect('login')
-
-def secure_(request):
-    return render (request,'secure_offline.html',{}) 
-
 
 
 def forgtpasswrd(request):
@@ -141,105 +99,13 @@ def forgtpasswrd(request):
                     [email], fail_silently=False)
 
             send_mail(subject, message, settings.EMAIL_HOST_USER,
-                    ['pankajrajoria05@gmail.com'], fail_silently=False)
+                    [host_email], fail_silently=False)
             return render(request, 'email_sent.html', {'email': email})
         else:
             return HttpResponse("user not registered")
 
-
-        
-        
-
-    
     return render (request,'forgotpasswrd.html',{})
 
-
-def sample(request):
-
-    if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  [email], fail_silently=False)
-        return render(request, 'email_sent.html', {'email': email})
-
-    return render (request,'sample.html',{})
-
-
-
-def sample2(request):    
-    if request.method == 'POST':
-        savevalue=user_details()
-
-        savevalue.id=request.POST.get('id')
-        savevalue.save()
-    return render (request,'sample2.html',{})
-
-
-def sample3(request):
-    return render (request,'sample3.html',{})
-
-
-def signup_cas(request):
-    if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-        block=request.POST['block']
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  [email], fail_silently=False)
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
-
-        user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
-        user_detail.save()
-        return render(request, 'email_sent.html', {'email': email})
-
-    return render (request,'signup_cas.html',{})
-
-
-
-def signup_dis(request):
-    if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-        block=request.POST['block']
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  [email], fail_silently=False)
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
-
-        user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
-        user_detail.save()
-        return render(request, 'email_sent.html', {'email': email})
-
-    return render (request,'signup_dis.html',{})
-
-
-def signup_loc(request):
-    if request.method == 'POST':
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
-        email = request.POST.get('email')
-        block=request.POST['block']
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  [email], fail_silently=False)
-
-        send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
-
-        user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
-        user_detail.save()
-        return render(request, 'email_sent.html', {'email': email})
-
-    return render (request,'signup_loc.html',{})
 
 
 
@@ -254,7 +120,7 @@ def signup_trac(request):
                   [email], fail_silently=False)
 
         send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
+                  [host_email], fail_silently=False)
 
         user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
         user_detail.save()
@@ -264,7 +130,10 @@ def signup_trac(request):
 
 
 
-def signup_trat(request):
+def test1(request):
+    return render (request,'test1.html',{})
+
+def test2(request):
     if request.method == 'POST':
         subject = request.POST.get('subject')
         message = request.POST.get('message')
@@ -275,13 +144,18 @@ def signup_trat(request):
                   [email], fail_silently=False)
 
         send_mail(subject, message, settings.EMAIL_HOST_USER,
-                  ['pankajrajoria05@gmail.com'], fail_silently=False)
+                  [host_email], fail_silently=False)
 
         user_detail=user_details(name=subject,email=email,reason=message,block_no=block)
         user_detail.save()
+        
         return render(request, 'email_sent.html', {'email': email})
+    return render (request,'test2.html',{})
 
-    return render (request,'signup_trat.html',{})
+
+
+
+
 
 
 

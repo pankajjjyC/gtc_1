@@ -2,9 +2,10 @@ from django.urls import path ,include
 from . import views
 from ds_one import simpleexample
 
+
 urlpatterns = [
     path('', views.chart, name='chart'),
-    path('chart_dsone', views.chart_dsone, name='chart_dsone'),
+    
     path('watchdemo', views.watchdemo, name='watchdemo'),
     path('sample2', views.sample2, name='sample2'),
     path('samplesave', views.samplesave, name='samplesave'),
@@ -17,14 +18,9 @@ urlpatterns = [
     path('chart_step4', views.chart_step4, name='chart_step4'),
 
     path('iden', views.iden, name='iden'),
-    path('venue', views.venue, name='venue'),
+    path('venue', views.venue, name='venue'), 
     
-    path('trial',views.trial,name='trial'),
-    path('try1',views.try1,name='try1'),
     path('try2',views.try2,name='try2'),
-
     
-
-    
-     
+  
 ]

@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    
+
+
+
+
+
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <style>
+
+form {
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 500px;
+    background: #F7F7F7;
+    padding: 25px 15px 25px 10px;
+    font: 12px Georgia, "Times New Roman", Times, serif;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #E4E4E4;
+}
+h1 {
+    font-size: 25px;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom:1px solid #E4E4E4;
+    margin: -10px -15px 30px -10px;;
+    color: #888;
+}
+h1>span {
+    display: block;
+    font-size: 11px;
+}
+label {
+    display: block;
+    margin: 0px;
+}
+label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #888;
+}
+input[type="text"], input[type="email"], textarea, select {
+    border: 1px solid #DADADA;
+    color: #888;
+    height: 30px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 3px 3px 3px 5px;
+    width: 70%;
+    font-size: 12px;
+    line-height:15px;
+    box-shadow: inset 0px 1px 4px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+    -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+textarea{
+    padding: 5px 3px 3px 5px;
+}
+select {
+    background: #FFF url('down-arrow.png') no-repeat right;
+    background: #FFF url('down-arrow.png') no-repeat right);
+    appearance:none;
+    -webkit-appearance:none; 
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    line-height: 25px;
+}
+textarea{
+    height:100px;
+}
+.button {
+    background: #E27575;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
+.button:hover {
+    background: #CF7A7A
+}
+
+
+        
+    </style>
+
+</head>
+<body >
+
+    
+    <div id="header" style="height: 110px; width:100%; background-color: rgb(72, 72, 72);">
+
+        <div style="position: relative; left: 103px;top:-10px">
+            <img src="{% static 'logo.png' %}" alt="architecture" >
+        </div>
+
+        <div>
+            <label for="" id="h1" style="position: relative;left: 650px; top: -100px; color:white; font-size: 48px; font-weight: bold;">ARADISS</label>
+            <label for="" id="h2" style="position: relative;left: 550px; top: -100px; color:white; font-size: 48px; font-weight: bold;">Seismic Discriminator</label>
+            <label for="" id="h3" style="position: relative;left: 600px; top: -100px; color:white; font-size: 48px; font-weight: bold;">Seismic Locator</label>
+            <label for="" id="h4" style="position: relative;left: 650px; top: -100px; color:white; font-size: 48px; font-weight: bold;">ISHM for WRS</label>
+            <label for="" id="h5" style="position: relative;left: 650px; top: -100px; color:white; font-size: 48px; font-weight: bold;">CaskADES</label>
+            <label for="" id="h6" style="position: relative;left: 650px; top: -100px; color:white; font-size: 48px; font-weight: bold;">TRAIT</label>
+            <label for="" id="h7" style="position: relative;left: 650px; top: -100px; color:white; font-size: 48px; font-weight: bold;">TRACAIR</label>
+            <label for="" id="h8" style="position: relative;left: 400px; top: -100px; color:white; font-size: 48px; font-weight: bold;">Facility Management Through MBX</label>
+            <label for="" id="h9" style="position: relative;left: 520px; top: -100px; color:white; font-size: 48px; font-weight: bold;">Radio-Active Threats Locater</label>
+            <label for="" id="h10" style="position: relative;left: 450px; top: -100px; color:white; font-size: 48px; font-weight: bold;">Automotive Intrusion Detector</label>
+            <label for="" id="h11" style="position: relative;left: 550px; top: -100px; color:white; font-size: 48px; font-weight: bold;">AI Informed Fracking</label>
+           
+            
+        </div>
+
+    </div>
+
+    <div>
+        <!-- <iframe id="v1" width="420" height="345" style="position:relative;left: 500px; top: 40px;" src="https://youtu.be/U93ATsAhdvw">
+        </iframe> -->
+
+        <iframe  id="v1" width="960" height="515" style="position:relative;left: 50px; top: 40px;"
+            src="https://www.youtube.com/embed/U93ATsAhdvw" frameborder="0" allowfullscreen>
+            
+        </iframe>
+
+       
+    </div>
+
+    
+
+
+
+    <div style="position:relative; top: 70px; left: 0px; height:950px; width: 960px; ">
+        <img id="image"  src="{% static 'ARADISS_Brochure.jpg' %}" style='height:950px; width: 960px;'>
+        <img id="image2" src="{% static 'RaNDL_Brochure_page-0001.jpg' %}" style='height: 100%; width: 100%; object-fit: contain'> 
+
+        <img  id="image3" src="{% static 'RaNDL_Brochure_page-0001.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'> 
+          <img id="image4" src="{% static '2021 07 07 ISHM ACM FLYER_page-0001.jpg' %}"   style='height: 100%; width: 100%; object-fit: contain'> 
+          <img id="image5" src="{% static 'Advanced Analysis of Nuclear Waste_page-0001.jpg'  %}"   style='height: 100%; width: 100%; object-fit: contain'>
+           
+          <img id="image6" src="{% static 'TRAIT_Brochure_page-0001.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'> 
+           <img id="image7" src="{% static '2021 07 01 TRACAIR Brochure_page-0001.jpg' %}"   style='height: 100%; width: 100%; object-fit: contain'> 
+           <img id="image8" src="{% static 'EA-MBSE_Quad_page-0001.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'> 
+          <img id="image9" src="{% static 'DetectorFusion_Brochure_page-0001.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'> 
+           <img id="image10" src="{% static 'GTC ECU Cybersecurity Flyer_page-0001.jpg' %}" style='height: 100%; width: 100%; object-fit: contain'>
+           <img id="image11" src="{% static 'SmartFrac_Brochure_page-0001.jpg' %}"  style='height: 100%; width: 100%; object-fit: contain'> 
+    </div>
+
+
+
+    <div id="form div" style="position: relative; left:600px; top: -300px; height:20%; width:50%;">
+
+        <div id="Tokyo" class="tabcontent" style="position:relative;top: -580px; left: 250px;">
+
+            <div id="new" >
+                <!-- style="width: 300px; height: 430px; border:2px solid black; text-align: center;" -->
+                <form action="" method="post" class="STYLE-NAME">
+                    <h1>Request Access to Application
+                        <span>Please fill all the texts in the fields.</span>
+                    </h1>
+                    <label>
+                        <span>Your First Name :</span>
+                        <input id="name" type="text" name="name" placeholder="Your First Name" />
+                    </label>
+
+                    <label>
+                        <span>Your Last Name :</span>
+                        <input id="name" type="text" name="name" placeholder="Your Last Name" />
+                    </label>
+                    
+                    <label>
+                        <span>Your Email :</span>
+                        <input id="email" type="email" name="email" placeholder="Valid Email Address" />
+                    </label>
+                    
+                    <label>
+                        <span>Reason :</span>
+                        <textarea id="message" name="message" placeholder="Enter why you are intrested"></textarea>
+                    </label> 
+                     <label>
+                        <span>Requesting Access for:</span><select name="selection">
+                            <option value="" selected="selected" disabled>Select</option>
+                            <option value="ARADISS" >ARADISS</option>
+                            <option value="Seismic_Discriminator">Seismic Discriminator</option>
+                            <option value="Seismic_Locator">Seismic Locator</option>
+                            <option value="ISHM_for_WRS">ISHM for WRS</option>
+                            <option value="TRACAIR">TRACAIR</option>
+                            <option value="CaskADES">CaskADES</option>
+                            <option value="TRAIT">TRAIT</option>
+                            <option value="Facility_Management_Through_MBX">Facility Management Through MBX</option>
+                            <option value="Radiation_Threat_Locater">Radiation Threat Locater</option>
+                            <option value="Automotive_Intrusion_Detector">Automotive Intrusion Detector</option>
+                            <option value="AI_Informed_Fracking">AI Informed Fracking</option>
+                        </select>
+                    </label>    
+                     <label>
+                        <span>&nbsp;</span> 
+                        <input type="button" class="button" value="Send" /> 
+                    </label>    
+                </form>
+
+               
+
+            </div><!-- new -->
+
+           
+            <!-- form -->
+            <!-- <div class="container" style="position: relative;top: 150px;">
+              <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+            <h1 style="font-size: 30px;">Access Request Form</h1>
+            <form method="POST" id="usrform" >
+              {% csrf_token %}
+        
+              <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" name="subject" class="form-control input-sm" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" name="Last_Name" class="form-control input-sm">
+              </div>
+        
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Email</label>
+                  <input type="email" name="email" class="form-control input-sm" required>
+                </div>
+        
+                <div class="form-group" >
+                  <label for="exampleInputEmail1">Requesting Access For</label>
+                  
+        
+                  <select id="apps" name="block" class="form-control input-sm"  style="position:relative; left: -10px;" required>
+                    <option value="ARADISS" selected="selected">ARADISS</option>
+                    <option value="Seismic_Discriminator">Seismic Discriminator</option>
+                    <option value="Seismic_Locator">Seismic Locator</option>
+                    <option value="ISHM_for_WRS">ISHM for WRS</option>
+                    <option value="TRACAIR">TRACAIR</option>
+                    <option value="CaskADES">CaskADES</option>
+                    <option value="TRAIT">TRAIT</option>
+                    <option value="Facility_Management_Through_MBX">Facility Management Through MBX</option>
+                    <option value="Radiation_Threat_Locater">Radiation Threat Locater</option>
+                    <option value="Automotive_Intrusion_Detector">Automotive Intrusion Detector</option>
+                    <option value="AI_Informed_Fracking">AI Informed Fracking</option>
+                  </select>
+        
+                </div>
+        
+              
+                       
+              <button type="submit" class="btn btn-primary input-sm" style="position: relative;top: 110px;left:140px;">Submit</button>
+            </form>
+        
+            <div class="form-group">
+              <label for="exampleInputEmail1" style="position: relative;top: -30px;">Reason</label>
+              
+              <textarea rows="4" cols="50" name="message" class="form-control input-sm" form="usrform"  style="position: relative;top: -30px;" required></textarea>
+            </div>
+        
+              </div>
+              <div class="col-md-4"></div>
+          </div>
+          </div> -->
+           <!-- form ends-->
+            
+        
+          </div> 
+
+    </div>
+
+    
+
+
+
+
+
+<script>
+
+
+
+
+    
+
+
+
+    if (localStorage.getItem("passValue") == 1)
+    {
+        document.getElementById("image").style.display="inline"; 
+        document.getElementById("h1").style.display="inline"; 
+        document.getElementById("v1").style.display="inline";
+
+    }
+    else
+    {
+        document.getElementById("image").style.display="none";
+        document.getElementById("h1").style.display="none";
+        document.getElementById("v1").style.display="none";
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 2)
+    {
+        document.getElementById("image2").style.display="inline"; 
+        document.getElementById("h2").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image2").style.display="none";
+        document.getElementById("h2").style.display="none"; 
+    };
+
+
+    if (localStorage.getItem("passValue") == 3)
+    {
+        document.getElementById("image3").style.display="inline"; 
+        document.getElementById("h3").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image3").style.display="none";
+        document.getElementById("h3").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 4)
+    {
+        document.getElementById("image4").style.display="inline"; 
+        document.getElementById("h4").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image4").style.display="none";
+        document.getElementById("h4").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 5)
+    {
+        document.getElementById("image5").style.display="inline"; 
+        document.getElementById("h5").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image5").style.display="none";
+        document.getElementById("h5").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 6)
+    {
+        document.getElementById("image6").style.display="inline"; 
+        document.getElementById("h6").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image6").style.display="none";
+        document.getElementById("h6").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 7)
+    {
+        document.getElementById("image7").style.display="inline"; 
+        document.getElementById("h7").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image7").style.display="none";
+        document.getElementById("h7").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 8)
+    {
+        document.getElementById("image8").style.display="inline"; 
+        document.getElementById("h8").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image8").style.display="none";
+        document.getElementById("h8").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 9)
+    {
+        document.getElementById("image9").style.display="inline"; 
+        document.getElementById("h9").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image9").style.display="none";
+        document.getElementById("h9").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 10)
+    {
+        document.getElementById("image10").style.display="inline"; 
+        document.getElementById("h10").style.display="inline"; 
+    }
+    else
+    {
+        document.getElementById("image10").style.display="none";
+        document.getElementById("h10").style.display="none"; 
+    };
+
+
+
+    if (localStorage.getItem("passValue") == 11)
+    {
+        document.getElementById("image11").style.display="inline";
+        document.getElementById("h11").style.display="inline";  
+    }
+    else
+    {
+        document.getElementById("image11").style.display="none";
+        document.getElementById("h11").style.display="none"; 
+    };
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
