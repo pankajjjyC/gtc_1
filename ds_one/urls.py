@@ -16,9 +16,16 @@ urlpatterns = [
     path('chart_step2', views.chart_step2, name='chart_step2'),
     path('chart_step3', views.chart_step3, name='chart_step3'),
     path('chart_step4', views.chart_step4, name='chart_step4'),
+    path('chartdetection', views.chartdetection, name='chartdetection'),
+    
 
     path('iden', views.iden, name='iden'),
     path('venue', views.venue, name='venue'), 
+
+    
+    
+    path('pdf2', views.pdf2, name='pdf2'),    
+
     
     path('try2',views.try2,name='try2'),
     

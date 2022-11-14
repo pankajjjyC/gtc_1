@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    
+
+    <style>
+
+        /* Style the logout */
+        .animate
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .action-button
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-400px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+
+        .red
+        {
+            background-color:rgb(72, 72, 72);         
+            
+        }
+
+        
+
+        .action-button:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+
+        .action-button:hover
+        {
+            color:rgb(87, 248, 87);
+            
+        }
+        /* Style the logout */
+
+
+
+
+        /* Style the home */
+       .animatee
+        {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        .actionn-buttonn
+        {
+            position: relative;
+            padding: 8px 25px;
+            left: 1320px; top:-395px;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;	
+        }
+
+        
+        
+
+        .redd
+        {
+            background-color:rgb(72, 72, 72);
+            
+            
+        }
+
+        
+
+        .actionn-buttonn:active
+        {
+            transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+            
+        }
+
+        .actionn-buttonn:hover
+        {
+            color:rgb(87, 248, 87)
+            
+        }
+        /* Style the home */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [data-tab-content] {
+            display: none;
+        }
+
+        .active[data-tab-content] {
+            display: block;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            
+            position: relative;
+            top: 38px;
+            left:100px;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 10px;
+            color:black;
+            background-color: white;
+            border: 1px solid grey;
+            width: 120px;
+            text-align: center;
+            font-weight: bold;
+            justify-content: space-around;
+
+        }
+
+        .tab.active {
+            background-color: rgb(87, 248, 87);
+            color: white;
+        }
+
+        .tab:hover {
+            background-color: rgb(87, 248, 87);
+            color: white;
+        }
+
+        .tab-content {
+            margin-left: 20px;
+            margin-right: 20px;
+            position: relative;
+            top: 250px;
+        }
+        #upload_again{
+            background-color:grey;
+            color:black;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font:20px;
+
+        }
+
+
+
+
+
+
+
+
+
+
+    /*abstractions tab style */ 
+
+        
+    .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 800px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        position: relative;
+        top: 38px;
+        
+        
+      }
+      
+      .tabs__label {       
+        cursor: pointer;
+        
+      }
+      
+      .tabs__radio {
+        display: none;
+       
+      }
+      
+      .tabs__content {
+        order: 1;
+        width: 100%;
+        border-bottom: 1px solid grey;
+        line-height: 1.5;
+        font-size: 0.9em;
+        display: none;
+        
+        
+      }
+      
+      .tabs__radio:checked + .tabs__label {
+        font-weight: bold;
+        color: white;
+        background-color:  rgb(87, 248, 87);
+        border-bottom: 1px solid rgb(87, 248, 87);
+        
+      }
+      
+      .tabs__radio:checked + .tabs__label + .tabs__content {
+        display: initial;
+      }
+      /*abstractions tab style ends here....*/  
+
+
+
+
+      /*idectification tab style*/   
+
+      @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i');
+        @import url('https://fonts.googleapis.com/css?family=Bree+Serif');
+       
+
+        .labs {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 700px;
+        
+        
+        }
+        .input {
+        position: absolute;
+        opacity: 0;
+        }
+        .label {
+        width: 100%;
+        padding: 200px 300px;
+        background: #100707;
+        border: 2px solid red;
+        height: 30px;
+        width: 250px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 58px;
+        color: #7f7f7f;
+        
+        }
+        .label:hover {
+        background: #d8d8d8;
+        }
+        .label:active {
+        background: #ccc;
+        }
+        .input:focus + .label {
+        z-index: 1;
+        }
+        .input:checked + .label {
+        background: #fff;
+        color: #000;
+        }
+        @media (min-width: 600px) {
+        .label {
+            width: auto;
+        }
+        }
+        .panel {
+        display: none;
+        padding: 20px 30px 30px;
+        background: rgb(17, 8, 8);
+        }
+        @media (min-width: 600px) {
+        .panel {
+            order: 99;
+        }
+        }
+        .input:checked + .label + .panel {
+        display: block;
+        }
+
+      /*identification tab style...end*/
+      
+      
+      #cars{
+        width:150px;
+        height: 25px;
+        position: relative;
+        left: 30px;
+        top: -30px;
+        font-size: 15px;
+      }
+
+      #cars option{
+        width:150px;   
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* detectionstyle */
+        .lab {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 400px;
+      font-family: sans-serif;
+      font-weight: bold;
+
+    }
+
+    .lab__label {
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+
+    .lab__radio {
+      display: none;
+    }
+
+    .lab__content {
+      order: 1;
+      width: 100%;
+      border-bottom: 3px solid #dddddd;
+      line-height: 1.5;
+      font-size: 0.9em;
+      display: none;
+    }
+
+    .lab__radio:checked + .lab__label {
+      font-weight: bold;
+      color: white;
+      background-color:rgb(117, 245, 117);
+      border-bottom: 2px solid #009578;
+    }
+
+    .lab__radio:checked + .lab__label + .lab__content {
+      display: initial;
+    }
+
+
+          
+      /* detectionstyle */
+
+
+      /* Style the submit button */
+      #sub_but{
+            position: relative;
+            left:80px; 
+            top:10px;
+            background-color:white;
+            font-weight: bold;
+            color:black;
+            border: 1px solid black;
+            cursor: pointer;
+            height:35px;
+            font-size:14pt;
+            width:100px;
+            
+            border-radius: 10px;
+        }
+
+        #sub_but:hover{
+            background-color: rgb(87, 248, 87);
+            color: white;
+
+        }
+      
+      /* Style the submit button ends here...... */ 
+
+
+      /**/
+      #btn_next{
+        position:relative;top: -350px; left: 100px;
+        width: 150px;
+        height: 38px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bolder;
+
+
+      }
+      #btn_next:hover{
+        background-color: rgb(117, 245, 117);
+      }
+      /**/
+      /**/
+      #btn_start_training{
+        position:relative;top: -625px; left: 300px;
+        width: 180px;
+        height: 34px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 10px;
+        font-weight: bolder;
+
+
+      }
+      #btn_start_training:hover{
+        background-color: rgb(117, 245, 117);
+      }
+      /**/ 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tabs</title>
+    <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
+    
+
+</head>
+
+<body class="rendered_html" style="background-color: white;">
+{% if user.is_authenticated %}
+
+     
+    <div class="container mt-2" style="position: relative; top:-120px;left:-110px">
+        <div style="position: relative; left: -510px;top:120px">
+            <img src="{% static 'logo.png' %}" alt="architecture" >
+        </div>
+        <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2400px;position:relative;left:150px;">
+            <br>
+        <h3 class="mb-3" style="position: relative; left: 500px; color:white; font-size: 35px;top:-45px; font-family: Verdana, Geneva, Tahoma, sans-serif;">ARADISS</h3>
+        <h3 class="mb-3" style="position: relative; left: 20px; color:white; font-size: 27px;top:-72px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Adaptive Real-Time Anomaly Detection & Identification for Autonomous Systems</h3>
+    </div>
+
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2630px;position:relative;left:-2650px;top:-120px;"></div>
+    <div id="title_block" style="background-color: rgb(72, 72, 72); height: 120px;width: 2480px;position:relative;left:2250px;top:-240px;"></div>  
+
+    
+    <div style="height: 60px;background:rgb(217, 215, 215);width:600%;position: relative;top:-230px;left:-2500px;">
+    <ul class="tabs" style="list-style: none;">
+        <li data-tab-target="#home" class="tab" style="position: relative; left: 2360px; top:-31px; width: 220px;font-size: 15px;">Welcome</li>
+
+        <li data-tab-target="#pricing" class="tab" style="position: relative; left: 2440px;top:-31px; width: 220px;font-size: 15px;"><a href="{% url 'chart2' %}" style="color:black;text-decoration: none;display:block; height:100%; width:100%;" >Abstraction</a></li>
+        
+        
+        <li data-tab-target="#about" class="active tab" style="position: relative; left: 2520px; top:-31px; width: 220px;font-size: 15px;">Detection</li>
+        
+        <li data-tab-target="#this" class="tab" style="position: relative; left: 3120px; top:-75px;width: 220px;font-size: 15px;">Identification</li>
+    </ul>
+    </div>
+
+    <a href="{% url 'secure' %}" class="action-button shadow animate red" >Home</a> <br>
+    <a href="{% url 'logout' %}" class="actionn-buttonn shadoww animatee redd">Logout</a>
+    
+
+    <div class="tab-content">
+        <div id="home" data-tab-content style="position: relative; top: -200px;">
+            <!-- parent tab 1-->
+            
+            
+
+            
+
+                  
+            <!-- parent tab 1-->
+        </div>
+        <div id="pricing" data-tab-content>
+            
+            <!-- nested tabs -->                           
+            
+
+        </div>
+        <div id="about" class="active" data-tab-content>
+            <!-- nested tabs in detection-->
+            <div id="main_nested_tab" style="position: relative;left: 500px;">
+                <div class="lab">
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab1"  checked>
+                  <label for="lab1" class="lab__label" style="border:grey 1px solid; position:relative;top: -493px; left: -514px; width:222px; text-align: center; font-weight: bold; font-size: 16px;">ML Training</label>
+                  <div class="lab__content">
+                    <div style="position: relative; top: -480px; left: -350px;">
+                        <label for="cars" style="font-size: 24px; position: relative; top: -78px; ">Select ML Algorithm</label>
+
+                        <select name="cars" id="cars" style=" position: relative; top: -112px; left: 260px; width: 190px; border-radius: 7px; ">
+                        <option value="" selected="selected" disabled>Select</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                        </select>
+                    </div>
+
+                    <div style="position:relative;top: -2px;">
+                        <div id= "btn_start_training"  >
+                            <a href="" style="color:black;text-decoration: none;  font-size: 18px; position:relative; top: 2px;" >Start Training</a>                               
+                        </div>
+                    </div>
+
+                    <div style="position: relative; top: -190px;">
+                        {% for i in em_list_fig_twolines %}
+                                <div style="position: relative; left: -430px; top: -390px;">
+                                    {{ i|safe }}
+                                </div>
+                                <br>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab2">
+                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -543px; left: -277px; width:220px; text-align: center;font-weight: bold; font-size: 16px;">ML Perfomance</label>
+                  <div class="lab__content">
+                    <label for="">coming soon</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab3">
+                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -593px; left: -43px; width:220px; text-align: center;font-weight: bold; font-size: 16px;">Inject Anomalies</label>
+                  <div class="lab__content">                   		
+
+                    <label for="">the end</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab4">
+                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -643px; left: 190px; width:220px; text-align: center; font-weight: bold; font-size: 16px;">Detection Performance</label>
+                  <div class="lab__content">
+                        <label for="">coming soon</label> 
+                  </div>
+                </div>
+                </div>
+                
+                    
+                <!-- nested tabs in detection ...ends...... -->
+        </div>
+        <div id="this" data-tab-content>
+            
+        </div>
+    </div>
+
+    <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
+
+{% endif %}
+    <script>
+        const tabs = document.querySelectorAll('[data-tab-target]')
+        const tabContents = document.querySelectorAll('[data-tab-content]')
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document.querySelector(tab.dataset.tabTarget)
+                tabContents.forEach(tabContent => {
+                    tabContent.classList.remove('active')
+                }) 
+                tabs.forEach(tab => {
+                    tab.classList.remove('active')
+                })
+                tab.classList.add('active')
+                target.classList.add('active')
+                
+            })
+        })
+
+
+       
+    </script>    
+
+
+
+
+</body>
+
+</html>

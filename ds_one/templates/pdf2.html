@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert HTML to PDF - Codingdiksha.com</title>
+    <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div style="position: relative; left: 625px;"><h2>Report</h2></div> <br>
+        <div style="position: relative; left: 600px;"><p>Hello Data Analysts...!</p></div> <br>
+        
+
+        <div style="position: relative; left: 350px;">{{chart555|safe}}</div> <br>
+        {{chart66|safe}}  <br>
+        <div style="position: relative; left: 80px;"> {{dfr|safe}}</div> <br>
+       
+    </div>
+    <button onclick="createPDF()">Create PDF</button>
+
+    <script>
+        function createPDF() {
+            var pdf = document.getElementById("content");
+            var opt = {
+                margin: 1,
+                filename: 'html2pdf-converted.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2 },
+                jsPDF: { unit: 'in', format: 'b4', orientation: 'landscape' }
+            };
+            html2pdf().set(opt).from(pdf).save();
+        }
+    </script>
+</body>
+
+</html>

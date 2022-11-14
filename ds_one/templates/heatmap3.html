@@ -350,6 +350,21 @@
       /**/ 
 
 
+      /**/
+      #pdfbutton {
+        all: unset;
+        cursor: pointer;
+        font-size: 13px;
+        position: relative;
+        top: -1px;
+      }
+
+      #pdfbutton:focus {
+        outline: orange 5px auto;
+      }
+      /**/
+
+
 
 
 
@@ -397,8 +412,8 @@
     <div style="height: 60px;background:rgb(217, 215, 215);width:600%;position: relative;top:-230px;left:-2500px;">
     <ul class="tabs" style="list-style: none;">
         <li data-tab-target="#home" class="tab" style="position: relative; left: 2360px; top:-31px; width: 220px;font-size: 15px;">Welcome</li>
-        <li data-tab-target="#pricing" class="active tab" style="position: relative; left: 2440px;top:-31px; width: 220px;font-size: 15px;">Abstraction</li>
-        <li data-tab-target="#about" class="tab" style="position: relative; left: 2520px; top:-31px; width: 220px;font-size: 15px;">Detection</li>
+        <li data-tab-target="#pricing" class="active tab" style="position: relative; left: 2440px;top:-31px; width: 220px;font-size: 15px;"><a href="{% url 'chart2' %}" style="color:black;text-decoration: none;" >Abstraction</a></li>
+        <li data-tab-target="#about" class="tab" style="position: relative; left: 2520px; top:-31px; width: 220px;font-size: 15px;"><a href="{% url 'chartdetection' %}" style="color:black;text-decoration: none;display:block; height:100%; width:100%;" >Detection</a></li>
         <li data-tab-target="#this" class="tab" style="position: relative; left: 3120px; top:-75px;width: 220px;font-size: 15px;"><a href="{% url 'charts' %}" style="color:black;text-decoration: none;" >Identification</a></li>
     </ul>
     </div>
@@ -467,42 +482,7 @@
                     <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;"><a href="{% url 'chart2' %}" style="color:black;text-decoration: none;">Data Check</a></label>
                     <div class="tabs__content">
                         <!-- div  sub 1 -->
-                        <div style="position: relative; left:70px;top: 80px;align-items: flex-start;">
-                            <form action="">
-                            <input type="radio" id="h" name="fav_language" value="HTML" style="position: relative; left:0px">
-                            <label for="h"  style="font-size: 14px; position: relative; left:10px">Remove first column</label> <br><br>
-                            <label for="hh"  style="font-size: 14px;position: relative; left:px">Identify column names for</label> <br><br>
-                            
-                                <label for="cars" style="font-size: 14px;">Battery Voltage:</label>
-                                <select name="cars" id="batt_option"  style=" position: relative;left:20px">
-
-                                    {% for festive in column_header %}
-                                    <option value=''>{{ festive}}</option>                            
-                                    {% endfor %} 
-                                    
-                                </select> 
-                                <br><br>
-                                <label for="carss" style="font-size: 14px;">Battery Current:</label>
-                                <select name="cars" id="batt_option_two"  style=" position: relative;left:20px">
-
-                                    {% for festive in column_header %}
-                                    <option value=''>{{ festive}}</option>                            
-                                    {% endfor %} 
-                                    
-                                </select>
-
-
-
-                                
-                            </form>
-
-
-                        </div>
-                        <!-- div  sub 1 -->
-                        <div style="position:relative;left:530px;top: -130px; overflow: scroll;height:550px;">
-                      <!-- CONTENT for Tab #2 -->
-                      {{dfr|safe}}
-                        </div>
+                        
                         
 
                     </div>
@@ -553,13 +533,24 @@
                         <a href="{% url 'iden' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                             
                        </div>
                        <div id= "btn_dwn_csv">
-                        <a href="{% url 'venue' %}" style="color:black;text-decoration: none; position:relative;top: -5px; font-size: 15px;" >Download current Csv</a>
+                        <button onclick="createPDF()" id="pdfbutton">Download PDF Report</button>
                         </div>
                         <label for="" style="position:relative; top: -720px;"> To download Heatmap figure as png file </label> <br>
                         <label style="position:relative; top: -725px;">Take your mouse anywhere on figure and click on icon </label>
                         <div style="position: relative; left: 330px;top:-780px; width:50px;height: 50px; background-size: 100% 100%; ">
                          <img src="{% static 'camera-icon.png' %}" alt="architecture" height="50px" width="50px" style="border-radius: 15px;">
                         </div>
+
+                                                    <div id="content" style="position: relative;top: 1300px; "><!-- 1100 -->
+                                                        <div style="position: relative; left: 625px;top: -170px;"><h2>Report</h2></div> <br>
+                                                        <div style="position: relative; left: 600px;top: -150px;"><p>Hello Data Analysts...!</p></div> <br>
+                                                        
+                                                
+                                                        <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:180px;top:-170px;">{{heat_fig_context2|safe}}</div><!--heatmap-->
+                                                        <div style="border-style: 4px solid grey; width: 600px; height: 400px;position:relative;top: 0px;left: 340px;">{{fig_bar_context2|safe}} </div><!--barchart-->
+                                                        <div style="position: relative; left: 80px;"> {{dfr|safe}}</div> <br>
+                                                    
+                                                    </div>
                        
                       
                     </div>
@@ -573,50 +564,7 @@
 
         </div>
         <div id="about" data-tab-content>
-            <!-- nested tabs in detection-->
-            <div id="main_nested_tab" style="position: relative;left: 500px;">
-                <div class="lab">
-                  <input type="radio" class="lab__radio" name="labs-example" id="lab1"  checked>
-                  <label for="lab1" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -514px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Training</label>
-                  <div class="lab__content">
-                    
-                    {% for i in em_list_fig_twolines %}
-                                <div style="position: relative; left: -300px; top: -500px;">
-                                    {{ i|safe }}
-                                </div>
-                                <br>
-                        {% endfor %}
-                    
-                  </div>
-                  <input type="radio" class="lab__radio" name="labs-example" id="lab2">
-                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -499px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Testing</label>
-                  <div class="lab__content">
-                    <label for="">coming soon</label>
-                  </div>
-    
-                  <input type="radio" class="lab__radio" name="labs-example" id="lab3">
-                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -125px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Real-Time</label>
-                  <div class="lab__content">
-                    {% for i in em_list %}
-                            <div style="position: relative; left: -400px; top: -500px;">
-                                {{ i|safe }}
-                            </div>
-                            <br>
-                    {% endfor %}		
-
-                    <label for="">the end</label>
-                  </div>
-    
-                  <input type="radio" class="lab__radio" name="labs-example" id="lab4">
-                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -110px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Insights</label>
-                  <div class="lab__content">
-                    <label for="">coming soon</label>
-                  </div>
-                </div>
-                </div>
-                
-                    
-                <!-- nested tabs in detection ...ends...... -->
+            
         </div>
         <div id="this" data-tab-content>
             <h1>About</h1>
@@ -627,8 +575,26 @@
     <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
 
 {% endif %}
-    <script>
-        const tabs = document.querySelectorAll('[data-tab-target]')
+<script>   
+    function createPDF() {
+            var pdf = document.getElementById("content");
+            var opt = {
+                margin: 1,
+                filename: 'html2pdf-converted.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 2 },
+                jsPDF: { unit: 'in', format: 'b4', orientation: 'landscape' }
+            };
+            html2pdf().set(opt).from(pdf).save();
+        }  
+
+
+
+
+
+
+
+      const tabs = document.querySelectorAll('[data-tab-target]')
         const tabContents = document.querySelectorAll('[data-tab-content]')
 
         tabs.forEach(tab => {
@@ -645,7 +611,13 @@
                 
             })
         })
-    </script>    
+
+
+
+        
+
+        
+    </script>     
 
 </body>
 
