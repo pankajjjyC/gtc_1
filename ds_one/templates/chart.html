@@ -600,20 +600,31 @@
                       <!-- CONTENT for Tab #1 -->
 
 
+                      <!-- <form action="{% url 'chart' %}" method='post' enctype="multipart/form-data">
+                        {% csrf_token %}                        
+                        <label for="file"  class="custom-file-input"><input type="file" id="fileupload" name="file_upload" class="custom-file-input"></input></label> <br>
+                        <input type="number" name="id" id="" value='1' hidden><br>
+                        <input type="submit" value="Submit" id="sub_but">                        
+                      </form> -->  
+                      
+                      
+                      <form action="{% url 'chart' %}" method='post' enctype="multipart/form-data">
+                        {% csrf_token %} 
+                        <!-- <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload"></i> Upload Image
+                        </label> -->
+                        <!-- <input id="file-upload" name='upload_cont_img' type="file" style="display:none;"> -->
+                        <label for="file"  class="custom-file-input"><input type="file" id="file-upload" name="file_upload" class="custom-file-input"></input></label> <br>
+                        <input type="number" name="id" id="" value='1' hidden><br>
+                        <input type="submit" value="Upload" id="sub_but"> 
+                        <label id="file-name" style="position: relative; top: 100px; left: 180px;"></label>
+                      </form>
+                     
+
                       
 
-                      <form action="{% url 'chart' %}" method='post' enctype="multipart/form-data">
-                        {% csrf_token %}
-                        
-                        <label for="file"  class="custom-file-input"><input type="file"  name="file_upload" class="custom-file-input"></input></label> <br>
-
-                        {% comment %} <input type="file" name="fr" id=""><br> {% endcomment %}
-                        <input type="number" name="id" id="" value='1' hidden><br>
-                        <input type="submit" value="Submit" id="sub_but">
-                        
-                      </form>
-
                       <div id="label_submit" style="background-color: white; position: relative; top: 170px;left: 40px;">
+                        <div id="backgroundcover for line" style="background-color:white; position: relative; top: 151px;left: -50px; height: 10px; width: 900px;"></div>
 
                         <pre  style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: black;font-size: 14px;text-align: center;">
                             Import a CSV file containing normal operational data, without any faults, of your platform. 
@@ -828,6 +839,15 @@
 
 
 </script>  
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+	$("#file-upload").change(function(){
+		$("#file-name").text(this.files[0].name+' has been selected ');
+	  });
+</script>
 
 
 </body>

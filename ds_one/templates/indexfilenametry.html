@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Home</title>
+<meta charset="UTF-8">
+<style>
+	.custom-file-upload {
+		border: 1px solid #ccc;
+		display: inline-block;
+		padding: 6px 12px;
+		cursor: pointer; 
+	}
+</style>
+</head>
+<body>
+
+<h2 class="text-center">Custom File Input</h2>
+
+<form>
+    <label for="file-upload" class="custom-file-upload">
+        <i class="fa fa-cloud-upload"></i> Upload Image
+    </label>
+    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
+    <label id="file-name" style="position: relative; top: 200px;"></label>
+</form>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+	$("#file-upload").change(function(){
+		$("#file-name").text(this.files[0].name);
+	  });
+</script>
+</body>
+</html>

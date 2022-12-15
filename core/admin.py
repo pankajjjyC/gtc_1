@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from .models import Permissions ,text, user_details, Identification_model , Csv_score_downld , Csv_for_heat 
+from .models import Permissions ,text, user_details, Identification_model , Csv_score_downld , Csv_for_heat , inject_anamolies 
 # Register your models here.
 
 
@@ -27,7 +27,11 @@ class AppAdmin(admin.ModelAdmin):
 
 @admin.register(text)
 class textAdmin(admin.ModelAdmin):
-   list_display=['id','text']
+   list_display=['id','text','cut_off_thresold','remove_first_col']
+
+@admin.register(inject_anamolies)
+class inject_anamoliesAdmin(admin.ModelAdmin):
+   list_display=['id','all','point_anomalies','fluctuating','bias','dead','cer','cer_and_slope','dtw']
 
 @admin.register(user_details)
 class userdetailsAdmin(admin.ModelAdmin):

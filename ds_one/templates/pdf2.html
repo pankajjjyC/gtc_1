@@ -10,20 +10,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 
+<!-- <body onload="createPDF()"> -->
 <body>
     <div id="content">
-        <div style="position: relative; left: 625px;"><h2>Report</h2></div> <br>
-        <div style="position: relative; left: 600px;"><p>Hello Data Analysts...!</p></div> <br>
+        <div style="position: relative; left: 345px; top: 20px; width: 500px; height: 70px; text-align: center; border: 3px solid green;"><h2 >Report</h2></div> <br>
+        <!-- <div style="position: relative; left: 520px;"><p>Hello Data Analysts...!</p></div> <br> -->
         
 
-        <div style="position: relative; left: 350px;">{{chart555|safe}}</div> <br>
-        {{chart66|safe}}  <br>
-        <div style="position: relative; left: 80px;"> {{dfr|safe}}</div> <br>
+        <div style="position: relative; left: 270px; top: 10px; ">{{chart555|safe}}</div> <br><!-- heat map -->
+        <div style="position: relative; left: 200px;">{{chart66|safe}}</div>   <br><!-- bar chart -->
+        <div style="position: relative; left: 2px;"> {{dfr|safe}}</div> <br>
        
     </div>
     <button onclick="createPDF()">Create PDF</button>
 
     <script>
+
+        // $(document).ready(function() {
+        //     window.setTimeout(function(){window.location.href = "{% url 'chart1' %}"},10000);
+        // });
+
+
+
         function createPDF() {
             var pdf = document.getElementById("content");
             var opt = {

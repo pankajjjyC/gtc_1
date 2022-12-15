@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from zlib import DEF_BUF_SIZE
 from django.shortcuts import render , HttpResponse
 import plotly.express as px
-from core.models import   text , user_details 
+from core.models import   text , user_details , inject_anamolies
 from pandas import read_csv
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -78,10 +78,23 @@ def secure(r):
         return render(r,'secure.html')
 
 
+
+
+from ds_one.views import universal_list , universal_list2
+
+
+
 def logout(r):
     auth.logout(r)
     x=text.objects.filter(id=1)
-    x.update(text=NULL,battery_voltage=NULL,battery_current=NULL,no_of_operational=NULL,cut_off_thresold=NULL,remove_first_col=False) 
+    x.update(text=NULL,cut_off_thresold=NULL,remove_first_col='NO') 
+
+    y=inject_anamolies.objects.filter(id=1)
+    y.update(id=1,all='no',point_anomalies='no',fluctuating='no',bias='no',dead='no',cer='no',cer_and_slope='no',dtw='no')   
+
+    universal_list.clear()
+    universal_list2.clear() 
+    
     return redirect('login')
 
 

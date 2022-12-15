@@ -32,6 +32,7 @@ class Identification_model(models.Model):#used
     csv=models.FileField() 
 
 
+
 class Permissions(models.Model):
     user_name=models.OneToOneField(User,on_delete=models.CASCADE)
     app_1=models.BooleanField(default=False)
@@ -49,12 +50,23 @@ class Permissions(models.Model):
 
 class text(models.Model):
     id = models.IntegerField(primary_key=True)
-    text=models.CharField(max_length=60)#this is dropdown selected on heatmap3.html saved to database
-    battery_voltage=models.CharField(max_length=60,null=True,default=NULL)
-    battery_current=models.CharField(max_length=60,null=True,default=NULL)
-    no_of_operational=models.CharField(max_length=60,null=True,default=NULL)
+    text=models.CharField(max_length=60)#this is dropdown selected on heatmap3.html saved to database   
+    
     cut_off_thresold=models.CharField(max_length=60,null=True,default=NULL)
-    remove_first_col=models.CharField(max_length=60,null=True,default=NULL)
+    remove_first_col=models.CharField(max_length=60,null=True,default='NO')
+
+
+class inject_anamolies(models.Model):
+    id = models.IntegerField(primary_key=True)
+    all=models.CharField(max_length=60,null=True,default=NULL)  
+    point_anomalies=models.CharField(max_length=60,null=True,default=NULL)
+    fluctuating=models.CharField(max_length=60,null=True,default=NULL)
+    bias=models.CharField(max_length=60,null=True,default=NULL)
+    dead=models.CharField(max_length=60,null=True,default=NULL)
+    cer=models.CharField(max_length=60,null=True,default=NULL)
+    cer_and_slope=models.CharField(max_length=60,null=True,default=NULL)
+    dtw=models.CharField(max_length=60,null=True,default=NULL)
+    
     
 
 

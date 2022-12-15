@@ -315,7 +315,7 @@
 
       /**/
       #btn_next{
-        position:relative;top: -700px; left: 300px;
+        position:relative;top: -660px; left: 300px;
         width: 150px;
         height: 38px;
         border: 1px solid black;
@@ -334,7 +334,7 @@
 
       /**/
       #btn_dwn_csv{
-        position:relative;top: -738px; left: 90px;
+        position:relative;top: -698px; left: 70px;
         width: 150px;
         height: 38px;
         border: 1px solid black;
@@ -362,6 +362,30 @@
       #pdfbutton:focus {
         outline: orange 5px auto;
       }
+      /**/
+
+      /**/
+      #btn-sub_form{
+            position: relative;
+            left:-3px; 
+            top:-28px;
+            background-color:white;
+            font-weight: bold;
+            color:black;
+            border: 1px solid black;
+            cursor: pointer;
+            height:60px;
+            font-size:10pt;
+            width:160px;
+            position:relative;
+            border-radius: 7px;
+        }
+
+        #btn-sub_form:hover{
+            background-color: rgb(87, 248, 87);
+            color: white;
+
+        }
       /**/
 
 
@@ -492,36 +516,45 @@
                       <!-- CONTENT for Tab #3 -->
                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 100px;top: 50px;font-weight: bolder;">Correlation Map</label>
                       <div style="border-style: 4px solid black; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:50px;">{{chart555|safe}}</div>
-                       <div style="position:relative;top:-200px;left: 590px; max-width: 230px;">
+                       <div style="position:relative;top:-220px;left: 590px; max-width: 230px;">
                             <form action="{% url 'sample2' %}" method="POST" name="myform">                         
                             
                                 {% csrf_token %}
                             <label for="fname" style="font-size: 14px;position: relative;left:5px;top:-46px;width: 150px;" >Select Ground Truth</label>      
-                            <select name="text" id="cars" onchange="javascript:this.form.submit()">
-                                <option selected disabled="true">select parameter</option>
+                            
+                            <select name="text" id="cars" style="position: relative; top: -45px;">
+                                <option selected="selected" disabled="true" >select parameter</option>
                                 {% for festive in column_header %}
-                                <option>{{ festive }}</option>                            
+                                    {% ifequal festive selected_value_dropdown_cur %}
+                                        <option  selected="selected">{{ festive }}</option>
+                                    {% else %}
+                                        <option >{{ festive }}</option>
+                                    {% endifequal %}
                                 {% endfor %}
                             </select>
-                            <input type="number" name="id" value='1' hidden> <br> <br>
-                            <!-- <input type="submit" value="Insert"/> -->                        
+
+
+
+                            <input type="number" name="id" value='1' hidden> <br> <br>                                                 
                                                  
                             <div style="width: 300px;width:fit-content;height:fit-content;">
-                            <label for="fname" style="font-size: 14px;position: relative;left:10px;top:-10px;" >No. of operational </label><br>
-                            <label for="fname" style="font-size: 14px;position: relative;left:5px;top:-56px;width: 150px;" >variables to monitor</label>
-                            <input type="text" id="fname" name="fname" maxlength="4" size="14" style="position: relative;top:-32px;left:0px;width:150px;"><br><br>
-                            <label for="lname" style="font-size: 14px; position: relative;left:10px;top:-30px">Cut off threshold</label>
-                            <input type="text" id="lname" name="lname" maxlength="4" size="14" style="position: relative;top:-32px;left:0px;width:150px;">
+                            <!-- <label for="fname" style="font-size: 14px;position: relative;left:10px;top:-45px;" >No. of operational </label><br>
+                            <label for="fname" style="font-size: 14px;position: relative;left:3px;top:-56px;width: 150px;" >variables to monitor</label>
+                            <input type="text" id="fname" name="no_of_operational" value="{{ selected_value_no_of_operation }}" maxlength="4" size="14" style="position: relative;top:-52px;left:0px;width:150px;"><br><br> -->
+                            <label for="lname" style="font-size: 14px; position: relative;left:10px;top:-55px">Cut off threshold</label>
+                            <input type="text" id="lname" name="cut_off_thresold" value="{{ selected_value_cut_off_thresold }}" maxlength="4" size="14" style="position: relative;top:-52px;left:0px;width:150px;">
+
+                            <button type="submit" id ="btn-sub_form">Extract features from Ground Truth</button>
                             
                            
                             </div>
                            </form>
                        </div>
-                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -580px;font-weight: bolder;">Correlation Strength with </label>
-                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -550px;font-weight: bolder;">{{label_shown}}</label>
+                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -600px;font-weight: bolder;">Correlation Strength with </label>
+                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -570px;font-weight: bolder;">{{label_shown}}</label>
                        
                        
-                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-560px;right:-720px">{{chart66|safe}} </div>
+                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-580px;right:-720px">{{chart66|safe}} </div>
 
 
 
@@ -530,16 +563,16 @@
                        <div id="cover_div_for_bar_index_variable_tag" style="background-color:white; width: 100px;height: 80px; position: relative; top: -985px; left:1340px;"></div>
                        
                        <div id= "btn_next"  >
-                        <a href="{% url 'iden' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                             
+                        <a href="{% url 'chartdetection' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                             
                        </div>
                        <div id= "btn_dwn_csv">
                         <button onclick="createPDF()" id="pdfbutton">Download PDF Report</button>
                         </div>
-                        <label for="" style="position:relative; top: -720px;"> To download Heatmap figure as png file </label> <br>
-                        <label style="position:relative; top: -725px;">Take your mouse anywhere on figure and click on icon </label>
-                        <div style="position: relative; left: 330px;top:-780px; width:50px;height: 50px; background-size: 100% 100%; ">
+                        <!-- <label for="" style="position:relative; top: -720px;"> To download Heatmap figure as png file </label> <br>
+                        <label style="position:relative; top: -725px;">Take your mouse anywhere on figure and click on icon </label> -->
+                        <!-- <div style="position: relative; left: 330px;top:-780px; width:50px;height: 50px; background-size: 100% 100%; ">
                          <img src="{% static 'camera-icon.png' %}" alt="architecture" height="50px" width="50px" style="border-radius: 15px;">
-                        </div>
+                        </div> -->
 
                                                     <div id="content" style="position: relative;top: 1300px; "><!-- 1100 -->
                                                         <div style="position: relative; left: 625px;top: -170px;"><h2>Report</h2></div> <br>
@@ -575,24 +608,7 @@
     <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
 
 {% endif %}
-<script>   
-    function createPDF() {
-            var pdf = document.getElementById("content");
-            var opt = {
-                margin: 1,
-                filename: 'html2pdf-converted.pdf',
-                image: { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2 },
-                jsPDF: { unit: 'in', format: 'b4', orientation: 'landscape' }
-            };
-            html2pdf().set(opt).from(pdf).save();
-        }  
-
-
-
-
-
-
+<script>       
 
       const tabs = document.querySelectorAll('[data-tab-target]')
         const tabContents = document.querySelectorAll('[data-tab-content]')
@@ -610,14 +626,10 @@
                 target.classList.add('active')
                 
             })
-        })
-
-
+        })       
 
         
-
-        
-    </script>     
+</script>     
 
 </body>
 

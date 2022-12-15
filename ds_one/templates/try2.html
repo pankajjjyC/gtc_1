@@ -377,8 +377,8 @@
       /* Style the submit button */
       #sub_but{
             position: relative;
-            left:80px; 
-            top:10px;
+            left:85px; 
+            top:-100px;
             background-color:white;
             font-weight: bold;
             color:black;
@@ -415,6 +415,77 @@
       #btn_next:hover{
         background-color: rgb(117, 245, 117);
       }
+      /**/
+
+
+      /**/
+      /* .containe {
+        display: block;
+        position: relative;
+        top: 80px;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        } */
+
+        /* Hide the browser's default checkbox */
+        /* .containe input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        } */
+
+        /* Create a custom checkbox */
+        /* .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        } */
+
+        /* On mouse-over, add a grey background color */
+        /* .containe:hover input ~ .checkmark {
+        background-color: #ccc;
+        } */
+
+        /* When the checkbox is checked, add a blue background */
+        /* .containe input:checked ~ .checkmark {
+        background-color: #2196F3;
+        } */
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        /* .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        } */
+
+        /* Show the checkmark when checked */
+        /* .containe input:checked ~ .checkmark:after {
+        display: block;
+        } */
+
+        /* Style the checkmark/indicator */
+        /* .containe .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        } */
       /**/
       
 
@@ -552,48 +623,40 @@
                     <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Data Check</label>
                     <div class="tabs__content">
                         <!-- div  sub 1 -->
-                        <div style="position: relative; left:70px;top: 80px;align-items: flex-start;">
+                        <div style="position: relative; left:70px;top: 110px;align-items: flex-start;">
                             <form action="{% url 'samplesave' %}" method="POST" name="myform">                      
                                     {% csrf_token %}
                                     <!-- <input type="radio" id="h" name="remove_fir_col" value="True" style="position: relative; left:0px" onchange="javascript:this.form.submit()"> -->
                                     <div>
-                                        <select name="remove_first_col" id="cars" style="position: relative;left:5px;top:37px;" >
-                                            <option selected="selected" disabled="true" >select parameter</option>
-                                            {% for festive in list_radio %}
-                                                {% ifequal festive selected_value_dropdown_colmn %}
-                                                    <option  selected="selected">{{ festive }}</option>                                                
-                                                {% else %}
-                                                    <option >{{ festive }}</option>
-                                                {% endifequal %}
-                                            {% endfor %}
-                                            
-                                            
-                                            
-                                        </select>                                                                      
+                                        
+
+                                        {% if selected_value_remove_first_col == 'YES' %}
+                                        <input type="checkbox" id="scales" name="remove_first_col" value="YES" style="position: relative;left:180px;top:-48px; width: 25px;" checked>
+                                        {% endif  %}
+
+                                        {% if selected_value_remove_first_col == 'NO' %}
+                                        <input type="checkbox" id="scales" name="remove_first_col" value="YES" style="position: relative;left:180px;top:-48px; width: 25px;">
+                                        {% endif  %}
+
+                                        {% if selected_value_remove_first_col == None %}
+                                        <input type="checkbox" id="scales" name="remove_first_col" value="YES" style="position: relative;left:180px;top:-48px; width: 25px;">
+                                        {% endif  %}
+                                         
+                                        
+
                                                                                
                                     </div>
-                                    <label for="h"  style="font-size: 14px; position: relative; left:2px; top: -10px;">Remove first column</label> <br><br>                                     
-                                    <label for="hh"  style="font-size: 14px;position: relative; left:px">Identify column names for</label> <br><br>
+                                    <label for="h"  style="font-size: 14px; position: relative; left:2px; top: -70px;">Remove first column</label> <br><br>                                     
                                     
-                                        <label for="cars" style="font-size: 14px;">Battery Voltage:</label>                                        
-                                        <!-- <select name="bat_vol" id="bat_vol"  style=" position: relative;left:20px "> -->
-                                        <select name="bat_vol" id="cars" style="position: relative;left:20px;top:5px;" >
-                                            <option selected="selected" disabled="true" >select parameter</option>
-                                            {% for festive in column_header %}
-                                                {% ifequal festive selected_value_dropdown_vol %}
-                                                    <option  selected="selected">{{ festive }}</option>                                                
-                                                {% else %}
-                                                    <option >{{ festive }}</option>
-                                                {% endifequal %}
-                                            {% endfor %}
-                                        </select>
+                                    
+                                        
 
                                         <br><br>
 
-                                        <label for="carss" style="font-size: 14px;">Battery Current:</label>                                        
+                                        <label for="carss" style="font-size: 14px; position: relative;left:0px;top:-112px; ">Select Ground Truth:</label>                                        
                                         
 
-                                        <select name="bat_cur" id="cars" style=" position: relative;left:20px;top: 2px;" >
+                                        <select name="text" id="cars" style=" position: relative;left:30px;top: -112px;" >
                                             <option selected="selected" disabled="true" >select parameter</option>
                                             {% for festive in column_header %}
                                                 {% ifequal festive selected_value_dropdown_cur %}
@@ -612,26 +675,27 @@
 
                                         <input type="number" name="id" value='1' hidden> <br> <br>
                                         <a href="{% url 'samplesave' %}" style="text-decoration: none;"><input type="submit" value="Next" id="sub_but"></a>
-                                        <!-- <a href="{% url 'chart1' %}" style="text-decoration: none;" >Similarity Map</a> -->
+                                        
+                                        {{selected_value_remove_first_col}}
 
                                         
                         
-                            </form>
-
-                                
-
-
-
-                                
-                            
-                           
+                            </form>  
                             
                         </div>
                         <!-- div  sub 1 -->
-                        <div style="position:relative;left:530px;top: -200px; overflow: scroll;height:550px;">
-                      <!-- CONTENT for Tab #2 -->
-                            {{dfr|safe}}
-                        </div>
+                        {% if chart2 == 'yes_for_step1' %}
+                            <div style="position:relative;left:530px;top: -170px; overflow: scroll;height:550px;">
+                        <!-- CONTENT for Tab #2 -->
+                                {{dfr|safe}}
+                            </div>
+                        {% endif  %}
+                        {% if chart2 == 'yes' %}
+                            <div style="position:relative;left:530px;top: -160px; overflow: scroll;height:550px;">
+                            <!-- CONTENT for Tab #2 -->
+                                    {{dfr|safe}}
+                            </div>
+                        {% endif  %}
                         <div id="cover_div_bottom_line" style="background-color:white; width: 1000px;height: 5px; position: relative; top: 5px; left:0px;"></div>
                        
 
@@ -656,29 +720,10 @@
             
         </div>
         <div id="this" data-tab-content>
-            <div style="position:relative;top: -500px;">
-                
-                <div class="labs">
-                    <input class="input" name="labs" type="radio" id="lab-1" checked="checked"/>
-                    <label class="label" for="lab-1">Arlina Design</label>
-                    <div class="panel">
-                        
-                        <div style="border: 1px sold black; height: 500px; width:500px; position: relative; top: 100px; left: -200px;">   
-                            <a href="/ds_onecharts" target="_blank" style="position:relative; left: 150px;background-color:grey;color:black;padding: 14px 25px;text-align: center;text-decoration: none;font:20px;" >Do You want to upload Another File</a>
-                        </div>
-                    </div>
-                    <input class="input" name="labs" type="radio" id="lab-2"/>
-                    <label class="label" for="lab-2">Idntheme</label>
-                    <div class="panel">
-                        <div style="position: relative;left:0px;top:0px;">{{heat_fig_context_Iden|safe}}</div>
-                    </div>
-                    <input class="input" name="labs" type="radio" id="lab-3"/>
-                    <label class="label" for="lab-3">Tekno Match</label>
-                    <div class="panel">
-                        <div style=" position: relative;top:0px;right:0px">{{fig_bar_context_iden|safe}} </div>
-                    </div>
-                </div>
-            </div>
+
+            <!-- identification matter comes here-->
+            <!-- identification matter ends here-->
+            
         </div>
     </div>
 

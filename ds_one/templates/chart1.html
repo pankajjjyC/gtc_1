@@ -305,7 +305,7 @@
       
       /**/
       #btn_next{
-        position:relative;top: -650px; left: 300px;
+        position:relative;top: -500px; left: 300px;
         width: 150px;
         height: 38px;
         border: 1px solid black;
@@ -322,7 +322,7 @@
 
       /**/
       #btn_dwn_csv{
-        position:relative;top: -688px; left: 90px;
+        position:relative;top: -538px; left: 90px;
         width: 150px;
         height: 38px;
         border: 1px solid black;
@@ -339,17 +339,27 @@
 
 
       /**/
-      #pdfbutton {
-        all: unset;
-        cursor: pointer;
-        font-size: 13px;
-        position: relative;
-        top: -1px;
-      }
+      #btn-sub_form{
+            position: relative;
+            left:29px; 
+            top:-5px;
+            background-color:white;
+            font-weight: bold;
+            color:black;
+            border: 1px solid black;
+            cursor: pointer;
+            height:60px;
+            font-size:10pt;
+            width:160px;
+            position:relative;
+            border-radius: 7px;
+        }
 
-      #pdfbutton:focus {
-        outline: orange 5px auto;
-      }
+        #btn-sub_form:hover{
+            background-color: rgb(87, 248, 87);
+            color: white;
+
+        }
       /**/
 
 
@@ -376,8 +386,6 @@
 
     <title>Tabs</title>
     <link rel="stylesheet" href="https://cdn.jupyter.org/notebook/5.1.0/style/style.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
 </head>
 
@@ -466,14 +474,43 @@
                       <!-- CONTENT for Tab #1 -->
                       <div style="position: relative; top: 250px;">
                       <!-- <button onclick="history.back()" style="width: 450px;height:50px;font-size: 20px;">Do You want to upload Another File</button> -->
-                      <a href="/ds_onechart_dsone" target="_self" id="upload_again">Do You want to upload Another File</a>
+                      <a href="/ds_onechart_dsone" target="_blank" id="upload_again">Do You want to upload Another File</a>
                       </div>
                     </div>
                     <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
                     <label for="tab2" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:40px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;"><a href="{% url 'chart2' %}" style="color:black;text-decoration: none;">Data Check</a></label>
                     <div class="tabs__content">
                         <!-- div  sub 1 -->
-                        
+                        <div style="position: relative; left:70px;top: 80px;align-items: flex-start;">
+                            
+                            <input type="radio" id="h" name="remove_fir_col" style="position: relative; left:0px">
+                            <label for="h"  style="font-size: 14px; position: relative; left:10px">Remove first column</label> <br><br>
+                            <label for="hh"  style="font-size: 14px;position: relative; left:px">Identify column names for</label> <br><br>
+                            
+                                <label for="cars" style="font-size: 14px;">Battery Voltage:</label>
+                                <select name="bat_vol" id="bat_vol"  style=" position: relative;left:20px">
+
+                                    {% for festive in column_header %}
+                                    <option value=''>{{ festive}}</option>                            
+                                    {% endfor %} 
+                                    
+                                </select> 
+                                <br><br>
+                                <label for="carss" style="font-size: 14px;">Battery Current:</label>
+                                <select name="bat_cur" id="bat_cur"  style=" position: relative;left:20px">
+
+                                    {% for festive in column_header %}
+                                    <option value=''>{{ festive}}</option>                            
+                                    {% endfor %} 
+                                    
+                                </select>                            
+
+                        </div>
+                        <!-- div  sub 1 -->
+                        <div style="position:relative;left:530px;top: -130px; overflow: scroll;height:550px;">
+                      <!-- CONTENT for Tab #2 -->
+                      {{dfr|safe}}
+                        </div>
                        
 
                     </div>
@@ -481,14 +518,14 @@
                     <label for="tab3" class="tabs__label" style="font-size: 15px;border: 1px solid grey; position: relative; top: 0px; left:90px;height: 40px; width:200px; text-align: center;padding-top: 6px;font-weight: bold;">Similarity Map</label>
                     <div class="tabs__content">
                       <!-- CONTENT for Tab #3 -->
-                      <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 100px;top: -5px;font-weight: bolder;">Correlation Map</label>
-                      <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:-10px;">{{chart_heat_map|safe}}</div><!--heatmap-->
-                       <div style="position:relative;top:-200px;left: 590px; max-width: 230px;">
+                      <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 100px;top: 45px;font-weight: bolder;">Correlation Map</label>
+                      <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:-200px;top:50px;">{{chart555|safe}}</div><!--heatmap-->
+                       <div style="position:relative;top:-225px;left: 590px; max-width: 230px;">
                             <form action="{% url 'sample2' %}" method="POST" name="myform">                         
                             
                                 {% csrf_token %}
-                            <label for="fname" style="font-size: 14px;position: relative;left:35px;top:-36px;width: 150px;" >Select Ground Truth</label>    
-                            <select name="text" id="cars" onchange="javascript:this.form.submit()">
+                            <label for="fname" style="font-size: 14px;position: relative;left:35px;top:-36px;width: 150px;" >Select Ground Truth:</label>    
+                            <!-- <select name="text" id="cars" onchange="javascript:this.form.submit()">
                                 <option selected disabled="true" >select parameter</option>
 
                                 {% for festive in column_header %}
@@ -499,65 +536,71 @@
                                 {% endif %}                                                           
                                 {% endfor %}
 
+                            </select> -->
+
+
+                            <select name="text" id="cars">
+                              <option selected="selected" disabled="true" >select parameter</option>
+                              {% for festive in column_header %}
+                                  {% ifequal festive selected_value_dropdown_cur %}
+                                      <option  selected="selected">{{ festive }}</option>
+                                  {% else %}
+                                      <option >{{ festive }}</option>
+                                  {% endifequal %}
+                              {% endfor %}
                             </select>
+
+
+
+
+
+
                             <input type="number" name="id" value='1' hidden> <br> <br>
                             <!-- <input type="submit" value="Insert"/> -->                        
                                                  
                             <div style="width: 300px;width:fit-content;height:fit-content;">
-                            <label for="fname" style="font-size: 14px;position: relative;left:40px;top:-10px;" >No. of operational </label><br>
-                            <label for="fname" style="font-size: 14px;position: relative;left:35px;top:-56px;width: 150px;" >variables to monitor</label>
-                            <input type="text" id="fname" name="no_of_operational" onchange="javascript:this.form.submit()" maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;"><br><br>
+                            <!--<label for="fname" style="font-size: 14px;position: relative;left:30px;top:-10px;" > variables to monitor </label><br>
+                            <label for="fname" style="font-size: 14px;position: relative;left:35px;top:-56px;width: 150px;" > No. of operational</label>
+                            <input type="text" id="fname" name="no_of_operational" value="{{ selected_value_no_of_operation }}" maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;"><br><br>-->
                             <label for="lname" style="font-size: 14px; position: relative;left:40px;top:-30px">Cut off threshold</label>
-                            <input type="text" id="lname" name="cut_off_thresold" onchange="javascript:this.form.submit()" maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;">
+                            <input type="text" id="lname" name="cut_off_thresold" value="{{ selected_value_cut_off_thresold }}"  maxlength="4" size="14" style="position: relative;top:-32px;left:30px;width:150px;">
+
+                            <button type="submit" id ="btn-sub_form">Extract features from Ground Truth</button>
+                            
                             
 
                            
                             </div>
                            </form>
                        </div>
-                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -640px;font-weight: bolder;">Correlation Strength with </label> 
+                       <label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 950px;top: -535px;font-weight: bolder;">Correlation Strength with </label> 
+                       <!-- <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -610px;font-weight: bolder;">AccY (g)</label> -->
+                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -495px;font-weight: bolder;">{{dropdown_selected_bat_cur_convrt_string}}</label>
                        
-                       <label for=""style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 600px;top: -600px;font-weight: bolder;">{{dropdown_selected_bat_cur_convrt_string}}</label>
-                       
-                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-580px;right:-720px">{{chart_barchart|safe}} </div><!--barchart-->
+                       <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;top:-505px;right:-720px">{{chart66|safe}} </div><!--barchart-->
 
-                       <div id="cover_div_for_bar_index_x" style="background-color:white; width: 100px;height: 20px; position: relative; top: -515px; left:1100px;"></div>
-                       <div id="cover_div_for_bar_index_y" style="position: relative; top: -460px; left:490px; "><label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 240px;top: -360px;font-weight: bolder;transform: rotate(-90deg);">Correlation Strength</label></div>
-                       <div id="cover_div_for_bar_index_variable_tag" style="background-color:white; width: 100px;height: 80px; position: relative; top: -1022px; left:1340px;"></div>
+                       <div id="cover_div_for_bar_index_x" style="background-color:white; width: 100px;height: 20px; position: relative; top: -510px; left:1100px;"></div>
+                       <div id="cover_div_for_bar_index_y" style="position: relative; top: -450px; left:495px; "><label style="font-size: 25px;font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative;left: 240px;top: -320px;font-weight: bolder;transform: rotate(-90deg);">Correlation Strength</label></div>
+                       <div id="cover_div_for_bar_index_variable_tag" style="background-color:white; width: 100px;height: 80px; position: relative; top: -1017px; left:1340px;"></div>
 
-                       
+                       <!-- {%for i in notes%}
+                        <a href="{{i.csv.url}}" download style="position: relative;top: -550px;">name</a>
+                       {% endfor %} 
+
+                       {{dropdown_selected_bat_cur_convrt_string}} -->
 
                        <div id= "btn_next"  >
-                        <a href="{% url 'iden' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                               
+                        <a href="{% url 'chartdetection' %}" style="color:black;text-decoration: none; position:relative;top: -2px; font-size: 25px;" >Next</a>                               
                        </div>
                        <div id= "btn_dwn_csv">
-                          <!-- <a href="" id="download" style="color:black;text-decoration: none; position:relative;top: -5px; font-size: 15px;" >Download current Csv</a> -->
-                          
-                          <button onclick="createPDF()" id="pdfbutton">Download PDF Report</button>
-                          
-                       
+                       <!-- <a href="{% url 'venue' %}" style="color:black;text-decoration: none; position:relative;top: -5px; font-size: 15px;" >Download current Csv</a> -->
+                       <a href="{% url 'pdf2' %}" style="color:black;text-decoration: none; position:relative;top: 6px; font-size: 14px;" >Download Report</a>
                        </div>
-                       <label for="" style="position:relative; top: -670px;"> To download Heatmap figure as png file </label> <br>
-                       <label style="position:relative; top: -675px;">Take your mouse anywhere on figure and click on icon </label>
-                       <div style="position: relative; left: 330px;top:-730px; width:50px;height: 50px; background-size: 100% 100%; ">
+                       <!-- <label for="" style="position:relative; top: -670px;"> To download Heatmap figure as png file </label> <br>
+                       <label style="position:relative; top: -675px;">Take your mouse anywhere on figure and click on icon </label> -->
+                       <!-- <div style="position: relative; left: 330px;top:-730px; width:50px;height: 50px; background-size: 100% 100%; ">
                         <img src="{% static 'camera-icon.png' %}" alt="architecture" height="50px" width="50px" style="border-radius: 15px;">
-                       </div>
-
-
-                                              <div id="content" style="position: relative;top: 1300px; "><!-- 1100 -->
-                                                <div style="position: relative; left: 625px;top: -170px;"><h2>Report</h2></div> <br>
-                                                <div style="position: relative; left: 600px;top: -150px;"><p>Hello Data Analysts...!</p></div> <br>
-                                                
-                                        
-                                                <div style="border-style: 4px solid grey; width: 600px; height: 400px;margin: auto;display: block; position: relative;left:180px;top:-170px;">{{heat_fig_context2|safe}}</div><!--heatmap-->
-                                                <div style="border-style: 4px solid grey; width: 600px; height: 400px;position:relative;top: 0px;left: 340px;">{{fig_bar_context2|safe}} </div><!--barchart-->
-                                                <div style="position: relative; left: 80px;"> {{dfr|safe}}</div> <br>
-                                              
-                                              </div>
-
-
-
-
+                       </div> -->
                     </div>
                   </div>
 
@@ -569,7 +612,51 @@
 
         </div>
         <div id="about" data-tab-content>
-            
+            <!-- nested tabs in detection-->
+            <div id="main_nested_tab" style="position: relative;left: 500px;">
+                <div class="lab">
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab1"  checked>
+                  <label for="lab1" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -514px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Training</label>
+                  <div class="lab__content">
+                    <div>
+                        {% for i in em_list_fig_twolines %}
+                                <div style="position: relative; left: -300px; top: -500px;">
+                                    {{ i|safe }}
+                                </div>
+                                <br>
+                        {% endfor %}
+                    </div>
+                  </div>
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab2">
+                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -492px; left: -499px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Testing</label>
+                  <div class="lab__content">
+                    <label for="">coming soon</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab3">
+                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -125px; width:180px; text-align: center;font-weight: bold; font-size: 16px;">Real-Time</label>
+                  <div class="lab__content">
+                    {% for i in em_list %}
+                            <div style="position: relative; left: -400px; top: -500px;">
+                                {{ i|safe }}
+                            </div>
+                            <br>
+                    {% endfor %}		
+
+                    <label for="">the end</label>
+                    <label for="">{{dropdown_selected_bat_cur_convrt_string}}</label>
+                  </div>
+    
+                  <input type="radio" class="lab__radio" name="labs-example" id="lab4">
+                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -542px; left: -110px; width:180px; text-align: center; font-weight: bold; font-size: 16px;">Insights</label>
+                  <div class="lab__content">
+                    <label for="">coming soon</label>
+                  </div>
+                </div>
+                </div>
+                
+                    
+                <!-- nested tabs in detection ...ends...... -->
         </div>
         <div id="this" data-tab-content>
             <h1>About</h1>
@@ -580,27 +667,8 @@
     <div id='patch1' style="width: 900px;height: 10px; background-color:white;position: relative; left: -30px;top:-245px"></div>
 
 {% endif %}
-
-    <script>   
-    function createPDF() {
-            var pdf = document.getElementById("content");
-            var opt = {
-                margin: 1,
-                filename: 'html2pdf-converted.pdf',
-                image: { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2 },
-                jsPDF: { unit: 'in', format: 'b4', orientation: 'landscape' }
-            };
-            html2pdf().set(opt).from(pdf).save();
-        }  
-
-
-
-
-
-
-
-      const tabs = document.querySelectorAll('[data-tab-target]')
+    <script>
+        const tabs = document.querySelectorAll('[data-tab-target]')
         const tabContents = document.querySelectorAll('[data-tab-content]')
 
         tabs.forEach(tab => {
@@ -617,15 +685,7 @@
                 
             })
         })
-
-
-
-        
-
-        
-    </script>   
-    
-    
+    </script>    
 
 </body>
 

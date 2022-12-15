@@ -54,15 +54,18 @@ def auto_select_parameters(dataset, scores, threshold=0.5):
     '''
 
     if scores is None:
+        print("No correlation graph given, calculating new correlations...")
         scores = dtw_correlations(dataset)
     num_cols = len(dataset.columns)
 
-    selection = [True] * num_cols
+    selection = [False] * num_cols
     #print("Scores:", scores)
     for i in range(len(dataset.columns)):
+        #print(i, scores.iloc[:,i].mean())
         if scores.iloc[:,i].mean() > threshold:
-            selection[int(i)] = False
-    print("Selection:", selection)
+            #print(i, scores.iloc[:,i].mean())
+            selection[i] = True
+    #print("Selection:", selection)
     return selection
 
 
@@ -94,14 +97,19 @@ def best_ground_truth(scores):
     Returns:
         int index of root-of-trust
     '''
+    '''
     scores['Sum'] = scores.sum(axis=1)
     scores['Sum'] = (scores['Sum'] - scores['Sum'].mean()) / scores['Sum'].std()
     best = scores['Sum'].idxmin()
+    '''
+    sum = scores.sum(axis=1)
+    sum = (sum-sum.mean()) / sum.std()
+    best = sum.idxmin()
     return scores.columns.tolist().index(best)
 
 
 # need to clean this up and change it, just a rough working version for now
-def select_parameters(dataset, ground_truth=0, params=''):
+def select_parameters(dataset, ground_truth=0, params=[]):
     '''
     Drops columns from dataframe, keeping only the selected parameters
     ------------
@@ -113,7 +121,7 @@ def select_parameters(dataset, ground_truth=0, params=''):
     Returns:
         dataset: Dataframe of dataset, now with only selected columns remaining
 
-        # error for with params doesn't match columns
+        
     '''
     # get name of ground truth column
     ground_truth_name = dataset.columns[ground_truth]
@@ -122,10 +130,13 @@ def select_parameters(dataset, ground_truth=0, params=''):
         params = get_parameter_selection(dataset.columns)
 
     truth = dataset[ground_truth_name]
-    print("Ground truth name:", ground_truth_name)
-    dataset.drop(dataset.columns[[params]], axis=1, inplace=True)
+    #print("Ground truth name:", ground_truth_name)
+
+    for p in range(len(params)):
+        params[p] = ~params[p]
+    dataset.drop(dataset.columns[params], axis=1, inplace=True)
     if ground_truth_name in dataset.columns:        
         dataset.drop(ground_truth_name, axis=1, inplace=True)
     dataset.insert(loc=0, column=ground_truth_name, value=truth)
-    print(dataset)
+    #print(dataset)
     return dataset

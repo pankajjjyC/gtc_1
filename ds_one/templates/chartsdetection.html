@@ -523,47 +523,163 @@
                   <label for="lab1" class="lab__label" style="border:grey 1px solid; position:relative;top: -493px; left: -514px; width:222px; text-align: center; font-weight: bold; font-size: 16px;">ML Training</label>
                   <div class="lab__content">
                     <div style="position: relative; top: -480px; left: -350px;">
-                        <label for="cars" style="font-size: 24px; position: relative; top: -78px; ">Select ML Algorithm</label>
+                        <label for="cars" style="font-size: 22px; position: relative; top: -78px; ">Select ML Algorithm</label>
 
-                        <select name="cars" id="cars" style=" position: relative; top: -112px; left: 260px; width: 190px; border-radius: 7px; ">
+                        <select name="cars" id="cars" style=" position: relative; top: -82px; left: 60px; width: 190px; border-radius: 7px; ">
                         <option value="" selected="selected" disabled>Select</option>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                         </select>
+
+
+
+                        
+
                     </div>
 
-                    <div style="position:relative;top: -2px;">
-                        <div id= "btn_start_training"  >
-                            <a href="" style="color:black;text-decoration: none;  font-size: 18px; position:relative; top: 2px;" >Start Training</a>                               
-                        </div>
+                    <div style="position:relative;top: 24px;">
+                      <div id= "btn_start_training"  >
+                          <a href="" style="color:black;text-decoration: none;  font-size: 18px; position:relative; top: 2px;" >Start Training</a>                               
+                      </div>
                     </div>
 
-                    <div style="position: relative; top: -190px;">
+                    
+
+                    <div style="position: relative; top: -150px; left: -10px; ">
                         {% for i in em_list_fig_twolines %}
-                                <div style="position: relative; left: -430px; top: -390px;">
-                                    {{ i|safe }}
-                                </div>
-                                <br>
-                        {% endfor %}
+                          <div style="position: relative; left: -430px; top: -390px; width: 1000px; height: 360px;  text-align: center; overflow-x: scroll;overflow-y: hidden;">
+                            <div style="position: relative; top: 25px;">{{ i|safe }}</div>
+                          </div>
+                          <br> <br> <br><br> <br> <br> <br>
+                        {% endfor %}                                          
                     </div>
+
+                    <!--   -->
+
+                        <!-- <div style="position: relative; top: -190px; left: -10px; ">
+
+                          {{em_list_fig_twolines}}
+                                              
+                        </div> -->
+
+                   
+                    
+                      <!-- <button onclick="history.back()" style=" position: relative; top: -510px; left: -80px;">Previous</button>  -->
+
+                      <!-- <a href="{% url 'chartdetection3' %}" style="position: relative; left:-60px; top:-515px;">Previous</a> -->
+                     
+
+
+                      {% if step2 == 2 %}
+
+                      
+                          <a href="{% url 'chartdetection3' %}" style="position: relative; left:-120px; top:-515px;background-color: green; color: white;padding: 14px 25px;font-size:12pt;text-align: center;text-decoration: none;">Previous</a>
+                            
+                      {% endif %} 
+                    
+                      <!-- background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:90px; -->
+
+                      {% if step == 1 %}
+
+                      
+                          <div id="next_but" style="position: relative; top: -580px; left: -70px;">
+                            <form action="{% url 'chartdetection2' %}" method="POST" name="myform">
+                              {% csrf_token %}
+                              <input type="number" name="num_sent" value='5' hidden> <br> <br>
+                              <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:47px;font-size:12pt; width:100px; position: relative; left:160px ; top: -4px;"> Next </button> <br><br>                                                  
+                            </form>
+                          </div>
+                        
+                      {% endif %}
+
+                      
+
+                      {{list}}
+                      
+                      <label for="">{{val}}</label> <br>
+                      
+                      <label for="">{{len_of_uploadedcsv_col}}</label> 
+                      
+                    
+
+                    
+
+                    {% if step == 3 %}
+
+                      <div id="next_but"  style="position: relative; top: -480px; left: -70px;">
+                        <form action="{% url 'chartdetection' %}" method="POST" name="myform">
+                          {% csrf_token %}
+                          <input type="number" name="num_sent" value='24' hidden> <br> <br>
+                          <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:70px; position: relative; left:160px"> Next </button> <br><br>                                                  
+                        </form>
+                      </div>
+                    
+                    {% endif %}
+
+                    {% if step == 4 %}
+
+                      <div id="next_but" style="position: relative; top: -480px; left: -70px;">
+                        <form action="{% url 'chartdetection5' %}" method="POST" name="myform">
+                          {% csrf_token %}
+                          <input type="number" name="num_sent" value='24' hidden> <br> <br>
+                          <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:70px; position: relative; left:160px"> Next </button> <br><br>                                                  
+                        </form>
+                      </div>
+                    
+                    {% endif %}
+
+                    {% if step == 5 %}
+
+                      <div id="next_but" style="position: relative; top: -480px; left: -70px;">
+                        <form action="{% url 'chartdetection6' %}" method="POST" name="myform">
+                          {% csrf_token %}
+                          <input type="number" name="num_sent" value='24' hidden> <br> <br>
+                          <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:70px; position: relative; left:160px"> Next </button> <br><br>                                                  
+                        </form>
+                      </div>
+                    
+                    {% endif %}
+
+                    {% if step == 6 %}
+
+                      <div id="next_but">
+                        <form action="{% url 'chartdetection7' %}" method="POST" name="myform">
+                          {% csrf_token %}
+                          <input type="number" name="num_sent" value='24' hidden> <br> <br>
+                          <button type="submit" style="background-color:green;font-weight: bold;color:white;border: none;  cursor: pointer; height:35px;font-size:12pt; width:70px; position: relative; left:160px"> Next </button> <br><br>                                                  
+                        </form>
+                      </div>
+                    
+                    {% endif %}
+
+
+                    
+
+
+
+
+
                   </div>
                   <input type="radio" class="lab__radio" name="labs-example" id="lab2">
-                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -543px; left: -277px; width:220px; text-align: center;font-weight: bold; font-size: 16px;">ML Perfomance</label>
+                  
+                  <label for="lab2" class="lab__label" style="border:grey 1px solid; position:relative;top: -543px; left: -277px; width:220px; text-align: center;font-weight: bold; font-size: 16px;" ><a href="{% url 'chartdetection_mlper' %}" style="color:black;text-decoration: none;" >ML Perfomance</a></label>
                   <div class="lab__content">
                     <label for="">coming soon</label>
                   </div>
     
                   <input type="radio" class="lab__radio" name="labs-example" id="lab3">
-                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -593px; left: -43px; width:220px; text-align: center;font-weight: bold; font-size: 16px;">Inject Anomalies</label>
+                  <!-- <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -593px; left: -43px; width:220px; text-align: center;font-weight: bold; font-size: 16px;">Inject Anomalies</label> -->
+                  <label for="lab3" class="lab__label" style="border:grey 1px solid; position:relative;top: -593px; left: -43px; width:220px; text-align: center;font-weight: bold; font-size: 16px;" ><a href="{% url 'chartsdetection_inject_ano' %}" style="color:black;text-decoration: none;" >Inject Anomalies</a></label>
                   <div class="lab__content">                   		
 
                     <label for="">the end</label>
                   </div>
     
                   <input type="radio" class="lab__radio" name="labs-example" id="lab4">
-                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -643px; left: 190px; width:220px; text-align: center; font-weight: bold; font-size: 16px;">Detection Performance</label>
+                  <!-- <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -643px; left: 190px; width:220px; text-align: center; font-weight: bold; font-size: 16px;"></label> -->
+                  <label for="lab4" class="lab__label" style="border:grey 1px solid; position:relative;top: -643px; left: 192px; width:220px; text-align: center;font-weight: bold; font-size: 16px;" ><a href="{% url 'chartsdetection_detec_perfor' %}" style="color:black;text-decoration: none;" >Detection Performance</a></label>
                   <div class="lab__content">
                         <label for="">coming soon</label> 
                   </div>
